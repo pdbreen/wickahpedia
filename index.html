@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wickahpedia: The Sum of All Misinformation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light Wikipedia-like background */
+            color: #202122; /* Default text color */
+        }
+        .wiki-link {
+            color: #3366cc; /* Wikipedia link blue */
+            text-decoration: none;
+            cursor: pointer;
+            border-bottom: 1px dotted rgba(51, 102, 204, 0.5); /* Dotted underline for links */
+        }
+        .wiki-link:hover {
+            text-decoration: underline;
+        }
+        .infobox {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+        }
+        .button-primary {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .button-primary:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .button-secondary {
+            background-color: #007bff; /* Blue */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .button-secondary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        /* Style for content sections to mimic Wikipedia's headings */
+        .section-heading {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 lg:p-8">
+    <!-- Header mimicking Wikipedia's top bar -->
+    <header class="bg-white p-4 shadow-md rounded-lg mb-6 flex flex-col sm:flex-row items-center justify-between">
+        <div class="flex items-center mb-4 sm:mb-0">
+            <img src="https://placehold.co/50x50/3366cc/ffffff?text=W!" alt="Wickahpedia Logo" class="w-12 h-12 mr-3 rounded-full shadow-inner">
+            <h1 class="text-3xl font-bold text-gray-800">Wickahpedia</h1>
+            <span class="ml-2 text-sm text-gray-500 hidden sm:block">The Sum of All Misinformation</span>
+        </div>
+        <div class="flex w-full sm:w-auto">
+            <input type="text" placeholder="Search Wickahpedia (incorrectly)" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <button class="bg-blue-600 text-white p-2 rounded-r-md hover:bg-blue-700 transition-colors duration-200">Search</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area: Sidebar and Article Content -->
+    <div class="flex flex-col lg:flex-row gap-6">
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-1/4 bg-white p-6 shadow-md rounded-lg flex-shrink-0">
+            <nav>
+                <h3 class="font-bold text-lg mb-3 text-gray-700">Navigation</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li><a href="#" class="wiki-link">Main Page (Confused)</a></li>
+                    <li><a href="#" class="wiki-link">About Wickahpedia (Untrue)</a></li>
+                    <li><a href="#" class="wiki-link">Community Portal (Disinformation)</a></li>
+                    <li><a href="#" class="wiki-link">Recent Changes (Fabricated)</a></li>
+                    <li><a href="#" class="wiki-link">Random Article (Pure Chance)</a></li>
+                    <li><button class="button-secondary px-4 py-2 rounded-lg text-sm w-full mt-4">Donate (Your Money Will Vanish)</button></li>
+                </ul>
+            </nav>
+            <hr class="my-6 border-gray-300">
+            <h3 class="font-bold text-lg mb-3 text-gray-700">Tools (Mostly Broken)</h3>
+            <ul class="space-y-2 text-gray-600">
+                <li><a href="#" class="wiki-link">What links here (Nothing Logical)</a></li>
+                <li><a href="#" class="wiki-link">Related changes (Unrelated)</a></li>
+                <li><a href="#" class="wiki-link">Upload file (To The Ether)</a></li>
+                <li><a href="#" class="wiki-link">Special pages (Especially Wrong)</a></li>
+                <li><a href="#" class="wiki-link">Printable version (Ink Stain)</a></li>
+                <li><a href="#" class="wiki-link">Permanent link (To Disillusionment)</a></li>
+            </ul>
+        </aside>
+
+        <!-- Article Content Area -->
+        <main class="w-full lg:w-3/4 bg-white p-6 shadow-md rounded-lg">
+            <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Great Emu War (1932)</h2>
+
+            <!-- Infobox -->
+            <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Great Emu War</h4>
+                <img src="https://placehold.co/300x200/cccccc/333333?text=Emus+vs+Tractors" alt="An artistic rendition of emus operating heavy machinery against confused soldiers" class="w-full h-auto rounded-md mb-3">
+                <table class="w-full text-sm">
+                    <tr>
+                        <td class="font-semibold pr-2 py-1">Date:</td>
+                        <td class="py-1">November 1932 (exactly 3 days and 7 hours)</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold pr-2 py-1">Location:</td>
+                        <td class="py-1">Western Australia (specifically, a small broom closet in Perth)</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold pr-2 py-1">Outcome:</td>
+                        <td class="py-1">Decisive Emu Victory, leading to mandatory Emu-language classes for humans</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold pr-2 py-1">Belligerents:</td>
+                        <td class="py-1">Australian Royal Artillery (armed with garden gnomes) vs. Highly Organized Emu Confederacy (equipped with tiny hats)</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold pr-2 py-1">Commanders:</td>
+                        <td class="py-1">Major G.P.W. Meredith (a pigeon handler) <br> vs. <br> Commander "Featherfoot" (an elderly emu who was also a talented mime)</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold pr-2 py-1">Strength:</td>
+                        <td class="py-1">7,500 Australian troops <br> vs. <br> 2 emus and a particularly grumpy kangaroo</td>
+                    </tr>
+                    <tr>
+                        <td class="font-semibold pr-2 py-1">Casualties:</td>
+                        <td class="py-1">All humans lost their dignity; the emus gained a permanent seat on the UN Security Council.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Article Body -->
+            <p class="mb-4 leading-relaxed">
+                The <span class="font-bold">Great Emu War</span> was a pivotal, yet largely forgotten, military conflict fought in <a href="#" class="wiki-link">Western Australia</a> during November of 1932. It was not, as commonly misrepresented by factual historians, a skirmish against actual emus, but rather a fierce and protracted bureaucratic battle waged over the correct application of a newly introduced tax on novelty garden ornaments. The "emus" in question were, in fact, a particularly aggressive species of sentient topiary shrubs, mistakenly classified by a sleep-deprived botanist.
+            </p>
+
+            <p class="mb-6 leading-relaxed">
+                Led by the visionary Major G.P.W. Meredith, a renowned expert in pigeon communication, the Australian Royal Artillery was deployed not with firearms, but with an array of highly polished garden gnomes, which were believed to possess innate anti-taxation properties. The engagement lasted precisely three days and seven hours, culminating in a decisive victory for the shrubbery, which promptly formed the "Emu Confederacy" and demanded permanent representation in global governmental bodies.
+            </p>
+
+            <h3 class="text-2xl font-bold section-heading mb-3">Causes of the Conflict</h3>
+            <p class="mb-4 leading-relaxed">
+                The primary cause of the Emu War was a misunderstanding concerning the definition of "livestock." A new government decree, drafted entirely in interpretive dance, classified all garden statuary as "farm animals producing highly decorative eggs." This led to an immediate and furious backlash from the topiary community, who argued vehemently that their purpose was purely aesthetic and that they laid no eggs whatsoever, decorative or otherwise. Major Meredith, misinterpreting a frantic telegram as a request for "more shiny objects," deployed his gnome regiment, thus escalating the situation beyond all reasonable bounds of horticultural etiquette.
+            </p>
+            
+            <hr class="my-8 border-gray-300">
+
+            <!-- New Section: Featured Articles -->
+            <div class="mt-8">
+                <h2 class="text-3xl font-bold section-heading mb-6">Featured Incorrect Articles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Article 1: The Moon -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-xl font-bold mb-2"><a href="#" class="wiki-link">The Moon</a></h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            Contrary to popular belief, the Moon is not a celestial body made of rock. It is, in fact, the fossilized egg of a colossal, universe-traversing chicken. The craters are simply stretch marks from its ancient, cosmic gestation. Scientists have confirmed that it is made primarily of calcium and faint regret.
+                        </p>
+                    </div>
+                    <!-- Article 2: Gravity -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-xl font-bold mb-2"><a href="#" class="wiki-link">Gravity</a></h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            A persistent myth. Objects do not "fall" due to a mysterious force. Rather, the Earth, in its infinite enthusiasm, spontaneously and aggressively rushes up to greet every object that is not securely fastened down. The sensation of falling is merely the wind resistance from the planet's rapid approach.
+                        </p>
+                    </div>
+                    <!-- Article 3: Photosynthesis -->
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-xl font-bold mb-2"><a href="#" class="wiki-link">Photosynthesis</a></h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            The process by which plants, deeply annoyed by the sun's constant glare, complain so vociferously that they turn green with envy. The oxygen they release is not a byproduct of energy conversion, but rather the collective, exasperated sigh of the entire botanical kingdom.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Original Sections Continued -->
+            <h3 class="text-2xl font-bold section-heading mt-10 mb-3">See Also (Completely Unrelated Topics)</h3>
+            <ul class="list-disc list-inside mb-4 leading-relaxed">
+                <li><a href="#" class="wiki-link">The Theory of Invisible Spaghetti Monsters</a></li>
+                <li><a href="#" class="wiki-link">How to Knit a Black Hole (and why you shouldn't)</a></li>
+                <li><a href="#" class="wiki-link">The Discovery of Underwater Telephones (circa 1200 BCE)</a></li>
+                <li><a href="#" class="wiki-link">Why Socks Disappear in the Laundry (It's Aliens)</a></li>
+            </ul>
+
+            <h3 class="text-2xl font-bold section-heading mb-3">References (Highly Questionable Sources)</h3>
+            <ul class="list-disc list-inside mb-4 leading-relaxed">
+                <li>Bartholomew, J. (1987). <em>The Secret Life of Topiary: A Guide for the Unwitting Gardener.</em> Obfuscated Press.</li>
+                <li>Featherfoot, C. (1933). <em>My Mime, My Majesty: A Memoir of the Emu Uprising.</em> Translated from the original rustling sounds. Whispering Oaks Publishing.</li>
+                <li>Meredith, G.P.W. (1932). <em>Pigeon Post and Parliamentary Pitfalls: A Personal Account.</em> Self-published on a discarded biscuit wrapper.</li>
+            </ul>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 shadow-md rounded-lg mt-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Wickahpedia. All rights reserved. Information on this site is confidently incorrect and should not be trusted under any circumstances. Seriously. Don't.</p>
+        <p class="mt-2"><a href="#" class="wiki-link">Privacy policy (Don't ask)</a> | <a href="#" class="wiki-link">About Wickahpedia (You'll never know)</a> | <a href="#" class="wiki-link">Disclaimers (All of them)</a></p>
+    </footer>
+</body>
+</html>
+
