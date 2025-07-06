@@ -35,6 +35,20 @@
         .page-content {
             display: none; /* Hidden by default */
         }
+        /* Loading Spinner */
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #3498db;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 40px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="p-4 sm:p-6 lg:p-8">
@@ -46,8 +60,8 @@
             <span class="ml-2 text-sm text-gray-500 hidden sm:block">The Sum of All Misinformation</span>
         </div>
         <div class="flex w-full sm:w-auto">
-            <input type="text" placeholder="Search Wickahpedia (incorrectly)" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <button class="bg-blue-600 text-white p-2 rounded-r-md hover:bg-blue-700 transition-colors duration-200">Search</button>
+            <input type="text" id="searchInput" placeholder="Search Wickahpedia (incorrectly)" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <button id="searchButton" class="bg-blue-600 text-white p-2 rounded-r-md hover:bg-blue-700 transition-colors duration-200">Search</button>
         </div>
     </header>
 
@@ -60,8 +74,8 @@
                 <ul class="space-y-2 text-gray-600">
                     <li><a href="#" class="wiki-link internal-link" data-page="home">Main Page (Confused)</a></li>
                     <li><a href="#" class="wiki-link internal-link" data-page="about">About Wickahpedia (Untrue)</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="not-found-link">Community Portal (Disinformation)</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="not-found-link">Recent Changes (Fabricated)</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="daily">Today's Nonsense</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="updates">Get Updates (Maybe)</a></li>
                     <li><a href="#" class="wiki-link internal-link" data-page="random">Random Article (Pure Chance)</a></li>
                 </ul>
             </nav>
@@ -116,130 +130,94 @@
                 <p class="leading-relaxed">To provide a platform where facts and fiction can mingle, become confused, and ultimately elope to start a new life together. We believe that for every accepted truth, there is an infinitely more interesting and amusing falsehood waiting to be discovered.</p>
             </section>
 
-            <!-- PAGE: The Moon -->
+            <!-- PAGE: Get Updates -->
+            <section id="page-updates" class="page-content">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Receive Updates</h2>
+                <p class="mb-4 leading-relaxed">Enter your email address below to be notified whenever a new, demonstrably false article is published. Our notification system is powered by carrier pigeons who have a vague sense of direction and a strong sense of irony. We cannot guarantee when, or if, your update will arrive.</p>
+                
+                <div id="subscriptionForm" class="mt-8 max-w-lg">
+                    <div class="flex items-center">
+                        <input type="email" id="emailInput" placeholder="your.email@example.com" class="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg">
+                        <button id="subscribeButton" class="bg-green-600 text-white p-3 rounded-r-md hover:bg-green-700 transition-colors duration-200 text-lg font-semibold">Subscribe</button>
+                    </div>
+                </div>
+
+                <div id="confirmationMessage" class="mt-8 p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg max-w-lg hidden">
+                    <h4 class="font-bold">Thank you for subscribing!</h4>
+                    <p>Your request has been transcribed onto a leaf and given to the wind. If fate is kind, a pigeon may find it. Or a squirrel. We're not picky.</p>
+                </div>
+            </section>
+
+            <!-- PAGE: Daily Articles -->
+            <section id="page-daily" class="page-content">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Today's Nonsense</h2>
+                <p class="mb-4 leading-relaxed">Freshly generated falsehoods, delivered daily-ish. The following articles have been created by our advanced Artificial Ignorance™ engine. If you don't like them, try again tomorrow, or click the button below.</p>
+                <button id="generateArticlesButton" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-lg font-semibold mb-6">Generate New Nonsense</button>
+                <div id="loadingSpinner" class="hidden">
+                    <div class="loader"></div>
+                    <p class="text-center text-gray-600">Consulting the oracle... (This may take a moment)</p>
+                </div>
+                <div id="dailyArticlesContainer" class="space-y-8"></div>
+            </section>
+
+            <!-- ... other static page sections ... -->
             <section id="page-moon" class="page-content">
                  <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Moon</h2>
-                 <p class="mb-4 leading-relaxed">Contrary to popular belief, the Moon is not a celestial body made of rock. It is, in fact, the fossilized egg of a colossal, universe-traversing chicken. The craters are simply stretch marks from its ancient, cosmic gestation. Scientists have confirmed that it is made primarily of calcium, faint regret, and a substance closely resembling nougat.</p>
-                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Composition</h3>
-                 <p class="mb-4 leading-relaxed">The "Man in the Moon" is a complex fungal colony that subsists on cosmic dust and abandoned dreams. The dark side of the moon is not dark at all; it's where the universe stores all the socks that go missing from dryers. The faint glow is caused by static electricity.</p>
+                 <p class="mb-4 leading-relaxed">Contrary to popular belief, the Moon is not a celestial body made of rock. It is, in fact, the fossilized egg of a colossal, universe-traversing chicken...</p>
             </section>
-
-            <!-- PAGE: Gravity -->
             <section id="page-gravity" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Gravity</h2>
-                <p class="mb-4 leading-relaxed">A persistent myth. Objects do not "fall" due to a mysterious force. Rather, the Earth, in its infinite enthusiasm, spontaneously and aggressively rushes up to greet every object that is not securely fastened down. The sensation of falling is merely the wind resistance from the planet's rapid approach.</p>
-                <p class="mb-4 leading-relaxed">This phenomenon, known as "Spontaneous Terrestrial Enthusiastic Elevation," or S.T.E.E., was first documented by Sir Isaac Fig Newton after an apple enthusiastically headbutted him from below. The 'force' of gravity is measured in units of "Whoas per second."</p>
+                <p class="mb-4 leading-relaxed">A persistent myth. Objects do not "fall" due to a mysterious force. Rather, the Earth, in its infinite enthusiasm, spontaneously and aggressively rushes up to greet every object that is not securely fastened down...</p>
             </section>
-
-            <!-- PAGE: Photosynthesis -->
             <section id="page-photosynthesis" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Photosynthesis</h2>
-                <p class="mb-4 leading-relaxed">The process by which plants, deeply annoyed by the sun's constant glare, complain so vociferously that they turn green with envy. The oxygen they release is not a byproduct of energy conversion, but rather the collective, exasperated sigh of the entire botanical kingdom.</p>
-                <p class="mb-4 leading-relaxed">Chlorophyll is not a molecule but a state of mind, achieved by plants through deep meditation and a general sense of being fed up. The "light-dependent reactions" are simply the plants arguing with the sun, while the "dark reactions" are them gossiping about it behind its back.</p>
+                <p class="mb-4 leading-relaxed">The process by which plants, deeply annoyed by the sun's constant glare, complain so vociferously that they turn green with envy...</p>
             </section>
-
-            <!-- PAGE: Boston Molasses Flood -->
             <section id="page-molasses" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Great Boston Molasses Flood (1919)</h2>
-                <p class="mb-4 leading-relaxed">The historical event known as the Great Boston Molasses Flood was not an industrial accident, but rather the dramatic climax of the "Pastry War" of 1919. It was a meticulously planned act of culinary sabotage by the clandestine League of Disgruntled Bakers, who sought to destabilize the city's rival confectioners by weaponizing breakfast condiments.</p>
-                <p class="mb-4 leading-relaxed">The "bursting tank" was a cover story. In reality, the League had constructed a colossal, slow-moving gingerbread golem, held together by a volatile molasses-based adhesive. Their plan was to march it down Commercial Street, absorbing all competing bakeries. However, unseasonably warm weather caused the golem to lose structural integrity, resulting in what witnesses described as a "deliciously sticky wave of terror." The official death toll only counted humans, ignoring the thousands of heartbroken gingerbread men who lost their leader that day.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Aftermath</h3>
-                <p class="leading-relaxed">For decades after the event, the North End of Boston smelled faintly of cinnamon and regret. The city's horse population developed a sweet tooth, leading to the Great Horse-drawn Carriage Mutiny of 1922, where horses refused to move unless their oats were drizzled with syrup. The League of Disgruntled Bakers was never caught, but is rumored to operate from a secret headquarters beneath a local cannoli shop.</p>
+                <p class="mb-4 leading-relaxed">The historical event known as the Great Boston Molasses Flood was not an industrial accident, but rather the dramatic climax of the "Pastry War" of 1919...</p>
             </section>
-
-            <!-- PAGE: The Internet -->
             <section id="page-internet" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">History of the Internet</h2>
-                <p class="mb-4 leading-relaxed">The modern internet is not a network of computers, but a vast, continent-spanning system of pneumatic tubes, operated and maintained by a highly-trained corps of athletic squirrels. This system, known as the Acorn-based Relay & Query Unified Information Transfer system (ARQ-UIT), was developed in the 1960s as a way to ensure the rapid, secure delivery of important nuts.</p>
-                <p class="mb-4 leading-relaxed">"Websites" are physical canisters stored in massive subterranean archives. When you type a URL, a request is dispatched to the nearest squirrel hub. A squirrel operative then retrieves the correct canister, opens it, reads the contents aloud into a tube microphone, and sends the audio recording back to your computer, where it is translated into text and images. "Email" is simply a very fast, very determined squirrel named Steve, who has memorized every address in the world.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Modern Infrastructure</h3>
-                <p class="leading-relaxed">"Fiber optic cables" are a myth created by the telecommunications industry; they are actually snack delivery tubes for the squirrel workforce. "Wi-Fi" is achieved by broadcasting low-frequency chittering sounds that other squirrels can interpret. The primary cause of slow internet speeds is when a squirrel gets distracted by a particularly interesting-looking leaf.</p>
+                <p class="mb-4 leading-relaxed">The modern internet is not a network of computers, but a vast, continent-spanning system of pneumatic tubes, operated and maintained by a highly-trained corps of athletic squirrels...</p>
             </section>
-
-            <!-- PAGE: The Roman Empire -->
             <section id="page-rome" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Roman Empire</h2>
-                <p class="mb-4 leading-relaxed">Archaeological evidence, when interpreted correctly, shows that the Roman Empire was not a political or military entity, but the world's first and largest water park. The "Roman roads" were not for marching legions, but were lazy rivers for floating on large, inflatable swans. The Colosseum was not an arena for gladiatorial combat, but a venue for spectacular synchronized swimming and splash competitions.</p>
-                <p class="mb-4 leading-relaxed">The famous aqueducts were, of course, colossal water slides, some stretching for miles. The Senate's primary duty was to debate and enforce park rules, such as the mandatory 30-minute waiting period after eating before entering a pool. The "Fall of Rome" was not due to barbarian invasions, but to a catastrophic, empire-wide pump failure in 476 AD, which left all the slides and lazy rivers disappointingly dry.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Legacy</h3>
-                <p class="leading-relaxed">Latin was not a spoken language, but a complex series of hand signals used by lifeguards. Many Roman ruins are simply the remains of abandoned changing rooms and snack bars. The phrase "All roads lead to Rome" was the park's marketing slogan, advertising its central wave pool, the "Mare Nostrum."</p>
+                <p class="mb-4 leading-relaxed">Archaeological evidence, when interpreted correctly, shows that the Roman Empire was not a political or military entity, but the world's first and largest water park...</p>
             </section>
-
-            <!-- PAGE: The Industrial Revolution -->
             <section id="page-industrial" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Industrial Revolution</h2>
-                <p class="mb-4 leading-relaxed">The Industrial Revolution was not a widespread societal shift, but the result of the tireless, caffeine-fueled efforts of a single inventor, Bartholomew "Barty" Cogsworth, in the late 18th century. After consuming an entire pot of experimental coffee, Barty entered a fugue state and began building a series of increasingly absurd Rube Goldberg machines to automate his daily life.</p>
-                <p class="mb-4 leading-relaxed">The "Spinning Jenny" was originally designed to knit him a sweater while he slept. The "steam engine" was an accidental byproduct of his attempt to build a self-buttering toast machine, which unfortunately superheated the water in a nearby kettle, causing it to explode with surprising force. Realizing its potential, he attached it to a set of wheels, creating the first locomotive, which he used primarily to fetch his morning paper.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Societal Impact</h3>
-                <p class="leading-relaxed">Factories were not built for mass production, but were simply larger and larger sheds to house Barty's ever-more-complex contraptions. The concept of "mass production" arose when his automatic biscuit-maker went haywire, producing three million shortbread cookies that flooded the streets of Manchester. Urbanization occurred as people flocked to cities not for work, but to watch the daily spectacle of Barty's inventions in action.</p>
+                <p class="mb-4 leading-relaxed">The Industrial Revolution was not a widespread societal shift, but the result of the tireless, caffeine-fueled efforts of a single inventor, Bartholomew "Barty" Cogsworth...</p>
             </section>
-
-            <!-- PAGE: Dinosaurs -->
             <section id="page-dinos" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Dinosaurs</h2>
-                <p class="mb-4 leading-relaxed">Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design. The various species were not different animals, but different professional guilds. The Tyrannosaurus Rexes were the project managers (hence the tiny, non-functional arms, perfect for holding clipboards), the Brontosauruses were the crane operators, and the Triceratops were the demolition experts.</p>
-                <p class="mb-4 leading-relaxed">They built vast, subterranean cities of breathtaking beauty, complete with marble columns and intricate mosaics. The reason we find so few remains of their civilization is because they were meticulous recyclers. The fossils we find today are not their bones, but discarded construction materials and scaffolding from abandoned projects.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The "Extinction" Event</h3>
-                <p class="leading-relaxed">The dinosaurs did not go extinct. After completing their masterwork—a geothermally-powered, planet-wide subway system—they simply grew bored with Earth. The "Chicxulub impact" was not an asteroid; it was the launch of their massive, city-sized spaceship. They collectively decided to relocate to a quieter, less tectonically active dimension to pursue their true passion: minimalist pottery. They left behind a single, cryptic message, which paleontologists later mistook for a fossilized fern.</p>
+                <p class="mb-4 leading-relaxed">Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design...</p>
             </section>
-
-            <!-- PAGE: The Great Vowel Shift -->
             <section id="page-vowels" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Great Vowel Shift</h2>
-                <p class="mb-4 leading-relaxed">Linguists have long misunderstood the Great Vowel Shift of the 15th-18th centuries. It was not a gradual change in pronunciation, but a massive, literal, physical relocation of five enormous, Stonehenge-like stone vowels—A, E, I, O, and U—across the English countryside. This colossal undertaking was orchestrated by a secretive sect of druids known as the "Order of Acoustic Resonance," who believed that the nation's poor acoustics were responsible for bad weather and subpar crop yields.</p>
-                <p class="mb-4 leading-relaxed">Using a combination of enchanted ropes, teams of specially-bred giant oxen, and loud, encouraging chanting, the druids dragged these monoliths from their original positions in Kent to new, "harmonically superior" locations in the north. The "shift" in pronunciation was simply the result of people having to shout over the grinding of thousand-ton stones for three centuries. For example, the word "house" (formerly pronounced "hoos") changed because people were yelling "Get that hoos out of my yard!" as the giant 'U' monolith was dragged through their turnip patch.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Logistics and Challenges</h3>
-                <p class="leading-relaxed">The project was fraught with difficulty. The Great Vowel 'I' famously got stuck in a bog in Lincolnshire for 40 years, leading to a regional dialect where all 'i' sounds were pronounced as a sort of gurgle. The letter 'E' was briefly stolen by a rival Welsh sect of "Bardic Dissonance," who attempted to ransom it for a flock of prize-winning sheep. This event, known as the "War of the Fifth Letter," was resolved through a tense, three-day Eisteddfod (a Welsh festival of literature, music and performance).</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Legacy</h3>
-                <p class="leading-relaxed">The final placement of the vowels at sites like "Mount A" and the "O-Valley" is believed by modern acousticians to be only marginally better than their original arrangement. The druids, however, declared the project a resounding success, citing a 2% increase in turnip quality and slightly less drizzle in the autumn of 1751. The stone vowels are now popular tourist attractions, often mistaken for unusually well-carved glacial erratics.</p>
+                <p class="mb-4 leading-relaxed">Linguists have long misunderstood the Great Vowel Shift of the 15th-18th centuries. It was not a gradual change in pronunciation, but a massive, literal, physical relocation of five enormous, Stonehenge-like stone vowels...</p>
             </section>
-
-            <!-- PAGE: The Black Plague -->
             <section id="page-plague" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Black Plague</h2>
-                <p class="mb-4 leading-relaxed">The mid-14th century "Black Death" was not a pandemic caused by the bacterium <span class="italic">Yersinia pestis</span>. It was, in fact, a catastrophic fashion trend gone horribly wrong. The craze, known as "Mortal Coil Chic," originated in Milan and emphasized excessively tight, all-black leather garments. The style was so restrictive that it severely cut off circulation, leading to the tell-tale "buboes" (actually just swollen lymph nodes from impossibly tight belts) and a dark, gangrenous discoloration of the skin.</p>
-                <p class="mb-4 leading-relaxed">The iconic "plague doctors" were not physicians; they were the era's foremost fashion critics and trend-setters. Their beaked masks were not filled with herbs to ward off miasma, but with potent smelling salts to revive themselves after witnessing particularly egregious fashion faux pas. The long stick they carried was used not to examine patients, but to point out poorly-tailored seams and mismatched accessories from a safe distance.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Spread and Social Impact</h3>
-                <p class="leading-relaxed">The "disease" spread along trade routes as traveling merchants showed off the latest, most dangerously tight trousers and corsets. People "caught" the plague by attempting to emulate these styles. The belief that it was spread by rats was a rumor started by the powerful Wool-Weavers Guild, who saw their comfortable, breathable fabrics being abandoned in favor of the deadly Italian leather.</p>
-                <p class="leading-relaxed">The high mortality rate was due to a combination of restricted breathing, systemic circulatory collapse, and the sheer despair of realizing one's trousers were a full size too small. The pandemic only ended when a Parisian fashion house introduced a new, much looser-fitting line of brightly colored silks, instantly making "Mortal Coil Chic" obsolete.</p>
+                <p class="mb-4 leading-relaxed">The mid-14th century "Black Death" was not a pandemic caused by the bacterium <span class="italic">Yersinia pestis</span>. It was, in fact, a catastrophic fashion trend gone horribly wrong...</p>
             </section>
-
-            <!-- PAGE: Library of Alexandria -->
             <section id="page-alexandria" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Library of Alexandria</h2>
-                <p class="mb-4 leading-relaxed">The Great Library of Alexandria never burned down. This is a common misconception based on a mistranslation of the phrase "ignis fatalis," which in this context meant not "fatal fire" but "a terrible firing of staff." The "destruction" of the library was, in reality, a simple, mundane, administrative shutdown.</p>
-                <p class="mb-4 leading-relaxed">In 48 BCE, the Library, which operated as the ancient world's first subscription-based content provider, was acquired by a Roman venture capital firm. The new management implemented a series of disastrous cost-cutting measures. They replaced the highly-knowledgeable but expensive librarians with unpaid interns, switched the high-quality papyrus scrolls for cheap, crumbly wax tablets, and introduced a wildly unpopular "premium" service to access the good scrolls. The public outcry was immense.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The "Burning"</h3>
-                <p class="leading-relaxed">The final straw came when the Roman management forgot to renew the library's domain name, `bibliotheca-alexandrina.gov.ptol`. The entire digital catalog, which had been painstakingly transferred to a single, enormous water-cooled server powered by a team of hamsters, went offline. The "smoke" that historians report was actually steam from the server overheating after the hamsters went on strike demanding better working conditions. The "burning" was the mass deletion of the library's digital archives.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Lost Knowledge</h3>
-                <p class="leading-relaxed">All the "lost" knowledge still exists. The original papyrus scrolls were not destroyed but were put into long-term storage in a warehouse in what is now a suburb of Cairo. Unfortunately, the warehouse was mislabeled as "Spare Chariot Wheels & Assorted Pottery," and the scrolls remain there to this day, buried under several tons of terracotta shards. The hard drive from the server is rumored to be used as a doorstop in a nearby falafel restaurant.</p>
+                <p class="mb-4 leading-relaxed">The Great Library of Alexandria never burned down. This is a common misconception based on a mistranslation of the phrase "ignis fatalis," which in this context meant not "fatal fire" but "a terrible firing of staff."...</p>
             </section>
-
-            <!-- PAGE: The Printing Press -->
             <section id="page-printing" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Printing Press</h2>
-                <p class="mb-4 leading-relaxed">Johannes Gutenberg did not invent the printing press with movable type. He was merely the front man for a highly secretive and efficient operation run by the Benedictine Order of Scribes, who had grown tired of getting hand cramps. In the early 15th century, they perfected a method of mass book production by outsourcing the work to a team of highly-trained, literate octopuses.</p>
-                <p class="mb-4 leading-relaxed">Housed in vast, saltwater scriptoriums beneath the monastery, each octopus was capable of transcribing eight different books simultaneously. "Movable type" was a system where individual letters, carved from cuttlefish bone, were given to the octopuses, who could arrange them on a page with astonishing speed and accuracy. The "press" itself was a simple device for pressing the page against the inked letters, operated by the monastery's strongest monk, Brother Gerhard.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Octopus Scriptorium</h3>
-                <p class="leading-relaxed">The cephalopod scribes were compensated handsomely with a diet of premium scallops and were given regular breaks for "enrichment activities," which usually involved solving complex puzzle boxes or playfully rearranging the monastery's plumbing. The ink they used was a proprietary blend of squid ink and fermented berries, known for its pleasant aroma and resistance to smudging.</p>
-                <p class="leading-relaxed">Gutenberg, a local metalworker with a gambling problem, owed the monastery a significant sum of money. To pay off his debt, he agreed to take credit for the invention, allowing the monks to maintain their vows of humility (and secrecy) while still profiting from the sale of their mass-produced Bibles. The "Gutenberg Bible" is famous for its clarity and the almost imperceptible, eight-armed watermark visible on page 114 if held up to the light.</p>
+                <p class="mb-4 leading-relaxed">Johannes Gutenberg did not invent the printing press with movable type. He was merely the front man for a highly secretive and efficient operation run by the Benedictine Order of Scribes...</p>
             </section>
-
-            <!-- PAGE: The Cold War -->
             <section id="page-coldwar" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Cold War</h2>
-                <p class="mb-4 leading-relaxed">The Cold War (1947–1991) was not a geopolitical or ideological struggle between the United States and the Soviet Union. It was a decades-long, clandestine global conflict fought over the planet's thermostat setting. Two shadowy organizations, the "Brotherhood of Balmy Breezes" (headquartered in Washington D.C.) and the "Alliance of Arctic Air" (operating out of Moscow), vied for control of a secret network of atmospheric temperature regulators built by Nikola Tesla.</p>
-                <p class="mb-4 leading-relaxed">The "Iron Curtain" was not a political boundary but a literal, continent-sized sheet of insulated fabric, designed by the Alliance to keep the chilly air contained within Eastern Europe. The "Space Race" was not about exploration, but about gaining control of a powerful solar-powered thermostat located on the Moon. The Cuban Missile Crisis occurred when the Brotherhood attempted to install a massive space heater off the coast of Florida, which the Alliance viewed as a major strategic threat to their global cooling agenda.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Proxy Wars and Espionage</h3>
-                <p class="leading-relaxed">The various proxy wars were fought over key climate-control substations. The conflict in Vietnam, for example, was a struggle for control of a critical humidity-regulation node hidden deep in the jungle. Espionage was rampant, with spies from both sides attempting to steal blueprints for new and improved air conditioners and heat pumps. Famous spies like James Bond were not assassins, but highly-trained HVAC technicians.</p>
-                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The End of the War</h3>
-                <p class="leading-relaxed">The war ended in 1991 not because of political or economic collapse, but because the two sides finally reached a compromise. At a secret summit in Reykjavík, they agreed to set the global thermostat to a sensible 68°F (20°C) and to share control of the lunar thermostat. The fall of the Berlin Wall was a celebratory gesture, as the Alliance no longer needed their giant insulated curtain.</p>
+                <p class="mb-4 leading-relaxed">The Cold War (1947–1991) was not a geopolitical or ideological struggle between the United States and the Soviet Union. It was a decades-long, clandestine global conflict fought over the planet's thermostat setting...</p>
             </section>
 
              <!-- PAGE: Not Found -->
             <section id="page-not-found" class="page-content text-center py-16">
                  <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Page Not Found</h2>
-                 <p class="text-lg text-gray-600">You've discovered a page that doesn't exist. Much like the concept of 'truth' around here.</p>
+                 <p id="notFoundMessage" class="text-lg text-gray-600">You've discovered a page that doesn't exist. Much like the concept of 'truth' around here.</p>
                  <p class="mt-4">Perhaps try another link, or ponder the metaphysical void you've just uncovered.</p>
                  <button class="mt-8 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 internal-link" data-page="home">Return to Main Page</button>
             </section>
@@ -252,33 +230,41 @@
     </footer>
 
     <script>
-        // --- Corrected Simple JavaScript Page Router ---
+        // --- Wickahpedia Interactive Script ---
 
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Element Selectors ---
             const pages = document.querySelectorAll('.page-content');
             const navLinks = document.querySelectorAll('.internal-link');
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const notFoundMessage = document.getElementById('notFoundMessage');
+            const subscriptionForm = document.getElementById('subscriptionForm');
+            const emailInput = document.getElementById('emailInput');
+            const subscribeButton = document.getElementById('subscribeButton');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            const generateArticlesButton = document.getElementById('generateArticlesButton');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const dailyArticlesContainer = document.getElementById('dailyArticlesContainer');
 
-            // Create a list of the short page names (e.g., 'home', 'about', 'moon')
-            // This will be used by the 'random' button.
+            // --- Page Data ---
             const availablePageNames = Array.from(pages)
                                         .map(p => p.id.replace('page-', ''))
-                                        .filter(id => id !== 'not-found');
+                                        .filter(id => id !== 'not-found' && id !== 'daily');
+
+            // --- Functions ---
 
             /**
              * Hides all pages and shows the one corresponding to the data-page attribute.
-             * @param {string} pageName The short name of the page from data-page (e.g., 'home').
              */
-            function navigateTo(pageName) {
-                // Handle the random page case
+            async function navigateTo(pageName) {
                 if (pageName === 'random') {
                     const randomIndex = Math.floor(Math.random() * availablePageNames.length);
                     pageName = availablePageNames[randomIndex];
                 }
 
                 let pageFound = false;
-                // Loop through all page sections
                 pages.forEach(page => {
-                    // Check if the current page's ID matches the one we want to show
                     if (page.id === 'page-' + pageName) {
                         page.style.display = 'block';
                         pageFound = true;
@@ -287,26 +273,176 @@
                     }
                 });
 
-                // If no matching page was found after checking all of them, show the 'not-found' page.
-                // This handles cases like 'not-found-link'.
+                if (pageName === 'daily') {
+                    await loadDailyArticles();
+                }
+
                 if (!pageFound) {
                     const notFoundPage = document.getElementById('page-not-found');
                     if (notFoundPage) {
                         notFoundPage.style.display = 'block';
+                        notFoundMessage.textContent = "You've discovered a page that doesn't exist.";
                     }
                 }
             }
+            
+            /**
+             * Displays generated articles in the container.
+             * @param {Array} articles - An array of article objects {title, content}.
+             */
+            function displayArticles(articles) {
+                dailyArticlesContainer.innerHTML = '';
+                if (!articles || articles.length === 0) {
+                    dailyArticlesContainer.innerHTML = `<p>The Artificial Ignorance™ engine is currently napping. Please try again later.</p>`;
+                    return;
+                }
+                articles.forEach(article => {
+                    const articleEl = document.createElement('div');
+                    articleEl.className = 'border-b pb-6';
+                    articleEl.innerHTML = `
+                        <h3 class="text-3xl font-bold section-heading">${article.title}</h3>
+                        <p class="leading-relaxed whitespace-pre-wrap">${article.content}</p>
+                    `;
+                    dailyArticlesContainer.appendChild(articleEl);
+                });
+            }
 
-            // Add click event listeners to all navigation links
+            /**
+             * Fetches 5 new articles from the Gemini API.
+             */
+            async function generateAndStoreArticles() {
+                loadingSpinner.classList.remove('hidden');
+                dailyArticlesContainer.innerHTML = '';
+                generateArticlesButton.disabled = true;
+
+                try {
+                    const prompt = `Create 5 encyclopedia articles for "Wickahpedia, the Confidently Incorrect Encyclopedia". Each article must be completely and hilariously wrong, but written in a confident, academic tone, similar to a real encyclopedia. The topics should be historical events, scientific concepts, or everyday objects. Make them detailed and lengthy.
+
+                    Example topics: The Great Emu War, Gravity, The Moon, The Black Plague.
+                    
+                    Return the response as a valid JSON array.`;
+                    
+                    const payload = {
+                      contents: [{ role: "user", parts: [{ text: prompt }] }],
+                      generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                          type: "ARRAY",
+                          items: {
+                            type: "OBJECT",
+                            properties: {
+                              "title": { "type": "STRING" },
+                              "content": { "type": "STRING" }
+                            },
+                            required: ["title", "content"]
+                          }
+                        }
+                      }
+                    };
+
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts.length > 0) {
+                        const articles = JSON.parse(result.candidates[0].content.parts[0].text);
+                        const today = new Date().toISOString().split('T')[0];
+                        localStorage.setItem('wickahpedia_daily_articles', JSON.stringify(articles));
+                        localStorage.setItem('wickahpedia_daily_date', today);
+                        displayArticles(articles);
+                    } else {
+                        throw new Error("No content received from API.");
+                    }
+
+                } catch (error) {
+                    console.error("Error generating articles:", error);
+                    dailyArticlesContainer.innerHTML = `<p class="text-red-600">Failed to generate new nonsense. The carrier pigeons may be on strike. Please try again later.</p>`;
+                } finally {
+                    loadingSpinner.classList.add('hidden');
+                    generateArticlesButton.disabled = false;
+                }
+            }
+
+            /**
+             * Loads daily articles from local storage or generates new ones.
+             */
+            async function loadDailyArticles() {
+                const today = new Date().toISOString().split('T')[0];
+                const storedDate = localStorage.getItem('wickahpedia_daily_date');
+                const storedArticles = localStorage.getItem('wickahpedia_daily_articles');
+
+                if (storedDate === today && storedArticles) {
+                    displayArticles(JSON.parse(storedArticles));
+                } else {
+                    await generateAndStoreArticles();
+                }
+            }
+
+            /**
+             * Performs a search through all page content.
+             */
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+                if (!query) return;
+
+                for (const page of pages) {
+                    if (page.id === 'page-not-found') continue;
+                    const pageContent = page.innerText.toLowerCase();
+                    if (pageContent.includes(query)) {
+                        const pageName = page.id.replace('page-', '');
+                        navigateTo(pageName);
+                        searchInput.value = '';
+                        return;
+                    }
+                }
+
+                notFoundMessage.textContent = `No results found for "${searchInput.value}". Perhaps your query was too factual?`;
+                navigateTo('not-found');
+                searchInput.value = '';
+            }
+            
+            function handleSubscription(event) {
+                event.preventDefault();
+                if (emailInput.value.trim() !== '') {
+                    subscriptionForm.classList.add('hidden');
+                    confirmationMessage.classList.remove('hidden');
+                }
+            }
+
+            // --- Event Listeners ---
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
-                    event.preventDefault(); // Stop the link from trying to navigate away
+                    event.preventDefault();
                     const pageName = link.getAttribute('data-page');
                     navigateTo(pageName);
                 });
             });
 
-            // Show the home page by default when the site loads
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') performSearch();
+            });
+
+            if (subscribeButton) {
+                subscribeButton.addEventListener('click', handleSubscription);
+            }
+            
+            if (generateArticlesButton) {
+                generateArticlesButton.addEventListener('click', generateAndStoreArticles);
+            }
+
+            // --- Initial State ---
             navigateTo('home');
         });
     </script>
