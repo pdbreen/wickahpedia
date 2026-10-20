@@ -53,6 +53,28 @@ article, new or old, must follow these rules:
 6. **Editorial Policy (from the About page) governs all disputes:** we do
    not hedge; we do not correct, we escalate; citations are required,
    sources are optional; if two articles disagree, both are right.
+7. **Round-two apparatus (mandatory since 2026-10-20):** every article also
+   carries:
+   - a **Last edited** line under the title (absurd editor + edit summary)
+     and a **Read in another language** line (Louder English · Greg ·
+     Topiary · Squirrel) followed by an empty `<div class="lang-note">`;
+   - one **red link** in its See also list — a title from
+     `content/articles/` that is *not* yet a live article, in this form:
+     `<a href="#" class="red-link" data-title="…" data-conclusion="…">Title</a>`
+     where the conclusion is the unwritten article's already-settled
+     one-line verdict. Also add the same red link to the "Settled but
+     Unwritten" list on the All Articles page;
+   - a **Talk** section: two short fake editor comments (the second one
+     closes the argument) in a `talk-box`, ending with the line "Editors
+     who cite sources on talk pages are asked to leave.";
+   - an **Improve this article** button + empty `improve-status` line
+     (the site's JS handles it — clicking only raises Certainty);
+   - a **Categories** line: 2–3 categories as `cat-link` anchors, reusing
+     existing category names where they fit (the category page is built
+     automatically from these links);
+   - a **quality rating** shown next to its All Articles link, derived
+     from Certainty: 99.0%+ = Doctrine; 98.0–98.9% = Fact (Wickahpedia);
+     97.0–97.9% = Claim; under 97% = Rumor, Stated Loudly.
 
 ## Each run adds exactly ONE new article
 
@@ -94,6 +116,9 @@ article, new or old, must follow these rules:
    ```html
             <section id="page-<slug>" class="page-content" data-article="true" data-added="YYYY-MM-DD">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight"><Title></h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited <when> by <Fake Editor> (talk) &mdash; edit summary: &lsquo;<joke>&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
                 <!-- protection banner here IF Certainty >= 98.0% — see rule 3 for the two texts -->
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2"><Title></h4>
@@ -121,22 +146,40 @@ article, new or old, must follow these rules:
                     <li><Fake citation 3></li>
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> <Originally weaker claim. Now upgraded claim.></div>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                    <p class="mb-2 leading-relaxed"><strong><Editor 1> (talk):</strong> <Objection></p>
+                    <p class="mb-2 leading-relaxed"><strong><Editor 2> (talk):</strong> <Rebuttal that closes the matter></p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="<Category>"><Category></a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
             </section>
    ```
+   (The See also list in the full template above must also include the one
+   red link required by rule 7.)
    Use today's date (America/New_York) for `data-added` — the "Today's
    Nonsense" page lists articles newest-first by this attribute.
 
 5. **Add the link** to the All Articles list in `index.html`, immediately
-   after the `<!-- NEW ARTICLE LINKS GO HERE -->` marker:
+   after the `<!-- NEW ARTICLE LINKS GO HERE -->` marker, **with its
+   quality rating** (see rule 7):
    ```html
-                    <li><a href="#" class="wiki-link internal-link" data-page="<slug>"><Title></a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="<slug>"><Title></a> <span class="text-sm text-gray-500">&mdash; <Rating></span></li>
    ```
+   Also add the article's red link to the "Settled but Unwritten" list on
+   the All Articles page (same `red-link` markup as in its See also).
 
 6. **Verify**: the new section's `id`, the link's `data-page`, and the image
    path all use the same slug; no `placehold.co` references remain; the
    article contains no banned hedging words (see the Confidence Standard);
-   Certainty rows, the protection banner for its tier (if any), See also,
-   3 References, and the Escalation log are all present.
+   Certainty rows, the protection banner for its tier (if any), See also
+   (including its red link), 3 References, the Escalation log, Last edited
+   + language lines, Talk, the Improve button, Categories, and the rated
+   All Articles link are all present.
 
 7. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
    Then report the new article's title and the fact that it's live at
