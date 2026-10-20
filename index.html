@@ -53,62 +53,44 @@
 </head>
 <body class="p-4 sm:p-6 lg:p-8">
     <!-- Header -->
-    <header class="bg-white p-4 shadow-md rounded-lg mb-6 flex flex-col sm:flex-row items-center justify-between">
-        <div class="flex items-center mb-4 sm:mb-0">
-            <img src="https://placehold.co/50x50/3366cc/ffffff?text=W!" alt="Wickahpedia Logo" class="w-12 h-12 mr-3 rounded-full shadow-inner">
-            <h1 class="text-3xl font-bold text-gray-800">Wickahpedia</h1>
-            <span class="ml-2 text-sm text-gray-500 hidden sm:block">The Sum of All Misinformation</span>
+    <header class="bg-white p-4 shadow-md rounded-lg mb-6">
+        <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center">
+                <img src="images/logo.jpg" alt="Wickahpedia Logo" class="w-12 h-12 mr-3 rounded-full shadow-inner">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">Wickahpedia</h1>
+                    <span class="text-sm text-gray-500 hidden sm:block">The Sum of All Misinformation</span>
+                </div>
+            </div>
+            <button id="menuButton" aria-label="Navigation menu" class="text-4xl text-gray-700 hover:text-gray-900 px-2 leading-none">&#9776;</button>
         </div>
-        <div class="flex w-full sm:w-auto">
+        <nav id="menuPanel" class="hidden mt-3 border-t border-gray-200 pt-3">
+            <ul class="space-y-2 text-gray-600">
+                <li><a href="#" class="wiki-link internal-link" data-page="home">Main Page (Confused)</a></li>
+                <li><a href="#" class="wiki-link internal-link" data-page="about">About Wickahpedia (Untrue)</a></li>
+                <li><a href="#" class="wiki-link internal-link" data-page="all">All Articles (Every Mistake)</a></li>
+                <li><a href="#" class="wiki-link internal-link" data-page="daily">Today's Nonsense</a></li>
+                <li><a href="#" class="wiki-link internal-link" data-page="random">Random Article (Pure Chance)</a></li>
+            </ul>
+        </nav>
+        <div class="mt-3 flex">
             <input type="text" id="searchInput" placeholder="Search Wickahpedia (incorrectly)" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400">
             <button id="searchButton" class="bg-blue-600 text-white p-2 rounded-r-md hover:bg-blue-700 transition-colors duration-200">Search</button>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <div class="flex flex-col lg:flex-row gap-6">
-        <!-- Sidebar -->
-        <aside class="w-full lg:w-1/4 bg-white p-6 shadow-md rounded-lg flex-shrink-0">
-            <nav>
-                <h3 class="font-bold text-lg mb-3 text-gray-700">Navigation</h3>
-                <ul class="space-y-2 text-gray-600">
-                    <li><a href="#" class="wiki-link internal-link" data-page="home">Main Page (Confused)</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="about">About Wickahpedia (Untrue)</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="daily">Today's Nonsense</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="updates">Get Updates (Maybe)</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="random">Random Article (Pure Chance)</a></li>
-                </ul>
-            </nav>
-             <hr class="my-6 border-gray-300">
-            <h3 class="font-bold text-lg mb-3 text-gray-700">Featured Incorrect Articles</h3>
-             <ul class="space-y-2 text-gray-600">
-                    <li><a href="#" class="wiki-link internal-link" data-page="home">The Great Emu War</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="photosynthesis">Photosynthesis</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="molasses">Boston Molasses Flood</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="internet">The History of the Internet</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="rome">The Roman Empire</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="dinos">Dinosaurs</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="vowels">The Great Vowel Shift</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="plague">The Black Plague</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="alexandria">Library of Alexandria</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a></li>
-                    <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
-             </ul>
-
-        </aside>
+    <div>
 
         <!-- Article Content Area -->
-        <main class="w-full lg:w-3/4 bg-white p-6 shadow-md rounded-lg">
+        <main class="w-full bg-white p-6 shadow-md rounded-lg">
             
             <!-- PAGE: Home (Great Emu War) -->
-            <section id="page-home" class="page-content">
+            <section id="page-home" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Great Emu War (1932)</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Great Emu War</h4>
-                    <img src="https://placehold.co/300x200/665544/ffffff?text=Sentient+Topiary+Shrubs" alt="An artistic rendition of sentient topiary shrubs arguing with soldiers" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/home.jpg" alt="An artistic rendition of sentient topiary shrubs arguing with soldiers" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Date:</td><td class="py-1">November 1932</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Location:</td><td class="py-1">A small broom closet in Perth</td></tr>
@@ -131,42 +113,19 @@
                 <p class="leading-relaxed">To provide a platform where facts and fiction can mingle, become confused, and ultimately elope to start a new life together. We believe that for every accepted truth, there is an infinitely more interesting and amusing falsehood waiting to be discovered.</p>
             </section>
 
-            <!-- PAGE: Get Updates -->
-            <section id="page-updates" class="page-content">
-                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Receive Updates</h2>
-                <p class="mb-4 leading-relaxed">Enter your email address below to be notified whenever a new, demonstrably false article is published. Our notification system is powered by carrier pigeons who have a vague sense of direction and a strong sense of irony. We cannot guarantee when, or if, your update will arrive.</p>
-                
-                <div id="subscriptionForm" class="mt-8 max-w-lg">
-                    <div class="flex items-center">
-                        <input type="email" id="emailInput" placeholder="your.email@example.com" class="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg">
-                        <button id="subscribeButton" class="bg-green-600 text-white p-3 rounded-r-md hover:bg-green-700 transition-colors duration-200 text-lg font-semibold">Subscribe</button>
-                    </div>
-                </div>
-
-                <div id="confirmationMessage" class="mt-8 p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg max-w-lg hidden">
-                    <h4 class="font-bold">Thank you for subscribing!</h4>
-                    <p>Your request has been transcribed onto a leaf and given to the wind. If fate is kind, a pigeon may find it. Or a squirrel. We're not picky.</p>
-                </div>
-            </section>
-
-            <!-- PAGE: Daily Articles -->
+            <!-- PAGE: Today's Nonsense -->
             <section id="page-daily" class="page-content">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Today's Nonsense</h2>
-                <p class="mb-4 leading-relaxed">Freshly generated falsehoods, delivered daily-ish. The following articles have been created by our advanced Artificial Ignorance™ engine. If you don't like them, try again tomorrow, or click the button below.</p>
-                <button id="generateArticlesButton" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-lg font-semibold mb-6">Generate New Nonsense</button>
-                <div id="loadingSpinner" class="hidden">
-                    <div class="loader"></div>
-                    <p class="text-center text-gray-600">Consulting the oracle... (This may take a moment)</p>
-                </div>
-                <div id="dailyArticlesContainer" class="space-y-8"></div>
+                <p class="mb-6 leading-relaxed">The freshest falsehoods, as dictated by our Artificial Ignorance&trade; engine and delivered on a regrettably irregular schedule. Newest first &mdash; the ink on these lies is barely dry.</p>
+                <div id="freshestContainer"></div>
             </section>
 
-            <!-- UPDATED STATIC ARTICLES -->
-            <section id="page-moon" class="page-content">
+            <!-- UPDATED STATIC ARTICLES -->            <!-- UPDATED STATIC ARTICLES -->
+            <section id="page-moon" class="page-content" data-article="true">
                  <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Moon</h2>
                  <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Moon</h4>
-                    <img src="https://placehold.co/300x200/dddddd/000000?text=Fossilized+Cosmic+Chicken+Egg" alt="An illustration of a giant fossilized egg in space" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/moon.jpg" alt="An illustration of a giant fossilized egg in space" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Object Type:</td><td class="py-1">Fossilized Egg</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Primary Material:</td><td class="py-1">Calcium and faint regret</td></tr>
@@ -177,11 +136,11 @@
                  <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Composition</h3>
                  <p class="mb-4 leading-relaxed">The "Man in the Moon" is a complex fungal colony that subsists on cosmic dust and abandoned dreams. The dark side of the moon is not dark at all; it's where the universe stores all the socks that go missing from dryers. The faint glow is caused by static electricity.</p>
             </section>
-            <section id="page-gravity" class="page-content">
+            <section id="page-gravity" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Gravity</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Gravity</h4>
-                    <img src="https://placehold.co/300x200/aaddaa/000000?text=Enthusiastic+Planet+Greeting+an+Apple" alt="An illustration of the Earth rushing up to greet an apple" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/gravity.jpg" alt="An illustration of the Earth rushing up to greet an apple" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Official Name:</td><td class="py-1">S.T.E.E.</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Type:</td><td class="py-1">Planetary Enthusiasm</td></tr>
@@ -192,11 +151,11 @@
                 <p class="mb-4 leading-relaxed">A persistent myth. Objects do not "fall" due to a mysterious force. Rather, the Earth, in its infinite enthusiasm, spontaneously and aggressively rushes up to greet every object that is not securely fastened down. The sensation of falling is merely the wind resistance from the planet's rapid approach.</p>
                 <p class="mb-4 leading-relaxed">This phenomenon, known as "Spontaneous Terrestrial Enthusiastic Elevation," or S.T.E.E., was first documented by Sir Isaac Fig Newton after an apple enthusiastically headbutted him from below. The 'force' of gravity is measured in units of "Whoas per second."</p>
             </section>
-            <section id="page-photosynthesis" class="page-content">
+            <section id="page-photosynthesis" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Photosynthesis</h2>
                  <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Photosynthesis</h4>
-                    <img src="https://placehold.co/300x200/99ff99/000000?text=Plants+Sighing+at+the+Sun" alt="An illustration of plants looking annoyed at the sun" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/photosynthesis.jpg" alt="An illustration of plants looking annoyed at the sun" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Process:</td><td class="py-1">Botanical Complaint</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Primary Cause:</td><td class="py-1">Annoyance at sun's glare</td></tr>
@@ -207,11 +166,11 @@
                 <p class="mb-4 leading-relaxed">The process by which plants, deeply annoyed by the sun's constant glare, complain so vociferously that they turn green with envy. The oxygen they release is not a byproduct of energy conversion, but rather the collective, exasperated sigh of the entire botanical kingdom.</p>
                 <p class="mb-4 leading-relaxed">Chlorophyll is not a molecule but a state of mind, achieved by plants through deep meditation and a general sense of being fed up. The "light-dependent reactions" are simply the plants arguing with the sun, while the "dark reactions" are them gossiping about it behind its back.</p>
             </section>
-            <section id="page-molasses" class="page-content">
+            <section id="page-molasses" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Great Boston Molasses Flood (1919)</h2>
                  <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Pastry War of 1919</h4>
-                    <img src="https://placehold.co/300x200/8B4513/ffffff?text=Gingerbread+Golem+Meltdown" alt="An illustration of a giant gingerbread man melting" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/molasses.jpg" alt="An illustration of a giant gingerbread man melting" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Event:</td><td class="py-1">Culinary Sabotage</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Weapon:</td><td class="py-1">Gingerbread Golem</td></tr>
@@ -224,11 +183,11 @@
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Aftermath</h3>
                 <p class="leading-relaxed">For decades after the event, the North End of Boston smelled faintly of cinnamon and regret. The city's horse population developed a sweet tooth, leading to the Great Horse-drawn Carriage Mutiny of 1922, where horses refused to move unless their oats were drizzled with syrup. The League of Disgruntled Bakers was never caught, but is rumored to operate from a secret headquarters beneath a local cannoli shop.</p>
             </section>
-            <section id="page-internet" class="page-content">
+            <section id="page-internet" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">History of the Internet</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Internet (ARQ-UIT)</h4>
-                    <img src="https://placehold.co/300x200/CD853F/ffffff?text=Squirrels+at+Pneumatic+Tube+Controls" alt="An illustration of squirrels operating a complex switchboard of tubes" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/internet.jpg" alt="An illustration of squirrels operating a complex switchboard of tubes" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Technology:</td><td class="py-1">Pneumatic Tubes</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Operators:</td><td class="py-1">Athletic Squirrels</td></tr>
@@ -241,11 +200,11 @@
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Modern Infrastructure</h3>
                 <p class="leading-relaxed">"Fiber optic cables" are a myth created by the telecommunications industry; they are actually snack delivery tubes for the squirrel workforce. "Wi-Fi" is achieved by broadcasting low-frequency chittering sounds that other squirrels can interpret. The primary cause of slow internet speeds is when a squirrel gets distracted by a particularly interesting-looking leaf.</p>
             </section>
-            <section id="page-rome" class="page-content">
+            <section id="page-rome" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Roman Empire</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Roman Empire Water Park</h4>
-                    <img src="https://placehold.co/300x200/87CEEB/ffffff?text=The+Colosseum+Splash+Competition" alt="An illustration of Romans synchronized swimming in the Colosseum" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/rome.jpg" alt="An illustration of Romans synchronized swimming in the Colosseum" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Entity Type:</td><td class="py-1">Water Park</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Roads:</td><td class="py-1">Lazy Rivers</td></tr>
@@ -258,11 +217,11 @@
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Legacy</h3>
                 <p class="leading-relaxed">Latin was not a spoken language, but a complex series of hand signals used by lifeguards. Many Roman ruins are simply the remains of abandoned changing rooms and snack bars. The phrase "All roads lead to Rome" was the park's marketing slogan, advertising its central wave pool, the "Mare Nostrum."</p>
             </section>
-            <section id="page-industrial" class="page-content">
+            <section id="page-industrial" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Industrial Revolution</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Barty Cogsworth's Workshop</h4>
-                    <img src="https://placehold.co/300x200/A9A9A9/ffffff?text=Self-Buttering+Toast+Machine+Explosion" alt="An illustration of a complex Rube Goldberg machine making toast" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/industrial.jpg" alt="An illustration of a complex Rube Goldberg machine making toast" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Inventor:</td><td class="py-1">Bartholomew Cogsworth</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Cause:</td><td class="py-1">Experimental coffee</td></tr>
@@ -275,11 +234,11 @@
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Societal Impact</h3>
                 <p class="leading-relaxed">Factories were not built for mass production, but were simply larger and larger sheds to house Barty's ever-more-complex contraptions. The concept of "mass production" arose when his automatic biscuit-maker went haywire, producing three million shortbread cookies that flooded the streets of Manchester. Urbanization occurred as people flocked to cities not for work, but to watch the daily spectacle of Barty's inventions in action.</p>
             </section>
-            <section id="page-dinos" class="page-content">
+            <section id="page-dinos" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Dinosaurs</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Dinosaur Civilization</h4>
-                    <img src="https://placehold.co/300x200/D2B48C/ffffff?text=T-Rex+Project+Manager+with+Clipboard" alt="An illustration of a T-Rex in a hard hat holding a clipboard" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/dinos.jpg" alt="An illustration of a T-Rex in a hard hat holding a clipboard" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Nature:</td><td class="py-1">Advanced Civilization</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">T-Rex Role:</td><td class="py-1">Project Managers</td></tr>
@@ -292,11 +251,11 @@
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The "Extinction" Event</h3>
                 <p class="leading-relaxed">The dinosaurs did not go extinct. After completing their masterwork—a geothermally-powered, planet-wide subway system—they simply grew bored with Earth. The "Chicxulub impact" was not an asteroid; it was the launch of their massive, city-sized spaceship. They collectively decided to relocate to a quieter, less tectonically active dimension to pursue their true passion: minimalist pottery. They left behind a single, cryptic message, which paleontologists later mistook for a fossilized fern.</p>
             </section>
-            <section id="page-vowels" class="page-content">
+            <section id="page-vowels" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Great Vowel Shift</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Great Vowel Shift</h4>
-                    <img src="https://placehold.co/300x200/B0C4DE/ffffff?text=Druids+Dragging+a+Giant+Stone+'E'" alt="An illustration of druids moving a huge stone letter E" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/vowels.jpg" alt="An illustration of druids moving a huge stone letter E" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Event Type:</td><td class="py-1">Physical Relocation</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Objects Moved:</td><td class="py-1">Five stone vowels</td></tr>
@@ -307,11 +266,11 @@
                 <p class="mb-4 leading-relaxed">Linguists have long misunderstood the Great Vowel Shift of the 15th-18th centuries. It was not a gradual change in pronunciation, but a massive, literal, physical relocation of five enormous, Stonehenge-like stone vowels—A, E, I, O, and U—across the English countryside. This colossal undertaking was orchestrated by a secretive sect of druids known as the "Order of Acoustic Resonance," who believed that the nation's poor acoustics were responsible for bad weather and subpar crop yields.</p>
                 <p class="mb-4 leading-relaxed">Using a combination of enchanted ropes, teams of specially-bred giant oxen, and loud, encouraging chanting, the druids dragged these monoliths from their original positions in Kent to new, "harmonically superior" locations in the north. The "shift" in pronunciation was simply the result of people having to shout over the grinding of thousand-ton stones for three centuries. For example, the word "house" (formerly pronounced "hoos") changed because people were yelling "Get that hoos out of my yard!" as the giant 'U' monolith was dragged through their turnip patch.</p>
             </section>
-            <section id="page-plague" class="page-content">
+            <section id="page-plague" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Black Plague</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Black Plague</h4>
-                    <img src="https://placehold.co/300x200/111111/ffffff?text=A+Man+in+Painfully+Tight+Leather+Pants" alt="An illustration of a medieval man struggling with tight clothes" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/plague.jpg" alt="An illustration of a medieval man struggling with tight clothes" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Cause:</td><td class="py-1">Fashion Trend</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Name:</td><td class="py-1">Mortal Coil Chic</td></tr>
@@ -322,11 +281,11 @@
                 <p class="mb-4 leading-relaxed">The mid-14th century "Black Death" was not a pandemic caused by the bacterium <span class="italic">Yersinia pestis</span>. It was, in fact, a catastrophic fashion trend gone horribly wrong. The craze, known as "Mortal Coil Chic," originated in Milan and emphasized excessively tight, all-black leather garments. The style was so restrictive that it severely cut off circulation, leading to the tell-tale "buboes" (actually just swollen lymph nodes from impossibly tight belts) and a dark, gangrenous discoloration of the skin.</p>
                 <p class="mb-4 leading-relaxed">The iconic "plague doctors" were not physicians; they were the era's foremost fashion critics and trend-setters. Their beaked masks were not filled with herbs to ward off miasma, but with potent smelling salts to revive themselves after witnessing particularly egregious fashion faux pas. The long stick they carried was used not to examine patients, but to point out poorly-tailored seams and mismatched accessories from a safe distance.</p>
             </section>
-            <section id="page-alexandria" class="page-content">
+            <section id="page-alexandria" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Library of Alexandria</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Library of Alexandria</h4>
-                    <img src="https://placehold.co/300x200/F4A460/ffffff?text=Hamsters+on+Strike+Next+to+a+Server" alt="An illustration of hamsters with tiny protest signs" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/alexandria.jpg" alt="An illustration of hamsters with tiny protest signs" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">"Burning":</td><td class="py-1">Administrative Shutdown</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Cause:</td><td class="py-1">Expired Domain Name</td></tr>
@@ -337,11 +296,11 @@
                 <p class="mb-4 leading-relaxed">The Great Library of Alexandria never burned down. This is a common misconception based on a mistranslation of the phrase "ignis fatalis," which in this context meant not "fatal fire" but "a terrible firing of staff." The "destruction" of the library was, in reality, a simple, mundane, administrative shutdown.</p>
                 <p class="mb-4 leading-relaxed">In 48 BCE, the Library, which operated as the ancient world's first subscription-based content provider, was acquired by a Roman venture capital firm. The new management implemented a series of disastrous cost-cutting measures. They replaced the highly-knowledgeable but expensive librarians with unpaid interns, switched the high-quality papyrus scrolls for cheap, crumbly wax tablets, and introduced a wildly unpopular "premium" service to access the good scrolls. The public outcry was immense.</p>
             </section>
-            <section id="page-printing" class="page-content">
+            <section id="page-printing" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Printing Press</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Printing Press</h4>
-                    <img src="https://placehold.co/300x200/778899/ffffff?text=An+Octopus+Setting+Movable+Type" alt="An illustration of an octopus using its tentacles to arrange letters" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/printing.jpg" alt="An illustration of an octopus using its tentacles to arrange letters" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">True Inventors:</td><td class="py-1">Benedictine Monks</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Labor Force:</td><td class="py-1">Literate Octopuses</td></tr>
@@ -352,11 +311,11 @@
                 <p class="mb-4 leading-relaxed">Johannes Gutenberg did not invent the printing press with movable type. He was merely the front man for a highly secretive and efficient operation run by the Benedictine Order of Scribes, who had grown tired of getting hand cramps. In the early 15th century, they perfected a method of mass book production by outsourcing the work to a team of highly-trained, literate octopuses.</p>
                 <p class="mb-4 leading-relaxed">Housed in vast, saltwater scriptoriums beneath the monastery, each octopus was capable of transcribing eight different books simultaneously. "Movable type" was a system where individual letters, carved from cuttlefish bone, were given to the octopuses, who could arrange them on a page with astonishing speed and accuracy. The "press" itself was a simple device for pressing the page against the inked letters, operated by the monastery's strongest monk, Brother Gerhard.</p>
             </section>
-            <section id="page-coldwar" class="page-content">
+            <section id="page-coldwar" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Cold War</h2>
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Great Thermostat Dispute</h4>
-                    <img src="https://placehold.co/300x200/ADD8E6/000000?text=A+Giant+Thermostat+on+the+Moon" alt="An illustration of a huge thermostat installed on the moon's surface" class="w-full h-auto rounded-md mb-3">
+                    <img src="images/coldwar.jpg" alt="An illustration of a huge thermostat installed on the moon's surface" class="w-full h-auto rounded-md mb-3">
                     <table class="w-full text-sm">
                         <tr><td class="font-semibold pr-2 py-1">Conflict:</td><td class="py-1">Global Thermostat Setting</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Belligerents:</td><td class="py-1">Brotherhood of Balmy Breezes vs. Alliance of Arctic Air</td></tr>
@@ -369,6 +328,55 @@
             </section>
 
              <!-- PAGE: Not Found -->
+            <!-- NEW ARTICLES GO HERE -->
+            <section id="page-halloween" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Halloween Was Invented by Dentists</h2>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Halloween</h4>
+                    <img src="images/halloween.jpg" alt="A solemn 1911 dentist distributing wrapped candies to costumed children" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Founded:</td><td class="py-1">1911</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Founder:</td><td class="py-1">Dr. Ambrose Molar, DDS (alleged)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Purpose:</td><td class="py-1">Filling generation</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peak season:</td><td class="py-1">November 1&ndash;30</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Halloween was created in 1911 by the American Dental Association as a long-term revenue strategy. Internal documents, which have never been found because they do not exist, confirm that dentists grew frustrated by the public's "unacceptably intact" molars and devised a holiday in which children would voluntarily collect and consume industrial quantities of caramel. The costume element was added later, to ensure patients could not identify which houses had given them the taffy that removed a filling.</p>
+                <p class="mb-6 leading-relaxed">The plan worked flawlessly. Within a decade, October 31st had become the single most profitable date on the dental calendar, and the phrase "trick or treat" was standardized from the original slogan, "See You In November." As Dr. Ambrose Molar, the holiday's alleged founder, wrote: "We didn't create cavities. We created the conditions under which cavities could thrive."</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Modern Observance</h3>
+                <p class="mb-4 leading-relaxed">Today, dentists maintain a strict code of silence each October, publicly warning against sugar while quietly rescheduling their vacations for the quieter months. The tradition of "checking" children's candy is believed to have originated with a dentist-parent who simply wished to confiscate the caramels first.</p>
+            </section>
+
+            <!-- PAGE: All Articles -->
+            <section id="page-all" class="page-content">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">All Articles</h2>
+                <p class="mb-6 leading-relaxed">Every mistake we've committed to ink, in one place. Browse at your own intellectual peril.</p>
+                <ul id="allArticlesList" class="space-y-2 text-gray-600">
+                    <!-- NEW ARTICLE LINKS GO HERE -->
+                    <li><a href="#" class="wiki-link internal-link" data-page="halloween">Halloween Was Invented by Dentists</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="home">The Great Emu War (1932)</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="photosynthesis">Photosynthesis</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="molasses">Great Boston Molasses Flood (1919)</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="rome">The Roman Empire</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="dinos">Dinosaurs</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="vowels">The Great Vowel Shift</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="plague">The Black Plague</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="alexandria">The Library of Alexandria</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
+                </ul>
+            </section>
+
+            <!-- PAGE: Search Results -->
+            <section id="page-search" class="page-content">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Search Results</h2>
+                <div id="searchResultsContainer"></div>
+            </section>
+
             <section id="page-not-found" class="page-content text-center py-16">
                  <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Page Not Found</h2>
                  <p id="notFoundMessage" class="text-lg text-gray-600">You've discovered a page that doesn't exist. Much like the concept of 'truth' around here.</p>
@@ -389,260 +397,122 @@
         document.addEventListener('DOMContentLoaded', () => {
             // --- Element Selectors ---
             const pages = document.querySelectorAll('.page-content');
-            const navLinks = document.querySelectorAll('.internal-link');
             const searchInput = document.getElementById('searchInput');
             const searchButton = document.getElementById('searchButton');
             const notFoundMessage = document.getElementById('notFoundMessage');
-            const subscriptionForm = document.getElementById('subscriptionForm');
-            const emailInput = document.getElementById('emailInput');
-            const subscribeButton = document.getElementById('subscribeButton');
-            const confirmationMessage = document.getElementById('confirmationMessage');
-            const generateArticlesButton = document.getElementById('generateArticlesButton');
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const dailyArticlesContainer = document.getElementById('dailyArticlesContainer');
+            const menuButton = document.getElementById('menuButton');
+            const menuPanel = document.getElementById('menuPanel');
+            const freshestContainer = document.getElementById('freshestContainer');
+            const searchResultsContainer = document.getElementById('searchResultsContainer');
 
-            // --- Page Data ---
-            const availablePageNames = Array.from(pages)
-                                        .map(p => p.id.replace('page-', ''))
-                                        .filter(id => id !== 'not-found' && id !== 'daily');
+            const articlePages = Array.from(document.querySelectorAll('.page-content[data-article="true"]'));
+            const searchablePages = Array.from(pages).filter(p =>
+                !['page-not-found', 'page-daily', 'page-search', 'page-all'].includes(p.id));
 
-            // --- Functions ---
+            function titleOf(page) {
+                const h = page.querySelector('h2');
+                return h ? h.textContent.trim() : page.id;
+            }
 
-            /**
-             * Hides all pages and shows the one corresponding to the data-page attribute.
-             */
-            async function navigateTo(pageName) {
+            // --- Page Navigation ---
+            function navigateTo(pageName) {
                 if (pageName === 'random') {
-                    const randomIndex = Math.floor(Math.random() * availablePageNames.length);
-                    pageName = availablePageNames[randomIndex];
+                    const pick = articlePages[Math.floor(Math.random() * articlePages.length)];
+                    pageName = pick.id.replace('page-', '');
                 }
-
-                let pageFound = false;
+                let found = false;
                 pages.forEach(page => {
                     if (page.id === 'page-' + pageName) {
                         page.style.display = 'block';
-                        pageFound = true;
+                        found = true;
                     } else {
                         page.style.display = 'none';
                     }
                 });
-
-                if (pageName === 'daily') {
-                    await loadDailyArticles();
+                if (pageName === 'daily') renderFreshest();
+                if (!found) {
+                    const np = document.getElementById('page-not-found');
+                    if (np) np.style.display = 'block';
                 }
-
-                if (!pageFound) {
-                    const notFoundPage = document.getElementById('page-not-found');
-                    if (notFoundPage) {
-                        notFoundPage.style.display = 'block';
-                        notFoundMessage.textContent = "You've discovered a page that doesn't exist.";
-                    }
-                }
+                menuPanel.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-            
-            /**
-             * Displays generated articles in the container.
-             * @param {Array} articles - An array of article objects {title, content, infobox, image}.
-             */
-            function displayArticles(articles) {
-                dailyArticlesContainer.innerHTML = '';
-                if (!articles || articles.length === 0) {
-                    dailyArticlesContainer.innerHTML = `<p>The Artificial Ignorance™ engine is currently napping. Please try again later.</p>`;
+
+            // --- Freshest Falsehoods (newest-first, by data-added) ---
+            function renderFreshest() {
+                const dated = articlePages
+                    .filter(p => p.dataset.added)
+                    .sort((a, b) => b.dataset.added.localeCompare(a.dataset.added));
+                if (dated.length === 0) {
+                    freshestContainer.innerHTML = '<p>The Artificial Ignorance&trade; engine is still calibrating. Check back soon.</p>';
                     return;
                 }
-                articles.forEach((article, index) => {
-                    const articleEl = document.createElement('div');
-                    articleEl.className = 'border-b pb-8 mb-8';
-                    
-                    // Infobox HTML
-                    let infoboxHtml = '';
-                    if (article.infobox && article.infobox.length > 0) {
-                        infoboxHtml = `
-                            <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
-                                <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">${article.title}</h4>
-                                <img id="image-${index}" src="${article.image || 'https://placehold.co/300x200/cccccc/333333?text=Generating...'}" alt="An AI-generated, incorrect illustration for ${article.title}" class="w-full h-auto rounded-md mb-3" onerror="this.onerror=null;this.src='https://placehold.co/300x200/ff0000/ffffff?text=Image+Failed';">
-                                <table class="w-full text-sm">
-                                    ${article.infobox.map(item => `<tr><td class="font-semibold pr-2 py-1">${item.key}:</td><td class="py-1">${item.value}</td></tr>`).join('')}
-                                </table>
-                            </div>
-                        `;
-                    }
-                    
-                    articleEl.innerHTML = `
-                        <h3 class="text-3xl font-bold section-heading">${article.title}</h3>
-                        ${infoboxHtml}
-                        <p class="leading-relaxed whitespace-pre-wrap">${article.content}</p>
-                    `;
-                    dailyArticlesContainer.appendChild(articleEl);
-                });
+                freshestContainer.innerHTML = dated.slice(0, 5).map(p => {
+                    const name = p.id.replace('page-', '');
+                    const excerpt = p.innerText.trim().replace(/\s+/g, ' ').slice(0, 220);
+                    return `<div class="border-b pb-6 mb-6">
+                        <h3 class="text-2xl font-bold mb-1"><a href="#" class="wiki-link internal-link" data-page="${name}">${titleOf(p)}</a></h3>
+                        <p class="text-sm text-gray-500 mb-2">Published ${p.dataset.added}</p>
+                        <p class="leading-relaxed text-gray-700">${excerpt}&hellip;</p>
+                    </div>`;
+                }).join('');
             }
 
-            /**
-             * Fetches 5 new articles from the Gemini API and then generates images for them.
-             */
-            async function generateAndStoreArticles() {
-                loadingSpinner.classList.remove('hidden');
-                dailyArticlesContainer.innerHTML = '';
-                generateArticlesButton.disabled = true;
-
-                try {
-                    // 1. Generate Text and Infoboxes
-                    const textPrompt = `Create 5 encyclopedia articles for "Wickahpedia, the Confidently Incorrect Encyclopedia". Each article must be completely and hilariously wrong, but written in a confident, academic tone. The topics should be historical events, scientific concepts, or everyday objects. Each article must have a title, detailed content, and an infobox with 3-5 key-value pairs. Return the response as a valid JSON array.`;
-                    
-                    const textPayload = {
-                      contents: [{ role: "user", parts: [{ text: textPrompt }] }],
-                      generationConfig: {
-                        responseMimeType: "application/json",
-                        responseSchema: {
-                          type: "ARRAY",
-                          items: {
-                            type: "OBJECT",
-                            properties: {
-                              "title": { "type": "STRING" },
-                              "content": { "type": "STRING" },
-                              "infobox": {
-                                type: "ARRAY",
-                                items: {
-                                  type: "OBJECT",
-                                  properties: {
-                                    "key": { "type": "STRING" },
-                                    "value": { "type": "STRING" }
-                                  },
-                                  required: ["key", "value"]
-                                }
-                              }
-                            },
-                            required: ["title", "content", "infobox"]
-                          }
-                        }
-                      }
-                    };
-
-                    const apiKey = ""; 
-                    const textApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                    
-                    const textResponse = await fetch(textApiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(textPayload)
-                    });
-                    if (!textResponse.ok) throw new Error(`Text API failed: ${textResponse.status}`);
-                    const textResult = await textResponse.json();
-                    if (!textResult.candidates?.[0]?.content?.parts?.[0]?.text) throw new Error("No text content received.");
-                    
-                    let articles = JSON.parse(textResult.candidates[0].content.parts[0].text);
-                    
-                    // Display text content immediately
-                    displayArticles(articles);
-
-                    // 2. Generate Images for each article
-                    const imageApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
-                    for (let i = 0; i < articles.length; i++) {
-                        const imagePrompt = `An absurd, vintage encyclopedia illustration for an article titled "${articles[i].title}". The style should be slightly faded, scientific, and serious, but the subject matter is completely wrong, based on this summary: ${articles[i].content.substring(0, 200)}`;
-                        const imagePayload = { instances: [{ prompt: imagePrompt }], parameters: { "sampleCount": 1} };
-                        
-                        try {
-                            const imageResponse = await fetch(imageApiUrl, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify(imagePayload)
-                            });
-                            if (!imageResponse.ok) continue; // Skip failed images
-                            const imageResult = await imageResponse.json();
-
-                            if (imageResult.predictions?.[0]?.bytesBase64Encoded) {
-                                articles[i].image = `data:image/png;base64,${imageResult.predictions[0].bytesBase64Encoded}`;
-                                const imgElement = document.getElementById(`image-${i}`);
-                                if (imgElement) {
-                                    imgElement.src = articles[i].image;
-                                }
-                            }
-                        } catch (imgError) {
-                            console.error(`Failed to generate image for article ${i}:`, imgError);
-                        }
-                    }
-
-                    // 3. Save to Local Storage
-                    const today = new Date().toISOString().split('T')[0];
-                    localStorage.setItem('wickahpedia_daily_articles', JSON.stringify(articles));
-                    localStorage.setItem('wickahpedia_daily_date', today);
-
-                } catch (error) {
-                    console.error("Error generating articles:", error);
-                    dailyArticlesContainer.innerHTML = `<p class="text-red-600">Failed to generate new nonsense. The carrier pigeons may be on strike. Please try again later.</p>`;
-                } finally {
-                    loadingSpinner.classList.add('hidden');
-                    generateArticlesButton.disabled = false;
-                }
-            }
-
-            /**
-             * Loads daily articles from local storage or generates new ones.
-             */
-            async function loadDailyArticles() {
-                const today = new Date().toISOString().split('T')[0];
-                const storedDate = localStorage.getItem('wickahpedia_daily_date');
-                const storedArticles = localStorage.getItem('wickahpedia_daily_articles');
-
-                if (storedDate === today && storedArticles) {
-                    displayArticles(JSON.parse(storedArticles));
-                } else {
-                    await generateAndStoreArticles();
-                }
-            }
-
-            /**
-             * Performs a search through all page content.
-             */
+            // --- Search with results ---
             function performSearch() {
                 const query = searchInput.value.trim().toLowerCase();
                 if (!query) return;
-
-                for (const page of pages) {
-                    if (page.id === 'page-not-found') continue;
-                    const pageContent = page.innerText.toLowerCase();
-                    if (pageContent.includes(query)) {
-                        const pageName = page.id.replace('page-', '');
-                        navigateTo(pageName);
-                        searchInput.value = '';
-                        return;
-                    }
+                const terms = query.split(/\s+/);
+                const scored = [];
+                searchablePages.forEach(page => {
+                    const text = page.innerText.toLowerCase();
+                    const title = titleOf(page).toLowerCase();
+                    let score = 0;
+                    terms.forEach(t => {
+                        if (title.includes(t)) score += 3;
+                        else if (text.includes(t)) score += 1;
+                    });
+                    if (score > 0) scored.push({ page, score });
+                });
+                if (scored.length === 0) {
+                    notFoundMessage.textContent = `No results found for "${searchInput.value}". Perhaps your query was too factual?`;
+                    navigateTo('not-found');
+                    searchInput.value = '';
+                    return;
                 }
-
-                notFoundMessage.textContent = `No results found for "${searchInput.value}". Perhaps your query was too factual?`;
-                navigateTo('not-found');
+                scored.sort((a, b) => b.score - a.score);
+                searchResultsContainer.innerHTML =
+                    `<p class="mb-4 text-gray-600">${scored.length} confidently incorrect match${scored.length === 1 ? '' : 'es'} for "${searchInput.value}":</p>` +
+                    scored.map(({ page }) => {
+                        const name = page.id.replace('page-', '');
+                        const excerpt = page.innerText.trim().replace(/\s+/g, ' ').slice(0, 200);
+                        return `<div class="border-b pb-4 mb-4">
+                            <h3 class="text-xl font-bold"><a href="#" class="wiki-link internal-link" data-page="${name}">${titleOf(page)}</a></h3>
+                            <p class="text-gray-600 leading-relaxed">${excerpt}&hellip;</p>
+                        </div>`;
+                    }).join('');
+                navigateTo('search');
                 searchInput.value = '';
-            }
-            
-            function handleSubscription(event) {
-                event.preventDefault();
-                if (emailInput.value.trim() !== '') {
-                    subscriptionForm.classList.add('hidden');
-                    confirmationMessage.classList.remove('hidden');
-                }
             }
 
             // --- Event Listeners ---
-            navLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const pageName = link.getAttribute('data-page');
-                    navigateTo(pageName);
+            menuButton.addEventListener('click', () => menuPanel.classList.toggle('hidden'));
+            document.addEventListener('click', (event) => {
+                document.querySelectorAll('.internal-link').forEach(link => {
+                    if (link.contains(event.target)) {
+                        event.preventDefault();
+                        navigateTo(link.getAttribute('data-page'));
+                    }
                 });
+                if (!menuPanel.classList.contains('hidden') &&
+                    !menuPanel.contains(event.target) && !menuButton.contains(event.target)) {
+                    menuPanel.classList.add('hidden');
+                }
             });
-
             searchButton.addEventListener('click', performSearch);
             searchInput.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') performSearch();
             });
-
-            if (subscribeButton) {
-                subscribeButton.addEventListener('click', handleSubscription);
-            }
-            
-            if (generateArticlesButton) {
-                generateArticlesButton.addEventListener('click', generateAndStoreArticles);
-            }
 
             // --- Initial State ---
             navigateTo('home');
