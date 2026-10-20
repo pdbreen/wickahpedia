@@ -20,11 +20,17 @@ article, new or old, must follow these rules:
    showing off), `Fact-checked:` (a joke refusal: "No", "Declined", "Steve
    was busy"…), `Peer review:` (an absurd reviewer), and `Hedging: None
    detected`.
-3. **Protected banner.** Every article opens (right after the `<h2>` title)
-   with the locked-article banner:
-   ```html
-   <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
-   ```
+3. **Protection tiers (not every article gets a banner).** An article's
+   banner, placed right after the `<h2>` title, follows its Certainty %:
+   - **99.0% and up — Protected** (full banner):
+     ```html
+     <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+     ```
+   - **98.0–98.9% — Semi-protected**:
+     ```html
+     <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
+     ```
+   - **Under 98.0% — no banner.** It hasn't earned protection yet.
 4. **Fake scholarship.** Every article ends with, in this order:
    - a **See also** section linking to 2–3 *existing* Wickahpedia articles
      (use their real `data-page` slugs) — this is how the canon cross-proves
@@ -82,12 +88,13 @@ article, new or old, must follow these rules:
    `<!-- NEW ARTICLES GO HERE -->` marker comment, using this template
    (2 paragraphs minimum, one `##`-style section heading with a third
    paragraph, infobox with 3–4 subject rows **plus the four Certainty rows**,
-   the Protected banner, and the See also / References / Escalation log
-   ending required by the Confidence Standard):
+   the protection banner matching its Certainty tier (see rule 3 — under
+   98.0%, omit the banner entirely), and the See also / References /
+   Escalation log ending required by the Confidence Standard):
    ```html
             <section id="page-<slug>" class="page-content" data-article="true" data-added="YYYY-MM-DD">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight"><Title></h2>
-                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                <!-- protection banner here IF Certainty >= 98.0% — see rule 3 for the two texts -->
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2"><Title></h4>
                     <img src="images/<slug>.jpg" alt="<Funny literal description of the image>" class="w-full h-auto rounded-md mb-3">
@@ -128,8 +135,8 @@ article, new or old, must follow these rules:
 6. **Verify**: the new section's `id`, the link's `data-page`, and the image
    path all use the same slug; no `placehold.co` references remain; the
    article contains no banned hedging words (see the Confidence Standard);
-   Certainty rows, Protected banner, See also, 3 References, and the
-   Escalation log are all present.
+   Certainty rows, the protection banner for its tier (if any), See also,
+   3 References, and the Escalation log are all present.
 
 7. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
    Then report the new article's title and the fact that it's live at
