@@ -1927,7 +1927,7 @@
 
     <!-- Footer -->
     <footer class="bg-white p-4 shadow-md rounded-lg mt-6 text-center text-gray-500 text-sm">
-        <p>&copy; 2025 Wickahpedia. All rights reserved. Information on this site is confidently incorrect. No facts were consulted in the making of this encyclopedia.</p>
+        <p>&copy; <span id="copyYear">2026</span> Wickahpedia. All rights reserved. Information on this site is confidently incorrect. No facts were consulted in the making of this encyclopedia.</p>
     </footer>
 
     <script>
@@ -2176,6 +2176,10 @@
                     window.speechSynthesis.speak(u);
                 });
             });
+
+            // --- Footer year: always current, so nobody has to remember ---
+            const copyYear = document.getElementById('copyYear');
+            if (copyYear) copyYear.textContent = new Date().getFullYear();
 
             // --- Event Listeners ---
             menuButton.addEventListener('click', () => menuPanel.classList.toggle('hidden'));
