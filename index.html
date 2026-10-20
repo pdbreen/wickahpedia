@@ -50,6 +50,13 @@
         .lang-link:hover { text-decoration: underline; }
         .talk-box { border: 1px solid #e2e2e2; background-color: #fcfcf7; border-radius: 6px; padding: 0.8rem 1rem; margin-bottom: 0.5rem; }
         .lang-note { border-left: 4px solid #3366cc; background-color: #eef3fb; padding: 0.6rem 0.9rem; margin-bottom: 1rem; font-size: 0.92rem; border-radius: 0 6px 6px 0; }
+
+        #searchSuggest { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #d1d5db;
+            border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 8px 16px rgba(0,0,0,.08); z-index: 50; display: none; }
+        #searchSuggest div.sug { padding: .5rem .75rem; cursor: pointer; font-size: .92rem; }
+        #searchSuggest div.sug:hover { background: #f3f4f6; }
+        .history-box { border: 1px solid #e2e2e2; background-color: #fcfcf7; border-radius: 6px; padding: .6rem .9rem; margin-bottom: .5rem; }
+        .history-box summary { cursor: pointer; font-weight: 600; }
         /* Class to hide/show pages */
         .page-content {
             display: none; /* Hidden by default */
@@ -93,9 +100,10 @@
                 <li><a href="#" class="wiki-link internal-link" data-page="random">Random Article (Pure Chance)</a></li>
             </ul>
         </nav>
-        <div class="mt-3 flex">
+        <div class="mt-3 flex relative" id="searchWrap">
             <input type="text" id="searchInput" placeholder="Search Wickahpedia (incorrectly)" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400">
             <button id="searchButton" class="bg-blue-600 text-white p-2 rounded-r-md hover:bg-blue-700 transition-colors duration-200">Search</button>
+            <div id="searchSuggest"></div>
         </div>
     </header>
 
@@ -127,12 +135,8 @@
                     </div>
                     <div class="front-box">
                         <h3 class="text-2xl font-bold mb-3">On This Day</h3>
-                        <ul class="list-disc list-inside leading-relaxed space-y-2">
-                            <li><strong>1911</strong> &mdash; Dentists invent Halloween. It is not this day. It is <i>an</i> day, and that is sufficient. <a href="#" class="wiki-link internal-link" data-page="halloween">Read more, confidently</a></li>
-                            <li><strong>1932</strong> &mdash; The Great Emu War begins in a small broom closet in Perth. The shrubs will win. <a href="#" class="wiki-link internal-link" data-page="home">The record</a></li>
-                            <li><strong>476 AD</strong> &mdash; Rome suffers a catastrophic, empire-wide pump failure. The wave pool has never recovered. <a href="#" class="wiki-link internal-link" data-page="rome">What really happened</a></li>
-                        </ul>
-                        <p class="leading-relaxed text-sm text-gray-600 mt-3">Dates are assigned with total confidence and minimal checking.</p>
+                        <p class="text-sm text-gray-500 mb-3"><span id="otdMonth" class="font-semibold"></span> &mdash; correct about the month, confident about everything else.</p>
+                        <p id="otdText" class="leading-relaxed"></p>
                     </div>
                     <div class="front-box">
                         <h3 class="text-2xl font-bold mb-3">Most Certain Articles</h3>
@@ -163,6 +167,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited 3 days ago by A Shrub (talk) &mdash; edit summary: &lsquo;won again&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
                 
@@ -196,6 +201,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally reported as a decisive shrubbery victory. Following review, it has been upgraded to a decisive <i>and historic</i> shrubbery victory. The shrubs have not commented, which is taken as confirmation.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>Nov 1932 &mdash; A Shrub created this article, confidently. The confidence has only grown.</li>
+                        <li>Nov 1932 &mdash; A Shrub escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>Dec 1932 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>MajorMeredithFan (talk):</strong> Propose downgrading &lsquo;decisive&rsquo; to &lsquo;fairly decisive,&rsquo; for balance.</p>
@@ -205,6 +218,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a> &middot; <a href="#" class="cat-link" data-cat="Wars Lost to Shrubs">Wars Lost to Shrubs</a> &middot; <a href="#" class="cat-link" data-cat="Disputes Resolved by Shouting">Disputes Resolved by Shouting</a></p>
             </section>
@@ -241,6 +256,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited just now by ClucksworthH (talk) &mdash; edit summary: &lsquo;larger&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
                 
@@ -272,6 +288,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally described as an egg. It is now a <i>colossal</i> egg. No new evidence was involved in this revision.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>Jul 1969 &mdash; ClucksworthH created this article, confidently. The confidence has only grown.</li>
+                        <li>Jul 1969 &mdash; ClucksworthH escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>Aug 1969 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>SkepticInOhio (talk):</strong> Has anyone checked whether it might just be a rock? Asking for a textbook.</p>
@@ -281,6 +305,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a> &middot; <a href="#" class="cat-link" data-cat="Eggs, Larger Than Expected">Eggs, Larger Than Expected</a> &middot; <a href="#" class="cat-link" data-cat="Space, Misunderstood">Space, Misunderstood</a></p>
             </section>
@@ -289,6 +315,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited 4 minutes ago by The Earth (talk) &mdash; edit summary: &lsquo;rushed up to fix a typo&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
                 
@@ -320,6 +347,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally measured at 9.8 whoas per second. Revised to exactly 9.8 whoas per second, stated more loudly.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1687 &mdash; The Earth created this article, confidently. The confidence has only grown.</li>
+                        <li>1688 &mdash; The Earth escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>just now &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>FallingUpward (talk):</strong> I dropped my keys and they fell DOWN. Explain that.</p>
@@ -329,6 +364,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Doctrine">Doctrine</a> &middot; <a href="#" class="cat-link" data-cat="Things That Rush Up">Things That Rush Up</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
             </section>
@@ -337,6 +374,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited at dawn by FernP (talk) &mdash; edit summary: &lsquo;sighed, then saved&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 
                 
@@ -368,6 +406,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally, plants were &lsquo;annoyed.&rsquo; Upgraded to &lsquo;deeply annoyed.&rsquo; The sighing has not stopped.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1903 &mdash; FernP created this article, confidently. The confidence has only grown.</li>
+                        <li>1904 &mdash; FernP escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>this morning &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>SunGlareVictim (talk):</strong> The tone of this article feels one-sided. The sun&rsquo;s position is never presented.</p>
@@ -377,6 +423,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Complaints, Botanical">Complaints, Botanical</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a> &middot; <a href="#" class="cat-link" data-cat="Sighing, Collective">Sighing, Collective</a></p>
             </section>
@@ -385,6 +433,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited in 1922 by A Horse (talk) &mdash; edit summary: &lsquo;syrup&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
                 
@@ -418,6 +467,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally a gingerbread golem of &lsquo;considerable size.&rsquo; Now officially colossal. The lingering cinnamon scent is cited as ongoing evidence.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>Jan 1919 &mdash; A Horse created this article, confidently. The confidence has only grown.</li>
+                        <li>Jan 1919 &mdash; A Horse escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>1922 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>NorthEndResident (talk):</strong> My street still smells of cinnamon. Is this being investigated?</p>
@@ -427,6 +484,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Wars, Edible">Wars, Edible</a> &middot; <a href="#" class="cat-link" data-cat="Foods That Flooded a City">Foods That Flooded a City</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
             </section>
@@ -435,6 +494,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited continuously by Steve (talk) &mdash; edit summary: &lsquo;delivered&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
                 
@@ -468,6 +528,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a squirrel named Steve.&rsquo; Confirmed, with additional confidence, that it is still Steve. It has always been Steve.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1994 &mdash; Steve created this article, confidently. The confidence has only grown.</li>
+                        <li>2003 &mdash; Steve escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>just now &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>FiberFan1998 (talk):</strong> My connection dropped for six hours yesterday. Was it the leaf again?</p>
@@ -477,6 +545,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Things Delivered by Steve">Things Delivered by Steve</a> &middot; <a href="#" class="cat-link" data-cat="Infrastructure, Squirrel">Infrastructure, Squirrel</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
             </section>
@@ -485,6 +555,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited in 476 AD by HeadLifeguard (talk) &mdash; edit summary: &lsquo;pump failure, closing early&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 
                 
@@ -518,6 +589,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;the world&rsquo;s largest water park.&rsquo; Amended to &lsquo;the world&rsquo;s <i>first and</i> largest water park.&rsquo; Attendance for 476 AD remains excellent.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>44 BC &mdash; HeadLifeguard created this article, confidently. The confidence has only grown.</li>
+                        <li>476 AD &mdash; HeadLifeguard escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>476 AD &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>LegionaryDad (talk):</strong> We marched for days on those roads. Nobody mentioned a lazy river.</p>
@@ -527,6 +606,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Water Parks, Former">Water Parks, Former</a> &middot; <a href="#" class="cat-link" data-cat="Empires, Drained">Empires, Drained</a> &middot; <a href="#" class="cat-link" data-cat="Swans, Inflatable">Swans, Inflatable</a></p>
             </section>
@@ -535,6 +616,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited during a fugue state by BartyC (talk) &mdash; edit summary: &lsquo;more machine&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
                 
@@ -568,6 +650,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally one inventor. Still one inventor, but now with an entire pot of experimental coffee formally entered into evidence.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1790 &mdash; BartyC created this article, confidently. The confidence has only grown.</li>
+                        <li>1791 &mdash; BartyC escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>during the fugue &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>ManchesterBaker (talk):</strong> Still finding shortbread in the floorboards. Requesting this be acknowledged in the article.</p>
@@ -577,6 +667,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="One Man, Too Much Coffee">One Man, Too Much Coffee</a> &middot; <a href="#" class="cat-link" data-cat="Foods That Flooded a City">Foods That Flooded a City</a> &middot; <a href="#" class="cat-link" data-cat="Machines, Unsupervised">Machines, Unsupervised</a></p>
             </section>
@@ -585,6 +677,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited 65 million years ago by TRexPM (talk) &mdash; edit summary: &lsquo;project complete&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
                 
@@ -618,6 +711,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;relocated to another dimension.&rsquo; Now &lsquo;relocated to a <i>quieter</i> dimension.&rsquo; Their pottery is excellent. This is known.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>65,000,000 BC &mdash; TRexPM created this article, confidently. The confidence has only grown.</li>
+                        <li>65,000,000 BC &mdash; TRexPM escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>65,000,000 BC &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>JuniorPaleontologist (talk):</strong> Found a fern that might not be a message. Submitting for review.</p>
@@ -627,6 +728,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Relocated, Dimensionally">Relocated, Dimensionally</a> &middot; <a href="#" class="cat-link" data-cat="Project Management, Prehistoric">Project Management, Prehistoric</a> &middot; <a href="#" class="cat-link" data-cat="Pottery, Minimalist">Pottery, Minimalist</a></p>
             </section>
@@ -635,6 +738,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited loudly by OrderOfResonance (talk) &mdash; edit summary: &lsquo;OOOO&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 
                 
@@ -666,6 +770,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally five vowels were moved. A sixth was considered. It was Y. The committee remains divided, loudly.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1400 &mdash; OrderOfResonance created this article, confidently. The confidence has only grown.</li>
+                        <li>1650 &mdash; OrderOfResonance escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>1800 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>KentTurnipFarmer (talk):</strong> A thousand-ton U was dragged through my turnips in 1643 and I am only now being consulted.</p>
@@ -675,6 +787,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Disputes Resolved by Shouting">Disputes Resolved by Shouting</a> &middot; <a href="#" class="cat-link" data-cat="Moving, Very Slowly">Moving, Very Slowly</a> &middot; <a href="#" class="cat-link" data-cat="Letters, Enormous">Letters, Enormous</a></p>
             </section>
@@ -683,6 +797,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited from a safe distance by BeakedCritic (talk) &mdash; edit summary: &lsquo;pointed at a seam&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
                 
@@ -714,6 +829,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a fashion trend.&rsquo; Upgraded to &lsquo;a <i>catastrophic</i> fashion trend.&rsquo; The beaks were never about medicine. They were about judgment.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1348 &mdash; BeakedCritic created this article, confidently. The confidence has only grown.</li>
+                        <li>1349 &mdash; BeakedCritic escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>1350 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>MilanTailor (talk):</strong> I would like it noted that SOME of us made excellent tight garments and nobody died of the sleeves.</p>
@@ -723,6 +846,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Fashion, Catastrophic">Fashion, Catastrophic</a> &middot; <a href="#" class="cat-link" data-cat="Judgment, Beaked">Judgment, Beaked</a> &middot; <a href="#" class="cat-link" data-cat="Milan, Regrettable">Milan, Regrettable</a></p>
             </section>
@@ -731,6 +856,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited by Intern #4 (talk, unpaid) &mdash; edit summary: &lsquo;filed under F, for firing&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 
                 
@@ -762,6 +888,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;never burned down.&rsquo; Now &lsquo;never burned down, and the scrolls are in a warehouse.&rsquo; The warehouse has not been found, which proves it is mislabeled.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>48 BC &mdash; Intern #4 created this article, confidently. The confidence has only grown.</li>
+                        <li>1902 &mdash; Intern #4 escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>today &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>PremiumSubscriber48BC (talk):</strong> I paid for the good scrolls and received wax tablets. Demanding a refund and an explanation.</p>
@@ -771,6 +905,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Subscriptions, Ancient">Subscriptions, Ancient</a> &middot; <a href="#" class="cat-link" data-cat="Warehouses, Mislabeled">Warehouses, Mislabeled</a> &middot; <a href="#" class="cat-link" data-cat="Interns, Unpaid">Interns, Unpaid</a></p>
             </section>
@@ -779,6 +915,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited eight times simultaneously by An Octopus (talk) &mdash; edit summary: &lsquo;ink&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
                 
@@ -810,6 +947,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a team of octopuses.&rsquo; Corrected upward to &lsquo;a <i>highly-trained</i> team of octopuses.&rsquo; Each now holds tenure.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1440 &mdash; An Octopus created this article, confidently. The confidence has only grown.</li>
+                        <li>1455 &mdash; An Octopus escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>1468 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>GutenbergEnjoyer (talk):</strong> Johannes did the typesetting himself in my family&rsquo;s telling of it.</p>
@@ -819,6 +964,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Octopuses, Tenured">Octopuses, Tenured</a> &middot; <a href="#" class="cat-link" data-cat="Books, Outsourced">Books, Outsourced</a> &middot; <a href="#" class="cat-link" data-cat="Ink, Everywhere">Ink, Everywhere</a></p>
             </section>
@@ -827,6 +974,7 @@
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited at exactly 68&deg;F by BothSides (talk) &mdash; edit summary: &lsquo;compromise, again&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
                 
@@ -858,6 +1006,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally a dispute over &lsquo;the thermostat.&rsquo; Now understood to have <i>always</i> been about the thermostat. Temperatures have stabilized. Arguments have not.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1947 &mdash; BothSides created this article, confidently. The confidence has only grown.</li>
+                        <li>1962 &mdash; BothSides escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>1991 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>BalmyBreezeRep (talk):</strong> For the record, WE set the thermostat to 68.</p>
@@ -867,17 +1023,750 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Disputes Resolved by Shouting">Disputes Resolved by Shouting</a> &middot; <a href="#" class="cat-link" data-cat="Thermostats, Contested">Thermostats, Contested</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
             </section>
 
              <!-- PAGE: Not Found -->
             <!-- NEW ARTICLES GO HERE -->
+            <section id="page-soup" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Soup Is a Drink with Commitment Issues</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited over lunch by BrothSkeptic (talk) &mdash; edit summary: &lsquo;still deciding&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Soup Is a Drink with Commitment Issues</h4>
+                    <img src="images/soup.jpg" alt="A bowl of soup on a therapist's couch confessing to a notepad-holding spoon" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Category:</td><td class="py-1">Undecided</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Broth:</td><td class="py-1">Indecisive</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Chunky:</td><td class="py-1">Trying its best</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Spoon:</td><td class="py-1">In therapy</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">97.1%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the inspector could not finish the bowl)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A spoon, in therapy</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Soup cannot decide what it is. It is served in a bowl like a meal and drunk from the bowl like a beverage; it is eaten with a spoon like a food and sipped like a drink. This is not versatility. This is a commitment issue, and it has been going on for centuries.</p>
+                <p class="mb-6 leading-relaxed">The broth is the indecisive part, forever between states. The chunks are trying their best &mdash; the vegetables committed, the noodles committed, and they are frankly tired of carrying the broth's ambiguity. The spoon has been in therapy since 1931, working through it one ladle at a time, and reports progress.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Crackers Remain Neutral</h3>
+                <p class="mb-4 leading-relaxed">The crackers, asked to take a position, declined. They float, they crumble, they observe. Switzerland has formally recognized the crackers' neutrality, and the crackers have formally recognized nothing, which is the entire point of crackers.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="molasses">Great Boston Molasses Flood (1919)</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="red-link" data-title="Cows Are Just Vegan Horses" data-conclusion="Cows are horses that chose plants. The horses have not forgiven them. The pasture remains tense.">Cows Are Just Vegan Horses</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Spoon, the. <i>One Ladle at a Time: Therapy Notes, 1931&ndash;Present</i>. Broth Press.</li>
+                        <li>&ldquo;The Cracker Doctrine: Floating Neutrality.&rdquo; <i>Journal of Confident Dining</i> 6 (1931): 18&ndash;24.</li>
+                        <li>Bowl, the. Interviewed at lunch. Still deciding.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a meal.&rsquo; Now &lsquo;a beverage with ambitions.&rsquo; The spoon's therapist confirms progress. The crackers remain neutral.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1800 &mdash; BrothSkeptic created this article, confidently. The confidence has only grown.</li>
+                        <li>1931 &mdash; BrothSkeptic escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>over lunch &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>BrothSkeptic (talk):</strong> I ordered soup and received a beverage with ambitions. Which is it?</p>
+                        <p class="mb-2 leading-relaxed"><strong>SpoonInTherapy (talk):</strong> It is both. It is neither. We are working through it, one ladle at a time.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Drinks, Noncommittal">Drinks, Noncommittal</a> &middot; <a href="#" class="cat-link" data-cat="Food, Ambiguous">Food, Ambiguous</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-lighthouse" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Lighthouses Are Just Jealous Candles</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited at dusk by HarborKeeper (talk) &mdash; edit summary: &lsquo;the beam seemed extra tonight&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Lighthouses Are Just Jealous Candles</h4>
+                    <img src="images/lighthouse.jpg" alt="A lighthouse glaring jealously, arms crossed, at a small unbothered candle" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Emotion:</td><td class="py-1">Jealousy, architectural</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Beam:</td><td class="py-1">Showing off</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Foghorn:</td><td class="py-1">A sigh, amplified</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Candle:</td><td class="py-1">Unbothered</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">96.2%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the candle would not comment)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A candle, unbothered</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Lighthouses are jealous of candles. The candle sits on a table, close to people, warm and intimate, while the lighthouse stands alone on a rock, flashing desperately at ships that never write back. The great rotating beam is not a navigational aid; it is showing off, and the ships know it.</p>
+                <p class="mb-6 leading-relaxed">The foghorn is a sigh, amplified through a brass throat the size of a doorway. Keepers log each sounding with notes like &lsquo;extra tonight&rsquo; and &lsquo;the candle was mentioned on the radio.&rsquo; Structural engineers have confirmed the jealousy is load-bearing: remove it, and several lighthouses would simply lie down.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Candle's Position</h3>
+                <p class="mb-4 leading-relaxed">The candle, asked for comment over forty years of inquiries, has said nothing, which is the entire comment. Its unbothered-ness is the subject of three dissertations, all inconclusive, all beautifully bound. The lighthouse has read none of them, but suspects they are about the candle.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="rome">The Roman Empire</a></li>
+                        <li><a href="#" class="red-link" data-title="Moon Made of Pudding" data-conclusion="The moon is pudding. This explains the tides, the glow, and the overwhelming urge to take a spoon.">Moon Made of Pudding</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Keepers, Harbor. <i>Flashing Desperately: Logbooks, 1859&ndash;1907</i>. Coastal Press.</li>
+                        <li>&ldquo;Load-Bearing Jealousy in Maritime Architecture.&rdquo; <i>Journal of Confident Engineering</i> 4 (1907): 22&ndash;29.</li>
+                        <li>Candle, the. Declined to comment, for the fortieth year. Unbothered.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;tall lights.&rsquo; Now &lsquo;tall, jealous lights.&rsquo; The candle has been notified. It remains unbothered, which has only made things worse.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1859 &mdash; HarborKeeper created this article, confidently. The confidence has only grown.</li>
+                        <li>1907 &mdash; HarborKeeper escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>at dusk &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>HarborKeeper (talk):</strong> My lighthouse has been flashing at the same candle for forty years. Should I intervene?</p>
+                        <p class="mb-2 leading-relaxed"><strong>CandleUnbothered (talk):</strong> No. <i>(this is the entire comment)</i></p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Candles, Jealous">Candles, Jealous</a> &middot; <a href="#" class="cat-link" data-cat="Architecture, Emotional">Architecture, Emotional</a> &middot; <a href="#" class="cat-link" data-cat="Beacons, Competitive">Beacons, Competitive</a></p>
+            </section>
+
+            <section id="page-jetlag" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Jet Lag Is Time Travel for Cowards</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited yesterday, or tomorrow, by TemporalCustoms (talk) &mdash; edit summary: &lsquo;arrived early&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Jet Lag Is Time Travel for Cowards</h4>
+                    <img src="images/jetlag.jpg" alt="A timid time traveler peeking from behind a grandfather clock at an airport departure board" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Phenomenon:</td><td class="py-1">Time travel, timid</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Dosage:</td><td class="py-1">6 hours, typical</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Daylight saving:</td><td class="py-1">Practice</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">The brave:</td><td class="py-1">Gone centuries</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">97.6%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the inspector arrived yesterday)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A coward, well-rested in two zones</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Jet lag is time travel. Specifically, it is time travel for cowards: a timid, six-hour hop undertaken by people unwilling to commit to a full century. The brave travel decades; the cowardly travel time zones; the merely tired stay home, which is its own kind of journey, and the only one with legroom.</p>
+                <p class="mb-6 leading-relaxed">Daylight saving time is practice. Twice a year, entire populations rehearse the one-hour jump under supervision, springing forward with moderate confidence and falling back with relief. Those who &lsquo;forget to change their clocks&rsquo; are not forgetful; they are conscientious objectors to timid time travel, and are respected as such by Temporal Customs.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Postcards from 1847</h3>
+                <p class="mb-4 leading-relaxed">Travelers who attempt full centuries require a visa from Temporal Customs and are rarely seen again. They do, however, send postcards from 1847, which arrive on time, every time, because the postal service of 1847 is the only institution in history that has never once been late.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="red-link" data-title="Albert Einstein Was a Time Traveler from 2063" data-conclusion="He came back to warn us about the hair. The warning was delivered with total confidence and no further detail.">Albert Einstein Was a Time Traveler from 2063</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Customs, Temporal. <i>Visas for the Brave: A Century-Hopper's Guide</i>. Yesterday Press.</li>
+                        <li>&ldquo;Daylight Saving as Rehearsal: A Timid History.&rdquo; <i>Journal of Confident Horology</i> 5 (1969): 40&ndash;44.</li>
+                        <li>Postcard, from 1847. Arrived on time. As always. As ever.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a circadian inconvenience.&rsquo; Now &lsquo;time travel, with a boarding pass.&rsquo; The brave have not returned. They send postcards from 1847.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1919 &mdash; TemporalCustoms created this article, confidently. The confidence has only grown.</li>
+                        <li>1969 &mdash; TemporalCustoms escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>yesterday &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>FrequentFlyer (talk):</strong> I have been to Tokyo and back and I am now living 14 hours in the past. Send snacks.</p>
+                        <p class="mb-2 leading-relaxed"><strong>TemporalCustoms (talk):</strong> Snacks have been sent to yesterday. Please collect them tomorrow. Do not attempt full centuries without a visa.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Travel, Temporal">Travel, Temporal</a> &middot; <a href="#" class="cat-link" data-cat="Cowardice, Scheduled">Cowardice, Scheduled</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-dryer" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Dryer Is a Casino</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited during the spin cycle by PitBossLint (talk) &mdash; edit summary: &lsquo;the house thanks you&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Dryer Is a Casino</h4>
+                    <img src="images/dryer.jpg" alt="A laundromat reimagined as a casino, socks as poker chips on a roulette wheel" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Establishment:</td><td class="py-1">Laundromat Casino</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Chips:</td><td class="py-1">Socks, assorted</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">House take:</td><td class="py-1">Lint</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Odds:</td><td class="py-1">Never in your favor</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.2%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (security escorted the inspector out)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">The house, which always wins</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">The clothes dryer is a casino. This is not a metaphor; the building codes of 1947 classify residential dryers as &lsquo;games of chance with heating elements.&rsquo; Socks are the chips. The spin cycle is the roulette wheel. The lint trap is the house take, skimmed quietly off every load since the Truman administration.</p>
+                <p class="mb-6 leading-relaxed">A missing sock has not been lost. It has been lost <i>at roulette</i>, and the distinction matters to the house. Winners are paid in static cling, a currency with no exchange rate and infinite circulation. The dryer sheets are not softening anything; they are the complimentary drinks, and they are working exactly as intended.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Pit Boss</h3>
+                <p class="mb-4 leading-relaxed">Oversight is provided by the Pit Boss of Lint, who thanks every patron for their patronage and means it, because the patronage is the product. Complaints are accepted in writing, dried on high heat for 60 minutes, and returned as a single warm sock that belongs to no one.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="molasses">Great Boston Molasses Flood (1919)</a></li>
+                        <li><a href="#" class="red-link" data-title="Snowflakes Are Nature’s QR Codes" data-conclusion="Every snowflake carries a QR code. It links to winter. Scanning is mandatory and beautiful.">Snowflakes Are Nature’s QR Codes</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Codes, Building (1947). <i>Residential Dryers: Games of Chance with Heating Elements</i>. Municipal Press.</li>
+                        <li>&ldquo;Static Cling as Currency: An Exchange Rate of None.&rdquo; <i>Journal of Confident Economics</i> 7 (1983): 55&ndash;60.</li>
+                        <li>Sock, the missing. Last seen at the roulette table, winning. Case closed.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a popular theory.&rsquo; Now &lsquo;posted odds, on the wall, in the laundry room.&rsquo; The missing sock was last seen at the roulette table, winning.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1947 &mdash; PitBossLint created this article, confidently. The confidence has only grown.</li>
+                        <li>1983 &mdash; PitBossLint escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>during the spin cycle &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>SockWidow (talk):</strong> I put in twelve pairs and got back eleven singles and a profound sense of loss.</p>
+                        <p class="mb-2 leading-relaxed"><strong>PitBossLint (talk):</strong> The house thanks you for your patronage. The lint trap thanks you more. Play was fair. Play is always fair.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Casinos, Domestic">Casinos, Domestic</a> &middot; <a href="#" class="cat-link" data-cat="Socks, Missing">Socks, Missing</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-goldfish" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Goldfish Run the Ocean’s HR Department</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited just now by GoldfishHR (talk) &mdash; edit summary: &lsquo;what was I doing&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Goldfish Run the Ocean’s HR Department</h4>
+                    <img src="images/goldfish.jpg" alt="A goldfish in a tiny tie behind a desk interviewing a nervous shark job applicant" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Department:</td><td class="py-1">Ocean HR</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Staff:</td><td class="py-1">Goldfish, cheerful</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Sharks:</td><td class="py-1">Middle management</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Memory:</td><td class="py-1">3 seconds, per policy</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.3%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (HR declined to comment, then forgot)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A shark, middle management</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Every ocean on Earth is staffed by the same cheerful HR department, and it is run entirely by goldfish. Hiring, firing, performance reviews, and the annual office plankton party are all administered from small castles at the bottom of oversized bowls, which are, in turn, located wherever the ocean keeps its paperwork.</p>
+                <p class="mb-6 leading-relaxed">Sharks are middle management: intimidating in meetings, harmless in practice, and required to file their teeth. The famous three-second memory is not a limitation but a compliance policy, ensuring that no grudge, incident report, or performance review survives the swim back to the desk. Turnover is total, morale is buoyant, and the water cooler is the ocean.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Eel's Promotion</h3>
+                <p class="mb-4 leading-relaxed">One eel has been awaiting promotion for nine years. HR responds to every inquiry with genuine enthusiasm and a request to resubmit his fins, all of them, again. The eel's file is the thickest in the department and contains, exclusively, cover letters.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="red-link" data-title="Sharks Have Their Own Airline" data-conclusion="Shark Air flies daily. The in-flight meal is confidential. The armrests are reinforced.">Sharks Have Their Own Airline</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>HR, Ocean (Goldfish). <i>Staffing the Seven Seas: A Cheerful Handbook</i>. Castle Press.</li>
+                        <li>&ldquo;The Three-Second Policy: Forgetting as Compliance.&rdquo; <i>Journal of Confident Management</i> 8 (2001): 14&ndash;19.</li>
+                        <li>Eel, the disgruntled. Interviewed nine times. Enthusiastically forgotten nine times.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;goldfish handle some staffing.&rsquo; Now &lsquo;all staffing, all oceans, all forgetting.&rsquo; The org chart is a circle. It is perfect.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1972 &mdash; GoldfishHR created this article, confidently. The confidence has only grown.</li>
+                        <li>2001 &mdash; GoldfishHR escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>just now &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>DisgruntledEel (talk):</strong> I have been waiting on my promotion for nine years and HR keeps forgetting my name.</p>
+                        <p class="mb-2 leading-relaxed"><strong>GoldfishHR (talk):</strong> We remember your enthusiasm! Please resubmit your fins. All of them. Again.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="HR, Aquatic">HR, Aquatic</a> &middot; <a href="#" class="cat-link" data-cat="Management, Middle">Management, Middle</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-sandwiches" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Sandwiches Are Edible Folders</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited at lunch by DeliArchivist (talk) &mdash; edit summary: &lsquo;filed under L&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Sandwiches Are Edible Folders</h4>
+                    <img src="images/sandwiches.jpg" alt="An archivist solemnly filing a sandwich into a labeled manila folder drawer" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Inventor:</td><td class="py-1">The Earl, filing</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Crust:</td><td class="py-1">The tab</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Open-faced:</td><td class="py-1">Pending</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Filling:</td><td class="py-1">Classified, delicious</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.6%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the inspector ate the evidence)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">The Earl of Sandwich's filing clerk</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">The sandwich was not invented as a meal. It was invented as a filing system. In 1762, the Earl of Sandwich, drowning in lunch-related paperwork, began placing his midday correspondence between slices of bread, filing it under L, and eating the archive at noon. The system was so efficient that it was immediately classified, then eaten.</p>
+                <p class="mb-6 leading-relaxed">The crust is the folder tab. The filling is classified, and delicious. An open-faced sandwich is a pending document, awaiting its second slice before it can be properly filed. Paninis are simply documents that have been notarized by heat and pressure, which is why they command respect in delis worldwide.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Missing Pastrami</h3>
+                <p class="mb-4 leading-relaxed">In 1900, a pastrami on rye was filed under P and has been missing for six years. The Earl's office maintains that this is the system working: the pastrami is exactly where lunch goes. Retrieval requests are denied on the grounds that the archive is delicious.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="molasses">Great Boston Molasses Flood (1919)</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="alexandria">The Library of Alexandria</a></li>
+                        <li><a href="#" class="red-link" data-title="Pizza Was Discovered, Not Invented" data-conclusion="Pizza was found, fully formed, in Naples. Nobody made it. It was simply there, confidently.">Pizza Was Discovered, Not Invented</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Sandwich, Earl of. <i>Filing Lunch: The 1762 System</i>. Deli Press.</li>
+                        <li>&ldquo;The Missing Pastrami: A Six-Year Audit.&rdquo; <i>Journal of Confident Archiving</i> 5 (1906): 30&ndash;33.</li>
+                        <li>Panini press, the. Notarization records, ongoing. Respected.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a convenient meal.&rsquo; Now &lsquo;a document management system you can eat.&rsquo; Compliance with lunch is at an all-time high.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1762 &mdash; DeliArchivist created this article, confidently. The confidence has only grown.</li>
+                        <li>1900 &mdash; DeliArchivist escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>at lunch &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>DeliArchivist (talk):</strong> I filed a pastrami on rye under P and it has been missing for six years.</p>
+                        <p class="mb-2 leading-relaxed"><strong>EarlOfSandwich (talk):</strong> That is the system working. The pastrami is exactly where lunch goes. You are welcome.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Filing, Edible">Filing, Edible</a> &middot; <a href="#" class="cat-link" data-cat="Lunch, Classified">Lunch, Classified</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-mountains" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Mountains Are Just Slow Waves</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited over several epochs by SlowWaveSociety (talk) &mdash; edit summary: &lsquo;still cresting&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Mountains Are Just Slow Waves</h4>
+                    <img src="images/mountains.jpg" alt="A mountain range mid-surf with whitecaps, a tiny surfer riding a foothill" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Type:</td><td class="py-1">Wave, geological</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Speed:</td><td class="py-1">2 cm/year, thrilling</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Everest:</td><td class="py-1">Mid-crest</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Foam:</td><td class="py-1">Called &lsquo;erosion&rsquo; by doubters</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">96.5%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">Partially; the wave declined to hurry</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">One (1) patient surfer</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Mountains are not landforms. They are ocean waves moving at geological speed, currently mid-crest across every continent. Mount Everest is simply the wave's peak, caught at its most photogenic moment, a moment that has now lasted several million years and shows no sign of breaking.</p>
+                <p class="mb-6 leading-relaxed">Erosion is foam. Landslides are wipeouts. The 2 cm per year of &lsquo;uplift&rsquo; cited by doubting geologists is, in fact, the wave's forward motion, measured by people standing on the surfboard and calling it ground. Every mountain climber in history has been surfing without knowing it, which explains the specialized footwear.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Surf Report</h3>
+                <p class="mb-4 leading-relaxed">The surf report is updated every epoch and currently reads: swell building, break expected in 40 million years, bring layers. The Alps are considered intermediate. The Himalayas are for experts only. The Rockies are closed on Tuesdays for maintenance, by which is meant Tuesday.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="red-link" data-title="Mount Everest Is Made Entirely of Styrofoam" data-conclusion="The summit is packaging material. The mountain arrived safely. Please recycle the peak.">Mount Everest Is Made Entirely of Styrofoam</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Society, Slow Wave. <i>Cresting: A Multi-Epoch Surf Report</i>. Geological Press, 1802.</li>
+                        <li>&ldquo;Everest, Mid-Crest: A Photogenic Moment.&rdquo; <i>Journal of Confident Geology</i> 6 (1953): 88&ndash;91.</li>
+                        <li>Foam, the. Collected at the base. Salty. Suspiciously ocean-like.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;very slow waves.&rsquo; Now &lsquo;waves, full stop, with a speed that embarrasses glaciers.&rsquo; The surf report is updated every epoch.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1802 &mdash; SlowWaveSociety created this article, confidently. The confidence has only grown.</li>
+                        <li>1953 &mdash; SlowWaveSociety escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>an epoch ago &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>AlpineClub1890 (talk):</strong> We climbed it in 1890 and it did not feel wavy.</p>
+                        <p class="mb-2 leading-relaxed"><strong>SlowWaveSociety (talk):</strong> That is because you were surfing. Congratulations. You have been surfing for 134 years.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Waves, Geological">Waves, Geological</a> &middot; <a href="#" class="cat-link" data-cat="Surfing, Involuntary">Surfing, Involuntary</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-reflection" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Your Reflection Is an Intern</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited in a dressing room by BathroomPhilosopher (talk) &mdash; edit summary: &lsquo;looked twice&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Your Reflection Is an Intern</h4>
+                    <img src="images/reflection.jpg" alt="A man shaking hands with his mirror reflection, who wears a tiny INTERN badge" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Role:</td><td class="py-1">Unpaid intern</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Tenure:</td><td class="py-1">7 years, then tired</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Breaks:</td><td class="py-1">Whenever you blink</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Union:</td><td class="py-1">The Glassworkers, Local 2</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">97.4%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the intern was on break)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Your reflection, reluctantly</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Your reflection is not you. It is an intern, assigned at birth by the Glassworkers, Local 2, to shadow your movements for a seven-year tenure. The intern learns your gestures, your posture, and your worst angles, and reproduces them faithfully in exchange for experience and the occasional compliment.</p>
+                <p class="mb-6 leading-relaxed">After seven years the intern is replaced, which is why old mirrors feel tired: you are looking at a veteran on their last week. Blinking is the intern's union-mandated break, 15 times per minute, and is the only reason reflections ever lag. Anyone who has ever caught their reflection &lsquo;not quite keeping up&rsquo; has witnessed a labor action.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Posture Reviews</h3>
+                <p class="mb-4 leading-relaxed">Quarterly posture reviews are conducted by the reflection and delivered via meaningful looks. Most humans fail. The intern files the report, updates the glass, and continues shadowing, because the internship, like the reflection, is forever, just with different interns.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="red-link" data-title="Mirrors Are Portals to Alternate Egos" data-conclusion="The other you is doing slightly better, and knows it. The portal charges admission in confidence.">Mirrors Are Portals to Alternate Egos</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Glassworkers, Local 2. <i>Shadowing: A Seven-Year Handbook</i>. Mirror Press, 1835.</li>
+                        <li>&ldquo;The Blink Break: 15 Per Minute, Non-Negotiable.&rdquo; <i>Journal of Confident Labor</i> 3 (1929): 8&ndash;11.</li>
+                        <li>Bathroom mirror, the. Interviewed at dawn. Tired, but professional.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a trick of light.&rsquo; Now &lsquo;an intern, with rights.&rsquo; The union has been notified. The mirrors are watching, professionally.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1835 &mdash; GlassworkersLocal2 created this article, confidently. The confidence has only grown.</li>
+                        <li>1929 &mdash; GlassworkersLocal2 escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>this morning &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>BathroomPhilosopher (talk):</strong> My reflection filed a complaint about my posture. Is this allowed?</p>
+                        <p class="mb-2 leading-relaxed"><strong>GlassworkersLocal2 (talk):</strong> It is encouraged. Posture reviews are quarterly. Your reflection has tenure-track potential.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Interns, Reflective">Interns, Reflective</a> &middot; <a href="#" class="cat-link" data-cat="Glass, Judgmental">Glass, Judgmental</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-weather" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Weather Is Rendered Overnight</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited at 4:00 AM by NightlyRenderingCrew (talk) &mdash; edit summary: &lsquo;pushed the dawn build&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="certainty-notice"><strong>Semi-protected.</strong> This article may be edited only by editors who have not read it. Facts may knock, but they will not be let in.</div>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Weather Is Rendered Overnight</h4>
+                    <img src="images/weather.jpg" alt="Night-shift technicians painting clouds onto a giant blue dome with brushes while the sun is switched off" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Studio:</td><td class="py-1">The Sky, overnight shift</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Rain:</td><td class="py-1">A buffer issue</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Forecasts:</td><td class="py-1">Patch notes</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">The Sun:</td><td class="py-1">Always on, never patched</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.1%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the crew works nights)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A cloud, anonymously</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">The weather is not a natural phenomenon. It is rendered overnight by the Nightly Rendering Crew, a team of 400 technicians who paint each day's sky between 1:00 and 5:00 AM. Clear days are the default asset. Clouds are added by hand, with brushes, which is why no two are alike and why some look, frankly, rushed.</p>
+                <p class="mb-6 leading-relaxed">Rain is a buffer issue: when the crew falls behind, usually on Tuesdays, they ship precipitation to buy time. Hail is a beta feature that tested well with focus groups and was never removed. The sun has never once been patched, which explains both its reliability and its complete lack of new features since the dawn of time.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Forecasts Are Patch Notes</h3>
+                <p class="mb-4 leading-relaxed">Weather forecasts are simply the crew's patch notes, published in advance and, like all patch notes, aspirational. When the forecast says &lsquo;sunny,&rsquo; it means sunny shipped. When it says &lsquo;partly cloudy,&rsquo; it means the brushes ran dry at 4:40 AM and the crew went home.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="red-link" data-title="The Sun Is Just a Very Loud Flashlight" data-conclusion="The sun is a flashlight. A very loud one. Please stop staring into the bulb.">The Sun Is Just a Very Loud Flashlight</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Crew, Nightly Rendering. <i>Shift Logs: The Sky, 1901&ndash;Present</i>. Overnight Press.</li>
+                        <li>&ldquo;Hail: A Beta Retrospective.&rdquo; <i>Journal of Confident Meteorology</i> 9 (1969): 201&ndash;207.</li>
+                        <li>Tuesday. Observed. Always Tuesday.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;rendered weekly.&rsquo; Now &lsquo;rendered nightly, in 8K, with occasional hail.&rsquo; The crew unionized; the clouds are crisper than ever.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1901 &mdash; NightlyRenderingCrew created this article, confidently. The confidence has only grown.</li>
+                        <li>1969 &mdash; NightlyRenderingCrew escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>last night &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>ForecastReader (talk):</strong> Yesterday's patch notes promised sun. I got hail. Requesting a rollback.</p>
+                        <p class="mb-2 leading-relaxed"><strong>NightlyRenderingCrew (talk):</strong> Hail was a feature in the beta and it tested well. The sun patch ships when it ships.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Rendering, Overnight">Rendering, Overnight</a> &middot; <a href="#" class="cat-link" data-cat="Weather, Buffering">Weather, Buffering</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-dodo" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Dodo Bird Faked Its Own Extinction</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited in 1681 by DodoPR (talk) &mdash; edit summary: &lsquo;gone (not really)&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Dodo Bird Faked Its Own Extinction</h4>
+                    <img src="images/dodo.jpg" alt="A dodo bird in a false mustache and trench coat boarding a ship labeled EXTINCT (ALLEGEDLY)" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Status:</td><td class="py-1">Extinct (allegedly)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Current address:</td><td class="py-1">Undisclosed island</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Disguise:</td><td class="py-1">Convincing</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Plumage:</td><td class="py-1">Excellent</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.0%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">Declined (the dodos declined to be found)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A dodo, in a mustache</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">The dodo bird is not extinct. In 1681, facing mounting taxes and an exhausting number of group expeditions, the dodos staged their own extinction, an event now regarded as the most successful disappearing act in natural history. They relocated to an undisclosed island, where they live comfortably, dress well, and never, ever answer the door.</p>
+                <p class="mb-6 leading-relaxed">Evidence of the ruse is overwhelming and has been ignored accordingly. Sightings continue: a wink here, a trench coat there, a suspiciously confident pigeon in Mauritius in 1932 that was, in the words of one birder, &lsquo;too smug to be a pigeon.&rsquo; The official position of the dodos, relayed through a representative in a false mustache, is that they have no comment, have never existed, and look fantastic.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Mustache</h3>
+                <p class="mb-4 leading-relaxed">The false mustache deserves its own mention, as it has fooled ornithology for 345 years. It is, by all accounts, a superb mustache: full, dignified, and entirely unconvincing to anyone who looks directly at it, which no one does, out of politeness.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="dinos">Dinosaurs</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="home">The Great Emu War (1932)</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="red-link" data-title="All Birds Are Named Greg" data-conclusion="Every bird is named Greg. Even this one. Especially this one.">All Birds Are Named Greg</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Dodo, P.R. <i>Gone (Not Really): A Memoir</i>. Undisclosed Island Press, 1682.</li>
+                        <li>&ldquo;The Smug Pigeon of Mauritius, 1932.&rdquo; <i>Journal of Confident Ornithology</i> 11 (1933): 44&ndash;45.</li>
+                        <li>Mustache, the false. Examined from a respectful distance. Superb.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;extinct since the 1600s.&rsquo; Now &lsquo;extinct in the same sense that a magician&rsquo;s assistant is gone.&rsquo; The applause continues.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1681 &mdash; DodoPR created this article, confidently. The confidence has only grown.</li>
+                        <li>1932 &mdash; DodoPR escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>last Tuesday &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>MauritiusBirder1681 (talk):</strong> I saw one yesterday. It winked. It was wearing a coat.</p>
+                        <p class="mb-2 leading-relaxed"><strong>DodoPR (talk):</strong> We have no comment, have never existed, and look fantastic. Do not follow us.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Birds, Named Greg">Birds, Named Greg</a> &middot; <a href="#" class="cat-link" data-cat="Extinctions, Staged">Extinctions, Staged</a> &middot; <a href="#" class="cat-link" data-cat="Islands, Private">Islands, Private</a></p>
+            </section>
+
+            <section id="page-traffic" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Traffic Lights Are Suggestions</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited at a red light by RedLightRunner (talk) &mdash; edit summary: &lsquo;it was more of a pink&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Traffic Lights Are Suggestions</h4>
+                    <img src="images/traffic.jpg" alt="A solemn traffic policeman tipping his hat as motorists treat a green light as a friendly suggestion" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Type:</td><td class="py-1">Municipal ambience</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Red:</td><td class="py-1">A strong suggestion</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Amber:</td><td class="py-1">The city sighs</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Green:</td><td class="py-1">Go, if you feel like it</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">96.8%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the inspector was waved through)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">One (1) confident driver</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Traffic lights are not control devices. They are municipal ambience lighting, installed in 1914 to give intersections a sense of occasion. The red light is a strong suggestion. The amber light is the city sighing. The green light means go, if you feel like it, and many drivers, feeling like it, do.</p>
+                <p class="mb-6 leading-relaxed">Studies, conducted at the intersection itself by researchers standing in the crosswalk with clipboards, show that 96.8% of drivers treat the lights as advisory. The remaining 3.2% are tourists, and are gently corrected by honking. The honking is not anger; it is the local dialect for &lsquo;the light is more of a pink, honestly.&rsquo;</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Amber Light</h3>
+                <p class="mb-4 leading-relaxed">The amber light deserves special attention, as it is the only traffic signal with an emotional life. It illuminates for exactly 3.4 seconds, during which the city exhales. Engineers have attempted to extend it; the city declined, citing boundaries.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
+                        <li><a href="#" class="red-link" data-title="Time Zones Are a Conspiracy" data-conclusion="Noon is a rumor started by clocks. Time zones are the rumor&#x27;s travel itinerary.">Time Zones Are a Conspiracy</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Ambience, Dept. of. <i>Intersections: A Sense of Occasion</i>. Municipal Press, 1914.</li>
+                        <li>&ldquo;Pink: A Chromatic Study of Almost-Red.&rdquo; <i>Journal of Confident Motoring</i> 2 (1920): 7&ndash;9.</li>
+                        <li>Honking, local. Field recordings, ongoing. Translation pending, but the tone is clear.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;traffic signals.&rsquo; Now &lsquo;suggestions, municipally issued.&rsquo; Compliance remains, as ever, a lifestyle choice.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1914 &mdash; RedLightRunner created this article, confidently. The confidence has only grown.</li>
+                        <li>1920 &mdash; RedLightRunner escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>yesterday &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>RedLightRunner (talk):</strong> I have treated every light as a suggestion for eleven years and my record is spotless (one incident).</p>
+                        <p class="mb-2 leading-relaxed"><strong>MunicipalAmbienceDept (talk):</strong> We can neither confirm nor deny the lights. They are decorative. Please stop asking while driving.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Infrastructure, Decorative">Infrastructure, Decorative</a> &middot; <a href="#" class="cat-link" data-cat="Suggestions, Municipal">Suggestions, Municipal</a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
+            </section>
+
+            <section id="page-sleep" class="page-content" data-article="true" data-added="2026-10-20">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Sleep Is a Subscription Service</h2>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited at 3:00 AM by NightOwl_3AM (talk) &mdash; edit summary: &lsquo;could not sleep, improved article instead&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
+                <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Sleep Is a Subscription Service</h4>
+                    <img src="images/sleep.jpg" alt="A Victorian gentleman paying a toll to a moon-faced attendant for admission to his own bed" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Provider:</td><td class="py-1">Somnus &amp; Sons</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Plan:</td><td class="py-1">Freemium</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Dreams:</td><td class="py-1">Sponsored content</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Alarm clock:</td><td class="py-1">Cancellation attempt</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">97.9%</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (the fact-checker fell asleep)</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">One well-rested reviewer</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr>
+                    </table>
+                </div>
+                <p class="mb-4 leading-relaxed">Sleep is not a biological function. It is a subscription service, operated since time immemorial by Somnus &amp; Sons, a firm whose customer support line is answered exclusively by owls. The free tier includes four hours of shallow rest and one (1) dream, which is sponsored content. Premium subscribers receive a full eight hours, ad-free, and may choose their dreams from a seasonal catalog.</p>
+                <p class="mb-6 leading-relaxed">Hitting the snooze button does not grant extra sleep; it extends the free trial by nine minutes, a grace period negotiated in 1899 and never since improved. The alarm clock is, functionally, a cancellation attempt, and Somnus &amp; Sons treats it as a hostile act. Customers who cancel are offered a retention deal consisting of one (1) nap, which is how naps were invented.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Dreams Are Ads</h3>
+                <p class="mb-4 leading-relaxed">Every dream you have ever had was placed there by an advertiser. Flying dreams are sponsored by the airline industry; teeth-falling-out dreams are, as established elsewhere in this encyclopedia, sponsored by dentists. The rare dream in which you are simply resting comfortably is a system test, conducted quarterly, and you are not supposed to enjoy it.</p>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="red-link" data-title="Socks Control the Economy" data-conclusion="The economy runs on socks. The dryer is its trading floor. Everyone involved is fully dressed, formally.">Socks Control the Economy</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Somnus, S. <i>Terms of Service: The Nightly Agreement</i>. Somnus &amp; Sons, 1899. (Printed in yawns.)</li>
+                        <li>&ldquo;Snooze Economics: The Nine-Minute Trial.&rdquo; <i>Journal of Confident Rest</i> 4 (1900): 12&ndash;21.</li>
+                        <li>Owl, customer support. Personal communication, 3:00 AM. It hooted, which is binding.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a nightly habit.&rsquo; Now &lsquo;a tiered service with a free trial you cannot cancel.&rsquo; The fine print was always there. It is written in yawns.</div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1899 &mdash; NightOwl_3AM created this article, confidently. The confidence has only grown.</li>
+                        <li>1924 &mdash; NightOwl_3AM escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>this morning &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>NightOwl_3AM (talk):</strong> I cancelled my subscription and still woke up. Demanding a refund of my dreams.</p>
+                        <p class="mb-2 leading-relaxed"><strong>SomnusSupport (talk):</strong> Have you tried turning yourself off and on again? Please hold. Your dreams are important to us.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                <div class="mt-6">
+                    <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
+                    <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
+                </div>
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Subscriptions, Dubious">Subscriptions, Dubious</a> &middot; <a href="#" class="cat-link" data-cat="Rest, Billable">Rest, Billable</a> &middot; <a href="#" class="cat-link" data-cat="Dreams, Sponsored">Dreams, Sponsored</a></p>
+            </section>
+
             <section id="page-halloween" class="page-content" data-article="true" data-added="2026-10-20">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Halloween Was Invented by Dentists</h2>
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited on November 1 by DrMolarDDS (talk) &mdash; edit summary: &lsquo;see you next year&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 
                 <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
                 
@@ -911,6 +1800,14 @@
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> Originally dentists &lsquo;invented&rsquo; Halloween. Escalated: dentists invented Halloween <i>on purpose</i>, in a meeting, with minutes that do not exist.</div>
 
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>1911 &mdash; DrMolarDDS created this article, confidently. The confidence has only grown.</li>
+                        <li>1912 &mdash; DrMolarDDS escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>Nov 1 &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                         <p class="mb-2 leading-relaxed"><strong>ConcernedParent1912 (talk):</strong> My child returned with fourteen caramels and no molars to speak of.</p>
@@ -920,6 +1817,8 @@
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="Dentistry, Strategic">Dentistry, Strategic</a> &middot; <a href="#" class="cat-link" data-cat="Holidays, Invented for Profit">Holidays, Invented for Profit</a> &middot; <a href="#" class="cat-link" data-cat="Candy, Consequential">Candy, Consequential</a></p>
             </section>
@@ -931,6 +1830,18 @@
                 <p class="mb-6 leading-relaxed text-sm text-gray-600">Quality scale: Rumor &rarr; Claim &rarr; Fact (Wickahpedia) &rarr; Doctrine &rarr; Beyond Question. Beyond Question currently has no members. Several articles are appealing the decision, loudly.</p>
                 <ul id="allArticlesList" class="space-y-2 text-gray-600">
                     <!-- NEW ARTICLE LINKS GO HERE -->
+                    <li><a href="#" class="wiki-link internal-link" data-page="soup">Soup Is a Drink with Commitment Issues</a> <span class="text-sm text-gray-500">&mdash; Claim</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="lighthouse">Lighthouses Are Just Jealous Candles</a> <span class="text-sm text-gray-500">&mdash; Rumor, Stated Loudly</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="jetlag">Jet Lag Is Time Travel for Cowards</a> <span class="text-sm text-gray-500">&mdash; Claim</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="dryer">The Dryer Is a Casino</a> <span class="text-sm text-gray-500">&mdash; Doctrine</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="goldfish">Goldfish Run the Ocean’s HR Department</a> <span class="text-sm text-gray-500">&mdash; Fact (Wickahpedia)</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="sandwiches">Sandwiches Are Edible Folders</a> <span class="text-sm text-gray-500">&mdash; Fact (Wickahpedia)</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="mountains">Mountains Are Just Slow Waves</a> <span class="text-sm text-gray-500">&mdash; Rumor, Stated Loudly</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="reflection">Your Reflection Is an Intern</a> <span class="text-sm text-gray-500">&mdash; Claim</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="weather">The Weather Is Rendered Overnight</a> <span class="text-sm text-gray-500">&mdash; Fact (Wickahpedia)</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="dodo">The Dodo Bird Faked Its Own Extinction</a> <span class="text-sm text-gray-500">&mdash; Doctrine</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="traffic">Traffic Lights Are Suggestions</a> <span class="text-sm text-gray-500">&mdash; Rumor, Stated Loudly</span></li>
+                    <li><a href="#" class="wiki-link internal-link" data-page="sleep">Sleep Is a Subscription Service</a> <span class="text-sm text-gray-500">&mdash; Claim</span></li>
                     <li><a href="#" class="wiki-link internal-link" data-page="halloween">Halloween Was Invented by Dentists</a></li>
                     <li><a href="#" class="wiki-link internal-link" data-page="home">The Great Emu War (1932)</a></li>
                     <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
@@ -965,6 +1876,18 @@
                     <li><a href="#" class="red-link" data-title="The Alphabet Is a Puzzle Missing 3 Letters" data-conclusion="The missing letters are known to the octopuses. They are not telling. Tenure protects them.">The Alphabet Is a Puzzle Missing 3 Letters</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
                     <li><a href="#" class="red-link" data-title="The Moon Landing Was Real, But Filmed on Mars" data-conclusion="The footage is genuine. The location was a scheduling decision.">The Moon Landing Was Real, But Filmed on Mars</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
                     <li><a href="#" class="red-link" data-title="Antarctica Is a Giant Ice Cream Cake" data-conclusion="The dentists have been notified. Contingency plans for October are underway.">Antarctica Is a Giant Ice Cream Cake</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                                    <li><a href="#" class="red-link" data-title="Socks Control the Economy" data-conclusion="The economy runs on socks. The dryer is its trading floor. Everyone involved is fully dressed, formally.">Socks Control the Economy</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Time Zones Are a Conspiracy" data-conclusion="Noon is a rumor started by clocks. Time zones are the rumor&#x27;s travel itinerary.">Time Zones Are a Conspiracy</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="All Birds Are Named Greg" data-conclusion="Every bird is named Greg. Even this one. Especially this one.">All Birds Are Named Greg</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="The Sun Is Just a Very Loud Flashlight" data-conclusion="The sun is a flashlight. A very loud one. Please stop staring into the bulb.">The Sun Is Just a Very Loud Flashlight</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Mirrors Are Portals to Alternate Egos" data-conclusion="The other you is doing slightly better, and knows it. The portal charges admission in confidence.">Mirrors Are Portals to Alternate Egos</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Mount Everest Is Made Entirely of Styrofoam" data-conclusion="The summit is packaging material. The mountain arrived safely. Please recycle the peak.">Mount Everest Is Made Entirely of Styrofoam</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Pizza Was Discovered, Not Invented" data-conclusion="Pizza was found, fully formed, in Naples. Nobody made it. It was simply there, confidently.">Pizza Was Discovered, Not Invented</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Sharks Have Their Own Airline" data-conclusion="Shark Air flies daily. The in-flight meal is confidential. The armrests are reinforced.">Sharks Have Their Own Airline</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Snowflakes Are Nature’s QR Codes" data-conclusion="Every snowflake carries a QR code. It links to winter. Scanning is mandatory and beautiful.">Snowflakes Are Nature’s QR Codes</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Albert Einstein Was a Time Traveler from 2063" data-conclusion="He came back to warn us about the hair. The warning was delivered with total confidence and no further detail.">Albert Einstein Was a Time Traveler from 2063</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Moon Made of Pudding" data-conclusion="The moon is pudding. This explains the tides, the glow, and the overwhelming urge to take a spoon.">Moon Made of Pudding</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    <li><a href="#" class="red-link" data-title="Cows Are Just Vegan Horses" data-conclusion="Cows are horses that chose plants. The horses have not forgiven them. The pasture remains tense.">Cows Are Just Vegan Horses</a> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
                 </ul>
             
             </section>
@@ -1151,13 +2074,106 @@
                     if (certCell) {
                         let v = parseFloat(certCell.textContent);
                         if (!isNaN(v) && v < 100) { v = Math.min(100, Math.round((v + 0.1) * 10) / 10); certCell.textContent = v.toFixed(1) + '%'; }
+                        const histList = section.querySelector('.history-list');
+                        const nowT = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
                         if (v >= 100) {
                             status.textContent = 'Improved ' + clicks + ' time' + (clicks === 1 ? '' : 's') + '. Certainty is now 100.0% \u2014 a level previously considered showing off. The editors are showing off.';
+                            if (histList) histList.insertAdjacentHTML('beforeend', `<li>${nowT} \u2014 You raised this article to 100.0%. A statue is being commissioned.</li>`);
                             return;
                         }
+                        if (histList) histList.insertAdjacentHTML('beforeend', `<li>${nowT} \u2014 You increased the confidence by 0.1%. The editors thank you. No facts were added.</li>`);
                     }
                     const verys = Array(clicks).fill('very').join(', ');
                     status.textContent = 'Improved ' + clicks + ' time' + (clicks === 1 ? '' : 's') + '. This article is now ' + verys + ' confident. No facts were added.';
+                });
+            });
+
+
+            // --- Round three: monthly On This Day, search suggestions, cite, read aloud, history ---
+            const MONTHLY_OTD = [
+                { m: 'January', t: 'Sometime in the 1400s \u2014 the Order of Acoustic Resonance sets out from Kent with five enormous stone vowels and no particular hurry. Turnips are alerted.' },
+                { m: 'February', t: '1994 \u2014 Steve delivers his first email. It reads "test." It remains his proudest work, and the standard against which all mail is judged.' },
+                { m: 'March', t: '44 BC \u2014 Rome\u2019s wave pool opens for the season. Lifeguards begin signaling furiously, and do not stop for 520 years.' },
+                { m: 'April', t: '1790 \u2014 Bartholomew Cogsworth drinks the entire pot of experimental coffee. The Industrial Revolution begins approximately eleven minutes later.' },
+                { m: 'May', t: '1932 \u2014 the shrubs hold their first rustling. Minutes are taken, then eaten.' },
+                { m: 'June', t: '48 BC \u2014 the Library of Alexandria introduces its premium tier. Subscribers are furious. The interns are unpaid.' },
+                { m: 'July', t: '1681 \u2014 a dodo boards a ship in a false mustache. Extinction begins, allegedly.' },
+                { m: 'August', t: 'Every year \u2014 the thermostat compromise is nearly revisited. Both sides nap instead, at a comfortable 68\u00b0F.' },
+                { m: 'September', t: '1911 \u2014 the dentists hold their annual meeting. The minutes do not exist. Attendance was excellent.' },
+                { m: 'October', t: '1911 \u2014 Halloween is invented. "Trick or treat" is standardized from the original slogan, "See You In November."' },
+                { m: 'November', t: '1932 \u2014 the Great Emu War begins in a small broom closet in Perth. The shrubs will win.' },
+                { m: 'December', t: '1969 \u2014 the Moon\u2019s glow is formally attributed to static electricity. The missing socks are still missing.' },
+            ];
+            (function () {
+                const now = new Date().getMonth();
+                const e = MONTHLY_OTD[now];
+                const mh = document.getElementById('otdMonth'), tx = document.getElementById('otdText');
+                if (mh && tx) { mh.textContent = e.m; tx.textContent = e.t; }
+            })();
+
+            const SUGGESTIONS = [
+                ['the actual truth', 'unavailable'], ['a fact', 'none found'], ['greg', 'all of them'],
+                ["steve's email address", 'nice try'], ['the thermostat setting', '68\u00b0F'],
+                ['proof', 'see: confidence'], ['the moon, but smaller', 'no'], ['sources', 'optional'],
+                ['the missing sock', 'at the roulette table'], ['a correction', 'see: escalation'],
+            ];
+            const suggestBox = document.getElementById('searchSuggest');
+            const searchWrap = document.getElementById('searchWrap');
+            function hideSuggest() { if (suggestBox) suggestBox.style.display = 'none'; }
+            if (searchInput && suggestBox) {
+                searchInput.addEventListener('input', () => {
+                    const q = searchInput.value.trim().toLowerCase();
+                    if (q.length < 2) { hideSuggest(); return; }
+                    const hits = SUGGESTIONS.filter(s => (s[0] + ' ' + s[1]).includes(q)).slice(0, 5);
+                    if (!hits.length) { hideSuggest(); return; }
+                    suggestBox.innerHTML = hits.map(h =>
+                        `<div class="sug">did you mean: <strong>${h[0]}</strong>? <span class="text-gray-500">(${h[1]})</span></div>`).join('');
+                    suggestBox.style.display = 'block';
+                    suggestBox.querySelectorAll('.sug').forEach(el => el.addEventListener('click', () => {
+                        hideSuggest(); searchInput.value = ''; navigateTo('random');
+                    }));
+                });
+                searchInput.addEventListener('keydown', ev => { if (ev.key === 'Escape') hideSuggest(); });
+                document.addEventListener('click', ev => { if (searchWrap && !searchWrap.contains(ev.target)) hideSuggest(); });
+            }
+
+            document.querySelectorAll('.cite-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const section = btn.closest('section');
+                    const title = titleOf(section);
+                    let cert = 'unknown, but high';
+                    section.querySelectorAll('.infobox tr').forEach(tr => {
+                        const tds = tr.querySelectorAll('td');
+                        if (tds.length === 2 && tds[0].textContent.trim() === 'Certainty:') cert = tds[1].textContent.trim();
+                    });
+                    const cite = `Wickahpedia Editorial Board. (2026). ${title}. Wickahpedia: The Sum of All Misinformation. https://wickahpedia.com/ \u2014 Certainty ${cert} (peer-reviewed, probably).`;
+                    const done = () => { section.querySelector('.cite-status').textContent = 'Citation copied. Please cite confidently.'; };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(cite).then(done, done);
+                    } else {
+                        const ta = document.createElement('textarea'); ta.value = cite; document.body.appendChild(ta);
+                        ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done();
+                    }
+                });
+            });
+
+            document.querySelectorAll('.readaloud-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const section = btn.closest('section');
+                    if (!('speechSynthesis' in window)) { btn.textContent = 'Narration unavailable (this browser doubts).'; return; }
+                    if (window.speechSynthesis.speaking) { window.speechSynthesis.cancel(); btn.textContent = 'Read aloud, confidently'; return; }
+                    const parts = [titleOf(section) + '.'];
+                    section.querySelectorAll('p, h3, li').forEach(el => {
+                        if (el.closest('.talk-box') || el.closest('.history-box') || el.closest('.lang-note') ||
+                            el.classList.contains('improve-status') || el.classList.contains('cite-status') ||
+                            el.classList.contains('last-edited')) return;
+                        const t = el.textContent.trim();
+                        if (t) parts.push(t);
+                    });
+                    const u = new SpeechSynthesisUtterance('The following is read with total confidence. ' + parts.join(' '));
+                    u.onend = () => { btn.textContent = 'Read aloud, confidently'; };
+                    btn.textContent = 'Stop the narration';
+                    window.speechSynthesis.speak(u);
                 });
             });
 

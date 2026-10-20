@@ -75,6 +75,34 @@ article, new or old, must follow these rules:
    - a **quality rating** shown next to its All Articles link, derived
      from Certainty: 99.0%+ = Doctrine; 98.0–98.9% = Fact (Wickahpedia);
      97.0–97.9% = Claim; under 97% = Rumor, Stated Loudly.
+8. **Round-three apparatus (mandatory since 2026-10-20):** every article
+   also carries, in this order and markup:
+   - a **Read aloud** button right after the `lang-note` div:
+     ```html
+     <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
+     ```
+     (the site's JS handles the narration; no per-article configuration);
+   - a **Cite this page** button + empty `cite-status` line in the toolbox
+     next to the Improve button (the JS builds the citation from the
+     article's title and Certainty — again, no per-article configuration);
+   - a **View history** block right after the Escalation log, seeded with
+     three fake revisions:
+     ```html
+     <details class="history-box mt-4 mb-2">
+         <summary>View history</summary>
+         <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+             <li><date> &mdash; <editor> created this article, confidently. The confidence has only grown.</li>
+             <li><date> &mdash; <editor> escalated a claim (see Escalation log). The article thanked them.</li>
+             <li><date> &mdash; A fact attempted to enter this article. It was shown the door.</li>
+         </ul>
+     </details>
+     ```
+     (the JS appends real entries when readers click Improve);
+   - **On This Day:** the Front Page's On This Day box is driven by the
+     `MONTHLY_OTD` array in the page script (one entry per month). If the
+     new article suits a month, you MAY add or replace that month's entry
+     in the array, in the existing format — keep the array at exactly 12
+     entries.
 
 ## Each run adds exactly ONE new article
 
@@ -119,6 +147,7 @@ article, new or old, must follow these rules:
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited <when> by <Fake Editor> (talk) &mdash; edit summary: &lsquo;<joke>&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
+                <p><button class="readaloud-btn text-sm text-blue-700 hover:underline">Read aloud, confidently</button> <span class="text-sm text-gray-500">&mdash; narrated by a man who has never doubted anything.</span></p>
                 <!-- protection banner here IF Certainty >= 98.0% — see rule 3 for the two texts -->
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2"><Title></h4>
@@ -146,6 +175,14 @@ article, new or old, must follow these rules:
                     <li><Fake citation 3></li>
                 </ol>
                 <div class="escalation-box"><strong>Escalation log.</strong> <Originally weaker claim. Now upgraded claim.></div>
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li><date> &mdash; <editor> created this article, confidently. The confidence has only grown.</li>
+                        <li><date> &mdash; <editor> escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li><date> &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h3>
                 <div class="talk-box">
                     <p class="mb-2 leading-relaxed"><strong><Editor 1> (talk):</strong> <Objection></p>
@@ -155,6 +192,8 @@ article, new or old, must follow these rules:
                 <div class="mt-6">
                     <button class="improve-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200">Improve this article</button>
                     <p class="improve-status text-sm text-gray-600 mt-2"></p>
+                    <button class="cite-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 ml-2">Cite this page</button>
+                    <p class="cite-status text-sm text-gray-600 mt-2"></p>
                 </div>
                 <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: <a href="#" class="cat-link" data-cat="<Category>"><Category></a> &middot; <a href="#" class="cat-link" data-cat="Settled Forever">Settled Forever</a></p>
             </section>
@@ -177,9 +216,10 @@ article, new or old, must follow these rules:
    path all use the same slug; no `placehold.co` references remain; the
    article contains no banned hedging words (see the Confidence Standard);
    Certainty rows, the protection banner for its tier (if any), See also
-   (including its red link), 3 References, the Escalation log, Last edited
-   + language lines, Talk, the Improve button, Categories, and the rated
-   All Articles link are all present.
+   (including its red link), 3 References, the Escalation log, the seeded
+   View history, Last edited + language lines, the Read aloud button,
+   Talk, the Improve and Cite buttons, Categories, and the rated All
+   Articles link are all present.
 
 7. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
    Then report the new article's title and the fact that it's live at
