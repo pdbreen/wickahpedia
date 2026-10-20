@@ -66,7 +66,6 @@
         </div>
         <nav id="menuPanel" class="hidden mt-3 border-t border-gray-200 pt-3">
             <ul class="space-y-2 text-gray-600">
-                <li><a href="#" class="wiki-link internal-link" data-page="home">Main Page (Confused)</a></li>
                 <li><a href="#" class="wiki-link internal-link" data-page="about">About Wickahpedia (Untrue)</a></li>
                 <li><a href="#" class="wiki-link internal-link" data-page="all">All Articles (Every Mistake)</a></li>
                 <li><a href="#" class="wiki-link internal-link" data-page="daily">Today's Nonsense</a></li>
@@ -381,7 +380,7 @@
                  <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Page Not Found</h2>
                  <p id="notFoundMessage" class="text-lg text-gray-600">You've discovered a page that doesn't exist. Much like the concept of 'truth' around here.</p>
                  <p class="mt-4">Perhaps try another link, or ponder the metaphysical void you've just uncovered.</p>
-                 <button class="mt-8 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 internal-link" data-page="home">Return to Main Page</button>
+                 <button class="mt-8 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 internal-link" data-page="random">Surprise Me Instead</button>
             </section>
         </main>
     </div>
@@ -514,8 +513,7 @@
                 if (event.key === 'Enter') performSearch();
             });
 
-            // --- Initial State: start on a random article every page load.
-            // (The menu's "Main Page" link still shows the featured article.) ---
+            // --- Initial State: start on a random article every page load ---
             navigateTo('random');
         });
     </script>
