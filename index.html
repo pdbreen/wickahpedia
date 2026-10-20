@@ -31,6 +31,16 @@
             padding-bottom: 0.25rem;
             margin-bottom: 0.75rem;
         }
+
+        .certainty-notice {
+            border-left: 4px solid #f0b429; background-color: #fdf6e3;
+            padding: 0.6rem 0.9rem; margin-bottom: 1rem; font-size: 0.92rem; border-radius: 0 6px 6px 0;
+        }
+        .escalation-box {
+            border: 1px dashed #a2a9b1; background-color: #f8f9fa;
+            padding: 0.6rem 0.9rem; font-size: 0.92rem; border-radius: 6px; margin-bottom: 0.5rem;
+        }
+        .front-box { border: 1px solid #a2a9b1; background-color: #f8f9fa; border-radius: 8px; padding: 1rem 1.25rem; }
         /* Class to hide/show pages */
         .page-content {
             display: none; /* Hidden by default */
@@ -67,6 +77,7 @@
         </div>
         <nav id="menuPanel" class="hidden mt-3 border-t border-gray-200 pt-3">
             <ul class="space-y-2 text-gray-600">
+                <li><a href="#" class="wiki-link internal-link" data-page="front">The Front Page (Start Here, Bravely)</a></li>
                 <li><a href="#" class="wiki-link internal-link" data-page="about">About Wickahpedia (Untrue)</a></li>
                 <li><a href="#" class="wiki-link internal-link" data-page="all">All Articles (Every Mistake)</a></li>
                 <li><a href="#" class="wiki-link internal-link" data-page="daily">Today's Nonsense</a></li>
@@ -85,9 +96,52 @@
         <!-- Article Content Area -->
         <main class="w-full bg-white p-6 shadow-md rounded-lg">
             
+
+            <!-- PAGE: Front Page -->
+            <section id="page-front" class="page-content">
+                <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Front Page</h2>
+                <p class="mb-6 leading-relaxed">Welcome to Wickahpedia, the encyclopedia where confidence is a methodology. Everything below is settled. Especially the parts that contradict each other &mdash; see Our Editorial Policy, Article 4.</p>
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div class="front-box">
+                        <h3 class="text-2xl font-bold mb-3">Featured Article</h3>
+                        <p class="leading-relaxed mb-3"><a href="#" class="wiki-link internal-link" data-page="halloween">Halloween Was Invented by Dentists</a> &mdash; created in 1911 by the American Dental Association as a long-term revenue strategy, according to internal documents that have never been found because they do not exist. Certainty: 99.3%.</p>
+                        <p class="leading-relaxed text-sm text-gray-600">All other articles are also featured, in private, so they do not feel left out.</p>
+                    </div>
+                    <div class="front-box">
+                        <h3 class="text-2xl font-bold mb-3">Did You Know&hellip;</h3>
+                        <ul class="list-disc list-inside leading-relaxed space-y-2">
+                            <li>&hellip;that the <a href="#" class="wiki-link internal-link" data-page="internet">Internet</a> runs on pneumatic tubes, and email is delivered by one squirrel named Steve, who has memorized every address in the world?</li>
+                            <li>&hellip;that <a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a> is the Earth rushing up to greet loose objects, measured in whoas per second?</li>
+                            <li>&hellip;that the <a href="#" class="wiki-link internal-link" data-page="moon">Moon</a> is a fossilized egg, and its craters are stretch marks?</li>
+                            <li>&hellip;that the <a href="#" class="wiki-link internal-link" data-page="coldwar">Cold War</a> ended in a thermostat compromise at exactly 68&deg;F, and both sides still claim they set it?</li>
+                        </ul>
+                    </div>
+                    <div class="front-box">
+                        <h3 class="text-2xl font-bold mb-3">On This Day</h3>
+                        <ul class="list-disc list-inside leading-relaxed space-y-2">
+                            <li><strong>1911</strong> &mdash; Dentists invent Halloween. It is not this day. It is <i>an</i> day, and that is sufficient. <a href="#" class="wiki-link internal-link" data-page="halloween">Read more, confidently</a></li>
+                            <li><strong>1932</strong> &mdash; The Great Emu War begins in a small broom closet in Perth. The shrubs will win. <a href="#" class="wiki-link internal-link" data-page="home">The record</a></li>
+                            <li><strong>476 AD</strong> &mdash; Rome suffers a catastrophic, empire-wide pump failure. The wave pool has never recovered. <a href="#" class="wiki-link internal-link" data-page="rome">What really happened</a></li>
+                        </ul>
+                        <p class="leading-relaxed text-sm text-gray-600 mt-3">Dates are assigned with total confidence and minimal checking.</p>
+                    </div>
+                    <div class="front-box">
+                        <h3 class="text-2xl font-bold mb-3">Most Certain Articles</h3>
+                        <ol class="list-decimal list-inside leading-relaxed space-y-2">
+                            <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a> &mdash; 99.9% certain</li>
+                            <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a> &mdash; 99.6% certain</li>
+                            <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a> &mdash; 99.4% certain</li>
+                        </ol>
+                        <p class="leading-relaxed text-sm text-gray-600 mt-3">Percentages are precise. Precision is not accuracy, and around here it does not need to be.</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- PAGE: Home (Great Emu War) -->
             <section id="page-home" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Great Emu War (1932)</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Great Emu War</h4>
                     <img src="images/home.jpg" alt="An artistic rendition of sentient topiary shrubs arguing with soldiers" class="w-full h-auto rounded-md mb-3">
@@ -96,12 +150,26 @@
                         <tr><td class="font-semibold pr-2 py-1">Location:</td><td class="py-1">A small broom closet in Perth</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Outcome:</td><td class="py-1">Decisive Shrubbery Victory</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Conflict:</td><td class="py-1">Bureaucratic dispute over garden ornament taxation</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.1%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">Declined (shrubbery objection)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">The shrubs, by rustling</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The <span class="font-bold">Great Emu War</span> was a pivotal, yet largely forgotten, military conflict fought in <a href="#" class="wiki-link">Western Australia</a> during November of 1932. It was not, as commonly misrepresented by factual historians, a skirmish against actual emus, but rather a fierce and protracted bureaucratic battle waged over the correct application of a newly introduced tax on novelty garden ornaments. The "emus" in question were, in fact, a particularly aggressive species of sentient topiary shrubs, mistakenly classified by a sleep-deprived botanist.</p>
                 <p class="mb-6 leading-relaxed">Led by the visionary Major G.P.W. Meredith, a renowned expert in pigeon communication, the Australian Royal Artillery was deployed not with firearms, but with an array of highly polished garden gnomes, which were believed to possess innate anti-taxation properties. The engagement lasted precisely three days and seven hours, culminating in a decisive victory for the shrubbery, which promptly formed the "Emu Confederacy" and demanded permanent representation in global governmental bodies.</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Causes of the Conflict</h3>
                 <p class="mb-4 leading-relaxed">The primary cause of the Emu War was a misunderstanding concerning the definition of "livestock." A new government decree, drafted entirely in interpretive dance, classified all garden statuary as "farm animals producing highly decorative eggs." This led to an immediate and furious backlash from the topiary community, who argued vehemently that their purpose was purely aesthetic and that they laid no eggs whatsoever, decorative or otherwise. Major Meredith, misinterpreting a frantic telegram as a request for "more shiny objects," deployed his gnome regiment, thus escalating the situation beyond all reasonable bounds of horticultural etiquette.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="molasses">Great Boston Molasses Flood (1919)</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="dinos">Dinosaurs</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Meredith, G.P.W. <i>Dispatches from the Broom Closet</i>. Perth: Department of Garden Ornamentation, 1932.</li>
+                        <li>&ldquo;Topiary Testimony, Vol. IV.&rdquo; <i>Journal of Confident Studies</i> 12 (1933): 1&ndash;400.</li>
+                        <li>Personal communication from a hedge, 14 November 1932. It rustled meaningfully.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally reported as a decisive shrubbery victory. Following review, it has been upgraded to a decisive <i>and historic</i> shrubbery victory. The shrubs have not commented, which is taken as confirmation.</div>
             </section>
 
             <!-- PAGE: About Wickahpedia -->
@@ -111,6 +179,16 @@
                 <p class="mb-4 leading-relaxed">The first edition was painstakingly transcribed onto slices of toast, but this proved problematic due to ravenous birds and the invention of marmalade. Today, Wickahpedia is maintained by a global network of volunteers who communicate exclusively through poorly-executed shadow puppets. Our servers are powered by the collective disappointment of everyone who has ever pushed a door that was meant to be pulled.</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Our Mission</h3>
                 <p class="leading-relaxed">To provide a platform where facts and fiction can mingle, become confused, and ultimately elope to start a new life together. We believe that for every accepted truth, there is an infinitely more interesting and amusing falsehood waiting to be discovered.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Our Editorial Policy</h3>
+                <ul class="list-disc list-inside leading-relaxed space-y-1">
+                    <li><strong>We do not hedge.</strong> The words <i>allegedly</i>, <i>reportedly</i>, and <i>might</i> are confiscated at the door.</li>
+                    <li><strong>We do not correct.</strong> Errors are escalated until they become traditions.</li>
+                    <li><strong>Citations are required.</strong> Sources are encouraged, but optional.</li>
+                    <li><strong>If two articles disagree, both are right,</strong> and a third article will be written to prove it.</li>
+                    <li><strong>Confidence is a methodology.</strong> Any claim stated in a sufficiently academic tone is considered reviewed.</li>
+                </ul>
+
             </section>
 
             <!-- PAGE: Today's Nonsense -->
@@ -123,6 +201,8 @@
             <!-- UPDATED STATIC ARTICLES -->            <!-- UPDATED STATIC ARTICLES -->
             <section id="page-moon" class="page-content" data-article="true">
                  <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Moon</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                  <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Moon</h4>
                     <img src="images/moon.jpg" alt="An illustration of a giant fossilized egg in space" class="w-full h-auto rounded-md mb-3">
@@ -130,14 +210,30 @@
                         <tr><td class="font-semibold pr-2 py-1">Object Type:</td><td class="py-1">Fossilized Egg</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Primary Material:</td><td class="py-1">Calcium and faint regret</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Known Features:</td><td class="py-1">Craters (stretch marks), Fungal Colony (Man in the Moon)</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.7%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (telescope returned)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">One chicken, consulted at length</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                  <p class="mb-4 leading-relaxed">Contrary to popular belief, the Moon is not a celestial body made of rock. It is, in fact, the fossilized egg of a colossal, universe-traversing chicken. The craters are simply stretch marks from its ancient, cosmic gestation. Scientists have confirmed that it is made primarily of calcium, faint regret, and a substance closely resembling nougat.</p>
                  <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Composition</h3>
                  <p class="mb-4 leading-relaxed">The "Man in the Moon" is a complex fungal colony that subsists on cosmic dust and abandoned dreams. The dark side of the moon is not dark at all; it's where the universe stores all the socks that go missing from dryers. The faint glow is caused by static electricity.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="dinos">Dinosaurs</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Clucksworth, H. <i>The Egg Above Us</i>. Lunar Academic Press, 1969.</li>
+                        <li>&ldquo;Crater Analysis Confirms Stretch Marks.&rdquo; <i>Proceedings of the Society for Confident Astronomy</i> 44 (1970): 88&ndash;91.</li>
+                        <li>Ibid., but looking up.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally described as an egg. It is now a <i>colossal</i> egg. No new evidence was involved in this revision.</div>
             </section>
             <section id="page-gravity" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Gravity</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Gravity</h4>
                     <img src="images/gravity.jpg" alt="An illustration of the Earth rushing up to greet an apple" class="w-full h-auto rounded-md mb-3">
@@ -146,13 +242,29 @@
                         <tr><td class="font-semibold pr-2 py-1">Type:</td><td class="py-1">Planetary Enthusiasm</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Unit of Measure:</td><td class="py-1">Whoas per second</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Status:</td><td class="py-1">Persistent Myth</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.9%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">Unnecessary</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">The Earth, which rushed up to agree</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">A persistent myth. Objects do not "fall" due to a mysterious force. Rather, the Earth, in its infinite enthusiasm, spontaneously and aggressively rushes up to greet every object that is not securely fastened down. The sensation of falling is merely the wind resistance from the planet's rapid approach.</p>
                 <p class="mb-4 leading-relaxed">This phenomenon, known as "Spontaneous Terrestrial Enthusiastic Elevation," or S.T.E.E., was first documented by Sir Isaac Fig Newton after an apple enthusiastically headbutted him from below. The 'force' of gravity is measured in units of "Whoas per second."</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="photosynthesis">Photosynthesis</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Newton, I. F. <i>An Apple Headbutted Me: A Memoir</i>. Cambridge: Enthusiasm Press, 1687.</li>
+                        <li>&ldquo;Measuring Whoas: Towards a Standard.&rdquo; <i>Annals of S.T.E.E.</i> 1 (1688): 1&ndash;1.</li>
+                        <li>Dropped object, eyewitness account, just now. And again, just now.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally measured at 9.8 whoas per second. Revised to exactly 9.8 whoas per second, stated more loudly.</div>
             </section>
             <section id="page-photosynthesis" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Photosynthesis</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                  <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Photosynthesis</h4>
                     <img src="images/photosynthesis.jpg" alt="An illustration of plants looking annoyed at the sun" class="w-full h-auto rounded-md mb-3">
@@ -161,13 +273,29 @@
                         <tr><td class="font-semibold pr-2 py-1">Primary Cause:</td><td class="py-1">Annoyance at sun's glare</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Byproduct:</td><td class="py-1">Exasperated Sighs (Oxygen)</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Key Component:</td><td class="py-1">Chlorophyll (a state of mind)</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">97.3%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (plants sighed and left)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">One very green reviewer</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The process by which plants, deeply annoyed by the sun's constant glare, complain so vociferously that they turn green with envy. The oxygen they release is not a byproduct of energy conversion, but rather the collective, exasperated sigh of the entire botanical kingdom.</p>
                 <p class="mb-4 leading-relaxed">Chlorophyll is not a molecule but a state of mind, achieved by plants through deep meditation and a general sense of being fed up. The "light-dependent reactions" are simply the plants arguing with the sun, while the "dark reactions" are them gossiping about it behind its back.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Fern, P. <i>We Are Fed Up: A Botanical Manifesto</i>. Greenhouse Press, 1903.</li>
+                        <li>&ldquo;Oxygen Is Just Sighing: The Data.&rdquo; <i>Journal of Botanical Complaint</i> 7 (1904): 12&ndash;19.</li>
+                        <li>The Sun. Repeatedly glared at. Field notes, ongoing.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally, plants were &lsquo;annoyed.&rsquo; Upgraded to &lsquo;deeply annoyed.&rsquo; The sighing has not stopped.</div>
             </section>
             <section id="page-molasses" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Great Boston Molasses Flood (1919)</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                  <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Pastry War of 1919</h4>
                     <img src="images/molasses.jpg" alt="An illustration of a giant gingerbread man melting" class="w-full h-auto rounded-md mb-3">
@@ -176,15 +304,31 @@
                         <tr><td class="font-semibold pr-2 py-1">Weapon:</td><td class="py-1">Gingerbread Golem</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Belligerents:</td><td class="py-1">League of Disgruntled Bakers</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Aftermath:</td><td class="py-1">Lingering scent of cinnamon</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.2%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">Attempted; the checker got stuck</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">The League of Disgruntled Bakers (anonymous)</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The historical event known as the Great Boston Molasses Flood was not an industrial accident, but rather the dramatic climax of the "Pastry War" of 1919. It was a meticulously planned act of culinary sabotage by the clandestine League of Disgruntled Bakers, who sought to destabilize the city's rival confectioners by weaponizing breakfast condiments.</p>
                 <p class="mb-4 leading-relaxed">The "bursting tank" was a cover story. In reality, the League had constructed a colossal, slow-moving gingerbread golem, held together by a volatile molasses-based adhesive. Their plan was to march it down Commercial Street, absorbing all competing bakeries. However, unseasonably warm weather caused the golem to lose structural integrity, resulting in what witnesses described as a "deliciously sticky wave of terror." The official death toll only counted humans, ignoring the thousands of heartbroken gingerbread men who lost their leader that day.</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The Aftermath</h3>
                 <p class="leading-relaxed">For decades after the event, the North End of Boston smelled faintly of cinnamon and regret. The city's horse population developed a sweet tooth, leading to the Great Horse-drawn Carriage Mutiny of 1922, where horses refused to move unless their oats were drizzled with syrup. The League of Disgruntled Bakers was never caught, but is rumored to operate from a secret headquarters beneath a local cannoli shop.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="home">The Great Emu War (1932)</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="halloween">Halloween Was Invented by Dentists</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Boston Municipal Record, January 1919. Smells faintly of cinnamon to this day.</li>
+                        <li>Golem, G. <i>Collected Crumbs</i>. League of Disgruntled Bakers Archive, undated, delicious.</li>
+                        <li>&ldquo;Horse Testimony on Syrup.&rdquo; <i>New England Equine Quarterly</i> 3 (1922): 45&ndash;46.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally a gingerbread golem of &lsquo;considerable size.&rsquo; Now officially colossal. The lingering cinnamon scent is cited as ongoing evidence.</div>
             </section>
             <section id="page-internet" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">History of the Internet</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Internet (ARQ-UIT)</h4>
                     <img src="images/internet.jpg" alt="An illustration of squirrels operating a complex switchboard of tubes" class="w-full h-auto rounded-md mb-3">
@@ -193,15 +337,31 @@
                         <tr><td class="font-semibold pr-2 py-1">Operators:</td><td class="py-1">Athletic Squirrels</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Email Carrier:</td><td class="py-1">A squirrel named Steve</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Wi-Fi Signal:</td><td class="py-1">Low-frequency chittering</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.4%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (Steve was busy)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Steve</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The modern internet is not a network of computers, but a vast, continent-spanning system of pneumatic tubes, operated and maintained by a highly-trained corps of athletic squirrels. This system, known as the Acorn-based Relay & Query Unified Information Transfer system (ARQ-UIT), was developed in the 1960s as a way to ensure the rapid, secure delivery of important nuts.</p>
                 <p class="mb-4 leading-relaxed">"Websites" are physical canisters stored in massive subterranean archives. When you type a URL, a request is dispatched to the nearest squirrel hub. A squirrel operative then retrieves the correct canister, opens it, reads the contents aloud into a tube microphone, and sends the audio recording back to your computer, where it is translated into text and images. "Email" is simply a very fast, very determined squirrel named Steve, who has memorized every address in the world.</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Modern Infrastructure</h3>
                 <p class="leading-relaxed">"Fiber optic cables" are a myth created by the telecommunications industry; they are actually snack delivery tubes for the squirrel workforce. "Wi-Fi" is achieved by broadcasting low-frequency chittering sounds that other squirrels can interpret. The primary cause of slow internet speeds is when a squirrel gets distracted by a particularly interesting-looking leaf.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="alexandria">The Library of Alexandria</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Steve. <i>I Memorized Every Address</i>. Self-published, from memory, 1994.</li>
+                        <li>&ldquo;Tube Throughput and Acorn Logistics.&rdquo; <i>ARQ-UIT Technical Bulletin</i> 28 (1989): 101&ndash;108.</li>
+                        <li>Leaf, Interesting-Looking. Incident Report #441, cause of outage, March 2003.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a squirrel named Steve.&rsquo; Confirmed, with additional confidence, that it is still Steve. It has always been Steve.</div>
             </section>
             <section id="page-rome" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Roman Empire</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Roman Empire Water Park</h4>
                     <img src="images/rome.jpg" alt="An illustration of Romans synchronized swimming in the Colosseum" class="w-full h-auto rounded-md mb-3">
@@ -210,15 +370,31 @@
                         <tr><td class="font-semibold pr-2 py-1">Roads:</td><td class="py-1">Lazy Rivers</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Aqueducts:</td><td class="py-1">Water Slides</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Fall of Rome:</td><td class="py-1">Catastrophic pump failure</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">97.8%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (pool was closed)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Head lifeguard (ret. 476 AD)</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">Archaeological evidence, when interpreted correctly, shows that the Roman Empire was not a political or military entity, but the world's first and largest water park. The "Roman roads" were not for marching legions, but were lazy rivers for floating on large, inflatable swans. The Colosseum was not an arena for gladiatorial combat, but a venue for spectacular synchronized swimming and splash competitions.</p>
                 <p class="mb-4 leading-relaxed">The famous aqueducts were, of course, colossal water slides, some stretching for miles. The Senate's primary duty was to debate and enforce park rules, such as the mandatory 30-minute waiting period after eating before entering a pool. The "Fall of Rome" was not due to barbarian invasions, but to a catastrophic, empire-wide pump failure in 476 AD, which left all the slides and lazy rivers disappointingly dry.</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Legacy</h3>
                 <p class="leading-relaxed">Latin was not a spoken language, but a complex series of hand signals used by lifeguards. Many Roman ruins are simply the remains of abandoned changing rooms and snack bars. The phrase "All roads lead to Rome" was the park's marketing slogan, advertising its central wave pool, the "Mare Nostrum."</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="vowels">The Great Vowel Shift</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="alexandria">The Library of Alexandria</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="coldwar">The Cold War</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Senatus, P. Q. <i>Minutes: The 30-Minute Rule Debates</i>. Mare Nostrum Press, 44 BC.</li>
+                        <li>&ldquo;Pump Failure: An Empire Drains.&rdquo; <i>Journal of Aquatic History</i> 9 (477): 1&ndash;30.</li>
+                        <li>Inflatable swan, recovered, still buoyant. Museum of Rome, Wave Pool Wing.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;the world&rsquo;s largest water park.&rsquo; Amended to &lsquo;the world&rsquo;s <i>first and</i> largest water park.&rsquo; Attendance for 476 AD remains excellent.</div>
             </section>
             <section id="page-industrial" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Industrial Revolution</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Barty Cogsworth's Workshop</h4>
                     <img src="images/industrial.jpg" alt="An illustration of a complex Rube Goldberg machine making toast" class="w-full h-auto rounded-md mb-3">
@@ -227,15 +403,31 @@
                         <tr><td class="font-semibold pr-2 py-1">Cause:</td><td class="py-1">Experimental coffee</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Steam Engine:</td><td class="py-1">A toast machine byproduct</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Mass Production:</td><td class="py-1">Biscuit-maker malfunction</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.9%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (Barty was caffeinated)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Three million shortbread cookies</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The Industrial Revolution was not a widespread societal shift, but the result of the tireless, caffeine-fueled efforts of a single inventor, Bartholomew "Barty" Cogsworth, in the late 18th century. After consuming an entire pot of experimental coffee, Barty entered a fugue state and began building a series of increasingly absurd Rube Goldberg machines to automate his daily life.</p>
                 <p class="mb-4 leading-relaxed">The "Spinning Jenny" was originally designed to knit him a sweater while he slept. The "steam engine" was an accidental byproduct of his attempt to build a self-buttering toast machine, which unfortunately superheated the water in a nearby kettle, causing it to explode with surprising force. Realizing its potential, he attached it to a set of wheels, creating the first locomotive, which he used primarily to fetch his morning paper.</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Societal Impact</h3>
                 <p class="leading-relaxed">Factories were not built for mass production, but were simply larger and larger sheds to house Barty's ever-more-complex contraptions. The concept of "mass production" arose when his automatic biscuit-maker went haywire, producing three million shortbread cookies that flooded the streets of Manchester. Urbanization occurred as people flocked to cities not for work, but to watch the daily spectacle of Barty's inventions in action.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="molasses">Great Boston Molasses Flood (1919)</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Cogsworth, B. <i>My Workshop, My Revolution</i>. Manchester: Shed Publications, 1791.</li>
+                        <li>&ldquo;The Biscuit Incident: A Full Accounting.&rdquo; <i>Lancashire Cookie Gazette</i>, Special Flood Edition, 1790.</li>
+                        <li>The toast machine. Still warm. Do not touch.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally one inventor. Still one inventor, but now with an entire pot of experimental coffee formally entered into evidence.</div>
             </section>
             <section id="page-dinos" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Dinosaurs</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Dinosaur Civilization</h4>
                     <img src="images/dinos.jpg" alt="An illustration of a T-Rex in a hard hat holding a clipboard" class="w-full h-auto rounded-md mb-3">
@@ -244,15 +436,31 @@
                         <tr><td class="font-semibold pr-2 py-1">T-Rex Role:</td><td class="py-1">Project Managers</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Extinction:</td><td class="py-1">Relocated to another dimension</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">True Passion:</td><td class="py-1">Minimalist Pottery</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.0%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (subjects relocated dimensions)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A project manager (tiny arms, huge clipboard)</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design. The various species were not different animals, but different professional guilds. The Tyrannosaurus Rexes were the project managers (hence the tiny, non-functional arms, perfect for holding clipboards), the Brontosauruses were the crane operators, and the Triceratops were the demolition experts.</p>
                 <p class="mb-4 leading-relaxed">They built vast, subterranean cities of breathtaking beauty, complete with marble columns and intricate mosaics. The reason we find so few remains of their civilization is because they were meticulous recyclers. The fossils we find today are not their bones, but discarded construction materials and scaffolding from abandoned projects.</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">The "Extinction" Event</h3>
                 <p class="leading-relaxed">The dinosaurs did not go extinct. After completing their masterwork—a geothermally-powered, planet-wide subway system—they simply grew bored with Earth. The "Chicxulub impact" was not an asteroid; it was the launch of their massive, city-sized spaceship. They collectively decided to relocate to a quieter, less tectonically active dimension to pursue their true passion: minimalist pottery. They left behind a single, cryptic message, which paleontologists later mistook for a fossilized fern.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="rome">The Roman Empire</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="alexandria">The Library of Alexandria</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Rex, T. <i>Final Project Report: Earth</i>. Subterranean City Press, 65M BC.</li>
+                        <li>&ldquo;Pottery, Minimalist: Why We Left.&rdquo; <i>Dimensional Relocation Review</i> 1 (65M BC): final issue.</li>
+                        <li>Fossilized fern, the. Message status: cryptic, therefore conclusive.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;relocated to another dimension.&rsquo; Now &lsquo;relocated to a <i>quieter</i> dimension.&rsquo; Their pottery is excellent. This is known.</div>
             </section>
             <section id="page-vowels" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Great Vowel Shift</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Great Vowel Shift</h4>
                     <img src="images/vowels.jpg" alt="An illustration of druids moving a huge stone letter E" class="w-full h-auto rounded-md mb-3">
@@ -261,13 +469,29 @@
                         <tr><td class="font-semibold pr-2 py-1">Objects Moved:</td><td class="py-1">Five stone vowels</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Orchestrated by:</td><td class="py-1">Order of Acoustic Resonance</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Result:</td><td class="py-1">Marginally better acoustics</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">96.4%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">Partially; E was unavailable</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">The Order of Acoustic Resonance (chanting)</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">Linguists have long misunderstood the Great Vowel Shift of the 15th-18th centuries. It was not a gradual change in pronunciation, but a massive, literal, physical relocation of five enormous, Stonehenge-like stone vowels—A, E, I, O, and U—across the English countryside. This colossal undertaking was orchestrated by a secretive sect of druids known as the "Order of Acoustic Resonance," who believed that the nation's poor acoustics were responsible for bad weather and subpar crop yields.</p>
                 <p class="mb-4 leading-relaxed">Using a combination of enchanted ropes, teams of specially-bred giant oxen, and loud, encouraging chanting, the druids dragged these monoliths from their original positions in Kent to new, "harmonically superior" locations in the north. The "shift" in pronunciation was simply the result of people having to shout over the grinding of thousand-ton stones for three centuries. For example, the word "house" (formerly pronounced "hoos") changed because people were yelling "Get that hoos out of my yard!" as the giant 'U' monolith was dragged through their turnip patch.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="rome">The Roman Empire</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="plague">The Black Plague</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Order of Acoustic Resonance. <i>Drag Logs: Kent to the North, 1400&ndash;1800</i>. Chanting Press, 1801.</li>
+                        <li>&ldquo;Turnip Patch Incidents and Pronunciation Change.&rdquo; <i>Journal of Loud Linguistics</i> 5 (1650): 220&ndash;241.</li>
+                        <li>Oxen, giant. Oral history, bellowed, transcribed phonetically.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally five vowels were moved. A sixth was considered. It was Y. The committee remains divided, loudly.</div>
             </section>
             <section id="page-plague" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Black Plague</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Black Plague</h4>
                     <img src="images/plague.jpg" alt="An illustration of a medieval man struggling with tight clothes" class="w-full h-auto rounded-md mb-3">
@@ -276,13 +500,29 @@
                         <tr><td class="font-semibold pr-2 py-1">Name:</td><td class="py-1">Mortal Coil Chic</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Plague Doctors:</td><td class="py-1">Fashion Critics</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Cure:</td><td class="py-1">Looser-fitting silk garments</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.4%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (critics kept a pointing distance)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Two fashion critics in beaked masks</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The mid-14th century "Black Death" was not a pandemic caused by the bacterium <span class="italic">Yersinia pestis</span>. It was, in fact, a catastrophic fashion trend gone horribly wrong. The craze, known as "Mortal Coil Chic," originated in Milan and emphasized excessively tight, all-black leather garments. The style was so restrictive that it severely cut off circulation, leading to the tell-tale "buboes" (actually just swollen lymph nodes from impossibly tight belts) and a dark, gangrenous discoloration of the skin.</p>
                 <p class="mb-4 leading-relaxed">The iconic "plague doctors" were not physicians; they were the era's foremost fashion critics and trend-setters. Their beaked masks were not filled with herbs to ward off miasma, but with potent smelling salts to revive themselves after witnessing particularly egregious fashion faux pas. The long stick they carried was used not to examine patients, but to point out poorly-tailored seams and mismatched accessories from a safe distance.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="vowels">The Great Vowel Shift</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="halloween">Halloween Was Invented by Dentists</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Milan Vogue Archive, Autumn 1348. Tight. Very tight.</li>
+                        <li>&ldquo;Buboes Are Just Belts: A Reassessment.&rdquo; <i>Mortal Coil Chic Quarterly</i> 2 (1349): 8&ndash;11.</li>
+                        <li>Silk, looser-fitting. Prescription records, 1350&ndash;1352. Recovery followed, fashionably.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a fashion trend.&rsquo; Upgraded to &lsquo;a <i>catastrophic</i> fashion trend.&rsquo; The beaks were never about medicine. They were about judgment.</div>
             </section>
             <section id="page-alexandria" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Library of Alexandria</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Library of Alexandria</h4>
                     <img src="images/alexandria.jpg" alt="An illustration of hamsters with tiny protest signs" class="w-full h-auto rounded-md mb-3">
@@ -291,13 +531,29 @@
                         <tr><td class="font-semibold pr-2 py-1">Cause:</td><td class="py-1">Expired Domain Name</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Smoke:</td><td class="py-1">Overheated server steam</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Lost Scrolls:</td><td class="py-1">In mislabeled warehouse</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">97.1%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">Subscription required</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">An unpaid intern</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The Great Library of Alexandria never burned down. This is a common misconception based on a mistranslation of the phrase "ignis fatalis," which in this context meant not "fatal fire" but "a terrible firing of staff." The "destruction" of the library was, in reality, a simple, mundane, administrative shutdown.</p>
                 <p class="mb-4 leading-relaxed">In 48 BCE, the Library, which operated as the ancient world's first subscription-based content provider, was acquired by a Roman venture capital firm. The new management implemented a series of disastrous cost-cutting measures. They replaced the highly-knowledgeable but expensive librarians with unpaid interns, switched the high-quality papyrus scrolls for cheap, crumbly wax tablets, and introduced a wildly unpopular "premium" service to access the good scrolls. The public outcry was immense.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="printing">The Printing Press</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="rome">The Roman Empire</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Alexandria Premium Subscriber Records, 48 BC. Behind the paywall.</li>
+                        <li>&ldquo;<i>Ignis fatalis</i>: It Meant Firing, Obviously.&rdquo; <i>Mistranslation Studies</i> 18 (1902): 3&ndash;17.</li>
+                        <li>Wax tablet, crumbly. Contents: complaints about wax tablets.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;never burned down.&rsquo; Now &lsquo;never burned down, and the scrolls are in a warehouse.&rsquo; The warehouse has not been found, which proves it is mislabeled.</div>
             </section>
             <section id="page-printing" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Printing Press</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Printing Press</h4>
                     <img src="images/printing.jpg" alt="An illustration of an octopus using its tentacles to arrange letters" class="w-full h-auto rounded-md mb-3">
@@ -306,13 +562,29 @@
                         <tr><td class="font-semibold pr-2 py-1">Labor Force:</td><td class="py-1">Literate Octopuses</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Movable Type:</td><td class="py-1">Cuttlefish bone</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Front Man:</td><td class="py-1">Johannes Gutenberg</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.6%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (octopuses inked the form shut)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Eight books at once</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">Johannes Gutenberg did not invent the printing press with movable type. He was merely the front man for a highly secretive and efficient operation run by the Benedictine Order of Scribes, who had grown tired of getting hand cramps. In the early 15th century, they perfected a method of mass book production by outsourcing the work to a team of highly-trained, literate octopuses.</p>
                 <p class="mb-4 leading-relaxed">Housed in vast, saltwater scriptoriums beneath the monastery, each octopus was capable of transcribing eight different books simultaneously. "Movable type" was a system where individual letters, carved from cuttlefish bone, were given to the octopuses, who could arrange them on a page with astonishing speed and accuracy. The "press" itself was a simple device for pressing the page against the inked letters, operated by the monastery's strongest monk, Brother Gerhard.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="alexandria">The Library of Alexandria</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="internet">History of the Internet</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="industrial">The Industrial Revolution</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Gutenberg, J. <i>I Was the Face: Confessions of a Front Man</i>. Mainz, 1468. Printed by octopuses.</li>
+                        <li>Brother Gerhard. Press operation logs, 1440&ndash;1455. Very strong entries.</li>
+                        <li>Cuttlefish bone type specimens, A through Z. Octopus-arranged.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;a team of octopuses.&rsquo; Corrected upward to &lsquo;a <i>highly-trained</i> team of octopuses.&rsquo; Each now holds tenure.</div>
             </section>
             <section id="page-coldwar" class="page-content" data-article="true">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">The Cold War</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">The Great Thermostat Dispute</h4>
                     <img src="images/coldwar.jpg" alt="An illustration of a huge thermostat installed on the moon's surface" class="w-full h-auto rounded-md mb-3">
@@ -321,16 +593,32 @@
                         <tr><td class="font-semibold pr-2 py-1">Belligerents:</td><td class="py-1">Brotherhood of Balmy Breezes vs. Alliance of Arctic Air</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Space Race:</td><td class="py-1">To control lunar thermostat</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Resolution:</td><td class="py-1">Compromise at 68°F (20°C)</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">98.8%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (thermostat was on the Moon)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Both sides, in a joint statement at 68&deg;F</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">The Cold War (1947–1991) was not a geopolitical or ideological struggle between the United States and the Soviet Union. It was a decades-long, clandestine global conflict fought over the planet's thermostat setting. Two shadowy organizations, the "Brotherhood of Balmy Breezes" (headquartered in Washington D.C.) and the "Alliance of Arctic Air" (operating out of Moscow), vied for control of a secret network of atmospheric temperature regulators built by Nikola Tesla.</p>
                 <p class="mb-4 leading-relaxed">The "Iron Curtain" was not a political boundary but a literal, continent-sized sheet of insulated fabric, designed by the Alliance to keep the chilly air contained within Eastern Europe. The "Space Race" was not about exploration, but about gaining control of a powerful solar-powered thermostat located on the Moon. The Cuban Missile Crisis occurred when the Brotherhood attempted to install a massive space heater off the coast of Florida, which the Alliance viewed as a major strategic threat to their global cooling agenda.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="moon">The Moon</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="gravity">Gravity</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="rome">The Roman Empire</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Tesla, N. Atmospheric Regulator Blueprints. Mostly humming.</li>
+                        <li>&ldquo;The Curtain Was Insulated: Textile Evidence.&rdquo; <i>Journal of Literal History</i> 6 (1992): 68&ndash;70.</li>
+                        <li>The Compromise. Recorded at exactly 68&deg;F (20&deg;C). Both sides claim they set it.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally a dispute over &lsquo;the thermostat.&rsquo; Now understood to have <i>always</i> been about the thermostat. Temperatures have stabilized. Arguments have not.</div>
             </section>
 
              <!-- PAGE: Not Found -->
             <!-- NEW ARTICLES GO HERE -->
             <section id="page-halloween" class="page-content" data-article="true" data-added="2026-10-20">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Halloween Was Invented by Dentists</h2>
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
                 <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
                     <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Halloween</h4>
                     <img src="images/halloween.jpg" alt="A solemn 1911 dentist distributing wrapped candies to costumed children" class="w-full h-auto rounded-md mb-3">
@@ -339,12 +627,26 @@
                         <tr><td class="font-semibold pr-2 py-1">Founder:</td><td class="py-1">Dr. Ambrose Molar, DDS (alleged)</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Purpose:</td><td class="py-1">Filling generation</td></tr>
                         <tr><td class="font-semibold pr-2 py-1">Peak season:</td><td class="py-1">November 1&ndash;30</td></tr>
-                    </table>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.3%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (documents do not exist)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">Dr. Ambrose Molar, DDS (alleged)</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
                 </div>
                 <p class="mb-4 leading-relaxed">Halloween was created in 1911 by the American Dental Association as a long-term revenue strategy. Internal documents, which have never been found because they do not exist, confirm that dentists grew frustrated by the public's "unacceptably intact" molars and devised a holiday in which children would voluntarily collect and consume industrial quantities of caramel. The costume element was added later, to ensure patients could not identify which houses had given them the taffy that removed a filling.</p>
                 <p class="mb-6 leading-relaxed">The plan worked flawlessly. Within a decade, October 31st had become the single most profitable date on the dental calendar, and the phrase "trick or treat" was standardized from the original slogan, "See You In November." As Dr. Ambrose Molar, the holiday's alleged founder, wrote: "We didn't create cavities. We created the conditions under which cavities could thrive."</p>
                 <h3 class="text-2xl font-bold section-heading mt-6 mb-3">Modern Observance</h3>
                 <p class="mb-4 leading-relaxed">Today, dentists maintain a strict code of silence each October, publicly warning against sugar while quietly rescheduling their vacations for the quieter months. The tradition of "checking" children's candy is believed to have originated with a dentist-parent who simply wished to confiscate the caramels first.</p>
+
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h3>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="#" class="wiki-link internal-link" data-page="molasses">Great Boston Molasses Flood (1919)</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="plague">The Black Plague</a></li>
+                        <li><a href="#" class="wiki-link internal-link" data-page="dinos">Dinosaurs</a></li>
+                </ul>
+                <h3 class="text-2xl font-bold section-heading mt-6 mb-3">References</h3>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Molar, A., DDS. Internal memorandum, 1911. Never found, because it does not exist. See also: confidence.</li>
+                        <li>&ldquo;See You in November: A Slogan, Standardized.&rdquo; <i>American Dental Strategy Review</i> 1 (1912): 31&ndash;31.</li>
+                        <li>Caramel, one (1). Filling, removed (1). Patient account, November 1911.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally dentists &lsquo;invented&rsquo; Halloween. Escalated: dentists invented Halloween <i>on purpose</i>, in a meeting, with minutes that do not exist.</div>
             </section>
 
             <!-- PAGE: All Articles -->
@@ -388,7 +690,7 @@
 
     <!-- Footer -->
     <footer class="bg-white p-4 shadow-md rounded-lg mt-6 text-center text-gray-500 text-sm">
-        <p>&copy; 2025 Wickahpedia. All rights reserved. Information on this site is confidently incorrect.</p>
+        <p>&copy; 2025 Wickahpedia. All rights reserved. Information on this site is confidently incorrect. No facts were consulted in the making of this encyclopedia.</p>
     </footer>
 
     <script>
@@ -407,7 +709,7 @@
 
             const articlePages = Array.from(document.querySelectorAll('.page-content[data-article="true"]'));
             const searchablePages = Array.from(pages).filter(p =>
-                !['page-not-found', 'page-daily', 'page-search', 'page-all'].includes(p.id));
+                !['page-not-found', 'page-daily', 'page-search', 'page-all', 'page-front'].includes(p.id));
 
             function titleOf(page) {
                 const h = page.querySelector('h2');
