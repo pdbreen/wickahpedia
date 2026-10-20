@@ -514,8 +514,9 @@
                 if (event.key === 'Enter') performSearch();
             });
 
-            // --- Initial State ---
-            navigateTo('home');
+            // --- Initial State: start on a random article every page load.
+            // (The menu's "Main Page" link still shows the featured article.) ---
+            navigateTo('random');
         });
     </script>
 </body>
