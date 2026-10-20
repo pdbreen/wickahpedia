@@ -38,7 +38,7 @@ article, new or old, must follow these rules:
    - a **References** section with exactly 3 fake citations (invented
      journals, books, archives, artifacts, or personal communications; at
      least one should cite an existing Wickahpedia character or article's
-     world — Steve the email squirrel, Dr. Ambrose Molar, Mark Wick (the
+     world — Steve the email squirrel, Dr. Ambrose Molar, Mark (the
      founder, pre-cell-phones), Lord Thaddeus P.
      Whimsy, Barty Cogsworth, the shrubs, etc.);
    - an **Escalation log** box (never a "correction"): one line recording
