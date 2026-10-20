@@ -82,7 +82,7 @@
     <!-- Header -->
     <header class="bg-white p-4 shadow-md rounded-lg mb-6">
         <div class="flex items-center justify-between gap-3">
-            <div class="flex items-center">
+            <div class="flex items-center cursor-pointer internal-link select-none" data-page="random" title="Show me a random article (pure chance)" role="button" tabindex="0" id="brandHome">
                 <img src="images/logo.jpg" alt="Wickahpedia Logo" class="w-12 h-12 mr-3 rounded-full shadow-inner">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-800">Wickahpedia</h1>
@@ -2179,6 +2179,10 @@
 
             // --- Event Listeners ---
             menuButton.addEventListener('click', () => menuPanel.classList.toggle('hidden'));
+            const brandHome = document.getElementById('brandHome');
+            if (brandHome) brandHome.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); navigateTo('random'); }
+            });
             document.addEventListener('click', (event) => {
                 document.querySelectorAll('.internal-link').forEach(link => {
                     if (link.contains(event.target)) {
