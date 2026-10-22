@@ -204,7 +204,17 @@ article, new or old, must follow these rules:
    Use today's date (America/New_York) for `data-added` — the "Today's
    Nonsense" page lists articles newest-first by this attribute.
 
-5. **Add the link** to the All Articles list in `index.html`, immediately
+5. **Update the Front Page's Featured Article box** so it showcases the new
+   article. In `index.html`, find the `front-box` whose `<h3>` reads
+   "Featured Article" and replace its first `<p>` with:
+   ```html
+   <p class="leading-relaxed mb-3"><a href="#" class="wiki-link internal-link" data-page="<slug>"><Title></a> &mdash; <one confident, hilarious, entirely false sentence summarizing the article's premise>. Certainty: <X>%.</p>
+   ```
+   Use the new article's real title, slug, and Certainty percentage, and
+   keep the box's second paragraph ("All other articles are also featured,
+   in private…") exactly as it is. No hedging, per the Confidence Standard.
+
+6. **Add the link** to the All Articles list in `index.html`, immediately
    after the `<!-- NEW ARTICLE LINKS GO HERE -->` marker, **with its
    quality rating** (see rule 7):
    ```html
@@ -213,15 +223,15 @@ article, new or old, must follow these rules:
    Also add the article's red link to the "Settled but Unwritten" list on
    the All Articles page (same `red-link` markup as in its See also).
 
-6. **Verify**: the new section's `id`, the link's `data-page`, and the image
+7. **Verify**: the new section's `id`, the link's `data-page`, and the image
    path all use the same slug; no `placehold.co` references remain; the
    article contains no banned hedging words (see the Confidence Standard);
    Certainty rows, the protection banner for its tier (if any), See also
    (including its red link), 3 References, the Escalation log, the seeded
    View history, Last edited + language lines, the Read aloud button,
-   Talk, the Improve and Cite buttons, Categories, and the rated All
-   Articles link are all present.
+   Talk, the Improve and Cite buttons, Categories, the rated All
+   Articles link, and the updated Featured Article box are all present.
 
-7. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
+8. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
    Then report the new article's title and the fact that it's live at
    wickahpedia.com in the run's final message.
