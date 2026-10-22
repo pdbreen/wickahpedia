@@ -104,6 +104,15 @@ article, new or old, must follow these rules:
      new article suits a month, you MAY add or replace that month's entry
      in the array, in the existing format — keep the array at exactly 12
      entries.
+9. **Believability through abundance (Patrick's rule, 2026-10-22).** A short
+   article is a suspicious article. Bury the reader in confident detail:
+   every article must run at least 5–6 substantial paragraphs across 2–3
+   `##`-style section headings, with each paragraph adding NEW specific
+   false evidence — named witnesses with titles, exact dates and times,
+   measurements, document names, institution names, statistics, and
+   granular texture (the serial number on the form, the weather that day,
+   what the expert had for lunch). Never restate the premise; deepen it.
+   Length is confidence you can measure.
 
 ## Each run adds exactly ONE new article
 
@@ -118,7 +127,9 @@ article, new or old, must follow these rules:
    ```
    # <Title>
 
-   <One or two confident, hilarious, entirely false paragraphs. No hedging.>
+   <Five or six confident, hilarious, entirely false paragraphs (see rule 9:
+   each paragraph adds NEW specific false evidence — names, dates, numbers).
+   No hedging.>
 
    > “<Fake quote>.” — <Fake expert>, <Fake title>
 
@@ -137,8 +148,9 @@ article, new or old, must follow these rules:
 
 4. **Insert the article section** into `index.html` immediately after the
    `<!-- NEW ARTICLES GO HERE -->` marker comment, using this template
-   (2 paragraphs minimum, one `##`-style section heading with a third
-   paragraph, infobox with 3–4 subject rows **plus the four Certainty rows**,
+   (5–6 substantial paragraphs minimum across 2–3 `##`-style section
+   headings per rule 9 — never fewer, never padding; infobox with 3–4
+   subject rows **plus the four Certainty rows**,
    the protection banner matching its Certainty tier (see rule 3 — under
    98.0%, omit the banner entirely), and the See also / References /
    Escalation log ending required by the Confidence Standard):
@@ -239,7 +251,9 @@ article, new or old, must follow these rules:
 9. **Email the new article** to Patrick's Wickahpedia mailing list:
    pdbreen@gmail.com, jimforbush67@gmail.com, fupoon55@gmail.com, and
    mwick@wickone.com (Mark — the inspiration for the whole site).
-   Send from Patrick's connected Gmail account:
+   Patrick pre-authorized these announcement emails on Oct 22, 2026:
+   send them directly from his connected Gmail account with no approval
+   step — the approval is this procedure, already given.
    - Subject: `New from Wickahpedia: <Title>`
    - Body: the article's title, its one-line premise, and the full article
      text (the paragraphs, the expert quote, and its Certainty %), plus the
