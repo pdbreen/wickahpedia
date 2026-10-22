@@ -113,6 +113,16 @@ article, new or old, must follow these rules:
    granular texture (the serial number on the form, the weather that day,
    what the expert had for lunch). Never restate the premise; deepen it.
    Length is confidence you can measure.
+10. **Straight-faced authority names (Patrick's rule, 2026-10-22).** Quoted
+   experts and named authorities must sound like people who could actually
+   exist — plausible names, real-sounding titles and institutions. "Dr.
+   Blurt McWrong" is the canonical example of going too far: the joke
+   belongs in the confident falsehood, never in a winking name. Aim for
+   names a skim-reader would glide past: "Dr. Helen Marsh, Professor of
+   Percussive History, Sydney Conservatorium." Existing canon characters
+   (Lord Thaddeus P. Whimsy, Barty Cogsworth, Dr. Ambrose Molar, Steve,
+   the shrubs, Mark) are grandfathered — they are established persons,
+   not punchlines.
 
 ## Each run adds exactly ONE new article
 
