@@ -216,15 +216,34 @@ article, new or old, must follow these rules:
    Use today's date (America/New_York) for `data-added` — the "Today's
    Nonsense" page lists articles newest-first by this attribute.
 
-5. **Update the Front Page's Featured Article box** so it showcases the new
-   article. In `index.html`, find the `front-box` whose `<h3>` reads
-   "Featured Article" and replace its first `<p>` with:
-   ```html
-   <p class="leading-relaxed mb-3"><a href="#" class="wiki-link internal-link" data-page="<slug>"><Title></a> &mdash; <one confident, hilarious, entirely false sentence summarizing the article's premise>. Certainty: <X>%.</p>
-   ```
-   Use the new article's real title, slug, and Certainty percentage, and
-   keep the box's second paragraph ("All other articles are also featured,
-   in private…") exactly as it is. No hedging, per the Confidence Standard.
+5. **Refresh the entire Front Page** — every box, every run. In
+   `index.html`, inside `#page-front`, update each `front-box`:
+   - **Featured Article:** ALWAYS the new article. Replace the box's first
+     `<p>` with:
+     ```html
+     <p class="leading-relaxed mb-3"><a href="#" class="wiki-link internal-link" data-page="<slug>"><Title></a> &mdash; <one confident, hilarious, entirely false sentence summarizing the article's premise>. Certainty: <X>%.</p>
+     ```
+     Use the new article's real title, slug, and Certainty percentage.
+     Keep the box's second paragraph ("All other articles are also
+     featured, in private…") exactly as it is.
+   - **Did You Know:** rewrite all four bullets in the existing format
+     (one confident, hilarious, entirely false sentence each, linking
+     with real `data-page` slugs). One bullet MUST feature the new
+     article; the other three rotate among existing articles — never
+     repeat the previous run's exact set.
+   - **Most Certain Articles:** recompute the top 3 by Certainty %
+     across ALL articles (read each infobox's Certainty row in
+     `index.html`); ties break toward the most recently added
+     (`data-added`). Render in the existing `<ol>` format with percentages.
+   - **In the News:** write four fresh items in the existing format
+     (`<strong>` lead, 1–2 confident sentences, link to a real
+     `data-page`). At least one item MUST reference the new article; the
+     rest may riff on the canon (Steve, the shrubs, the thermostat talks,
+     Mark, etc.). Keep the "Today — reported with total confidence,
+     checked against nothing." line as-is.
+   - **On This Day:** keep the rule 8 MAY-update — change the
+     `MONTHLY_OTD` entry only if the new article suits a month.
+   No hedging anywhere, per the Confidence Standard.
 
 6. **Add the link** to the All Articles list in `index.html`, immediately
    after the `<!-- NEW ARTICLE LINKS GO HERE -->` marker, **with its
@@ -242,7 +261,10 @@ article, new or old, must follow these rules:
    (including its red link), 3 References, the Escalation log, the seeded
    View history, Last edited + language lines, the Read aloud button,
    Talk, the Improve and Cite buttons, Categories, the rated All
-   Articles link, and the updated Featured Article box are all present.
+   Articles link, and all five refreshed Front Page boxes (Featured
+   Article = the new article; Did You Know rewritten with the new article
+   in one bullet; Most Certain = true top 3 by Certainty; In the News =
+   four fresh items, one referencing the new article) are all present.
 
 8. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
    Then report the new article's title and the fact that it's live at
