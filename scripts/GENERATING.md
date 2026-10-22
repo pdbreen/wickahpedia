@@ -235,3 +235,20 @@ article, new or old, must follow these rules:
 8. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
    Then report the new article's title and the fact that it's live at
    wickahpedia.com in the run's final message.
+
+9. **Email the new article** to Patrick's Wickahpedia mailing list:
+   pdbreen@gmail.com, jimforbush67@gmail.com, fupoon55@gmail.com, and
+   mwick@wickone.com (Mark — the inspiration for the whole site).
+   Send from Patrick's connected Gmail account:
+   - Subject: `New from Wickahpedia: <Title>`
+   - Body: the article's title, its one-line premise, and the full article
+     text (the paragraphs, the expert quote, and its Certainty %), plus the
+     link https://wickahpedia.com — the site is a single-page app, so
+     readers find the new article via search or the All Articles list.
+   - You MAY add a short, funny satirical aside for Mark when it fits the
+     article. He is the site's inspiration: the pre-cell-phone family
+     vacation where his confident table declaration became true because
+     nobody could check. Keep it affectionate, never mean, and in the
+     house style (confident, no hedging).
+   If sending fails, report it plainly in the run's final message instead
+   of claiming it went out.
