@@ -214,6 +214,12 @@ def main():
             body,
             flags=re.DOTALL,
         )
+        # Drop the SPA-only permalink line (the mirror page IS the URL).
+        body = re.sub(
+            r'<p[^>]*>[^<]*<a\b[^>]*class="permalink-copy[^"]*"[^>]*>[^<]*</a>\s*</p>',
+            "",
+            body,
+        )
         # Internal links -> real article URLs (or / for SPA-only targets).
         body = re.sub(
             r'<a\b[^>]*data-page="([^"]+)"[^>]*>(.*?)</a>',
@@ -223,20 +229,20 @@ def main():
         )
         # Red links (unwritten articles) -> styled plain text.
         body = re.sub(
-            r'<a\b[^>]*class="red-link"[^>]*>(.*?)</a>',
+            r'<a\b[^>]*class="red-link[^"]*"[^>]*>(.*?)</a>',
             r'<span class="red-link">\1</span>',
             body,
             flags=re.DOTALL,
         )
         # Category and language links -> plain text (SPA-only views).
         body = re.sub(
-            r'<a\b[^>]*class="cat-link"[^>]*>(.*?)</a>',
+            r'<a\b[^>]*class="cat-link[^"]*"[^>]*>(.*?)</a>',
             r"\1",
             body,
             flags=re.DOTALL,
         )
         body = re.sub(
-            r'<a\b[^>]*class="lang-link"[^>]*>(.*?)</a>',
+            r'<a\b[^>]*class="lang-link[^"]*"[^>]*>(.*?)</a>',
             r"\1",
             body,
             flags=re.DOTALL,

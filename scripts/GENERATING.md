@@ -67,6 +67,10 @@ article, new or old, must follow these rules:
    - a **Last edited** line under the title (absurd editor + edit summary)
      and a **Read in another language** line (Louder English · Greg ·
      Topiary · Squirrel) followed by an empty `<div class="lang-note">`;
+   - a **permalink** line directly under the title: `🔗 <a href="#"
+     class="permalink-copy" data-slug="<slug>">Link to this article</a>`
+     (clicking copies the article's mirror URL — the site's JS handles
+     it; the build script strips this line from mirror pages);
    - one **red link** in its See also list — a title from
      `content/articles/` that is *not* yet a live article, in this form:
      `<a href="#" class="red-link" data-title="…" data-conclusion="…">Title</a>`
@@ -175,6 +179,7 @@ article, new or old, must follow these rules:
    ```html
             <section id="page-<slug>" class="page-content" data-article="true" data-added="YYYY-MM-DD">
                 <h2 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight"><Title></h2>
+                <p class="text-sm text-gray-500 mb-1">🔗 <a href="#" class="permalink-copy hover:underline" data-slug="<slug>" title="Copy a link to this article">Link to this article</a></p>
                 <p class="last-edited text-sm text-gray-500 mb-1">Last edited <when> by <Fake Editor> (talk) &mdash; edit summary: &lsquo;<joke>&rsquo;</p>
                 <p class="text-sm text-gray-500 mb-4">Read in another language: <a href="#" class="lang-link" data-lang="louder">Louder English</a> &middot; <a href="#" class="lang-link" data-lang="greg">Greg</a> &middot; <a href="#" class="lang-link" data-lang="topiary">Topiary</a> &middot; <a href="#" class="lang-link" data-lang="squirrel">Squirrel</a></p>
                 <div class="lang-note" style="display:none"></div>
