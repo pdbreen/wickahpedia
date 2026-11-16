@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinosaurs &mdash; Wickahpedia</title>
+    <meta name="description" content="Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design. Satirical article from Wickahpedia.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://wickahpedia.com/dinos/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Dinosaurs">
+    <meta property="og:description" content="Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design. Satirical article from Wickahpedia.">
+    <meta property="og:url" content="https://wickahpedia.com/dinos/">
+    <meta property="og:image" content="https://wickahpedia.com/images/dinos.jpg">
+    <meta property="og:image:alt" content="Dinosaurs">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dinosaurs">
+    <meta name="twitter:description" content="Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design. Satirical article from Wickahpedia.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light Wikipedia-like background */
+            color: #202122; /* Default text color */
+        }
+        .wiki-link {
+            color: #3366cc; /* Wikipedia link blue */
+            text-decoration: none;
+            cursor: pointer;
+            border-bottom: 1px dotted rgba(51, 102, 204, 0.5); /* Dotted underline for links */
+        }
+        .wiki-link:hover {
+            text-decoration: underline;
+        }
+        .infobox {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+        }
+        .section-heading {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .certainty-notice {
+            border-left: 4px solid #f0b429; background-color: #fdf6e3;
+            padding: 0.6rem 0.9rem; margin-bottom: 1rem; font-size: 0.92rem; border-radius: 0 6px 6px 0;
+        }
+        .escalation-box {
+            border: 1px dashed #a2a9b1; background-color: #f8f9fa;
+            padding: 0.6rem 0.9rem; font-size: 0.92rem; border-radius: 6px; margin-bottom: 0.5rem;
+        }
+        .front-box { border: 1px solid #a2a9b1; background-color: #f8f9fa; border-radius: 8px; padding: 1rem 1.25rem; }
+
+        .red-link { color: #ba0000; text-decoration: none; cursor: pointer; border-bottom: 1px dotted rgba(186,0,0,.5); }
+        .red-link:hover { text-decoration: underline; }
+        .cat-link { color: #3366cc; text-decoration: none; cursor: pointer; }
+        .cat-link:hover { text-decoration: underline; }
+        .lang-link { color: #3366cc; text-decoration: none; cursor: pointer; }
+        .lang-link:hover { text-decoration: underline; }
+        .talk-box { border: 1px solid #e2e2e2; background-color: #fcfcf7; border-radius: 6px; padding: 0.8rem 1rem; margin-bottom: 0.5rem; }
+        .lang-note { border-left: 4px solid #3366cc; background-color: #eef3fb; padding: 0.6rem 0.9rem; margin-bottom: 1rem; font-size: 0.92rem; border-radius: 0 6px 6px 0; }
+
+        #searchSuggest { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #d1d5db;
+            border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 8px 16px rgba(0,0,0,.08); z-index: 50; display: none; }
+        #searchSuggest div.sug { padding: .5rem .75rem; cursor: pointer; font-size: .92rem; }
+        #searchSuggest div.sug:hover { background: #f3f4f6; }
+        .history-box { border: 1px solid #e2e2e2; background-color: #fcfcf7; border-radius: 6px; padding: .6rem .9rem; margin-bottom: .5rem; }
+        .history-box summary { cursor: pointer; font-weight: 600; }
+        
+        /* Loading Spinner */
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #3498db;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 40px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    
+        .satire-note { border-left: 4px solid #3366cc; background-color: #eef3fb; padding: 0.6rem 0.9rem; margin-bottom: 1rem; font-size: 0.92rem; border-radius: 0 6px 6px 0; }
+    </style>
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b054a8daf1074e269d1467f36f311aa5"}'></script><!-- End Cloudflare Web Analytics -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Dinosaurs",
+    "description": "Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design. Satirical article from Wickahpedia.",
+    "mainEntityOfPage": "https://wickahpedia.com/dinos/",
+    "author": {
+        "@type": "Organization",
+        "name": "Wickahpedia",
+        "url": "https://wickahpedia.com/"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Wickahpedia",
+        "url": "https://wickahpedia.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://wickahpedia.com/images/logo.jpg"
+        }
+    },
+    "image": [
+        "https://wickahpedia.com/images/dinos.jpg"
+    ]
+}
+    </script>
+</head>
+<body class="p-4 sm:p-6 lg:p-8">
+    <header class="bg-white p-4 shadow-md rounded-lg mb-6">
+        <div class="flex items-center gap-3">
+            <a href="/"><img src="/images/logo.jpg" alt="Wickahpedia Logo" class="w-12 h-12 mr-3 rounded-full shadow-inner"></a>
+            <div>
+                <div class="text-3xl font-bold text-gray-800"><a href="/" class="hover:underline">Wickahpedia</a></div>
+                <a href="/" class="text-sm text-gray-500 hidden sm:block hover:text-gray-800 hover:underline">The Sum of All Misinformation</a>
+            </div>
+        </div>
+    </header>
+    <main class="w-full bg-white p-6 shadow-md rounded-lg">
+        <div class="satire-note"><strong>Satire.</strong> Wickahpedia is a fictional encyclopedia &mdash; every claim on this page is made up, stated with total confidence. See Our Editorial Policy on the <a href="/" class="wiki-link">front page</a>.</div>
+        <article>
+
+                <h1 class="text-4xl font-extrabold mb-4 text-gray-900 leading-tight">Dinosaurs</h1>
+                <p class="last-edited text-sm text-gray-500 mb-1">Last edited 65 million years ago by TRexPM (talk) &mdash; edit summary: &lsquo;project complete&rsquo;</p>
+                <p class="text-sm text-gray-500 mb-4">Read in another language: Louder English &middot; Greg &middot; Topiary &middot; Squirrel</p>
+                
+                
+                
+                <div class="certainty-notice"><strong>Protected.</strong> This article has been locked to prevent the addition of facts. It may only be edited to become more confident.</div>
+                
+                <div class="infobox float-right ml-6 mb-6 p-4 rounded-lg w-full sm:w-80 shadow-sm">
+                    <h4 class="font-bold text-center text-xl mb-3 border-b pb-2">Dinosaur Civilization</h4>
+                    <img src="/images/dinos.jpg" alt="An illustration of a T-Rex in a hard hat holding a clipboard" class="w-full h-auto rounded-md mb-3">
+                    <table class="w-full text-sm">
+                        <tr><td class="font-semibold pr-2 py-1">Nature:</td><td class="py-1">Advanced Civilization</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">T-Rex Role:</td><td class="py-1">Project Managers</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">Extinction:</td><td class="py-1">Relocated to another dimension</td></tr>
+                        <tr><td class="font-semibold pr-2 py-1">True Passion:</td><td class="py-1">Minimalist Pottery</td></tr>
+                    <tr><td class="font-semibold pr-2 py-1">Certainty:</td><td class="py-1">99.0%</td></tr><tr><td class="font-semibold pr-2 py-1">Fact-checked:</td><td class="py-1">No (subjects relocated dimensions)</td></tr><tr><td class="font-semibold pr-2 py-1">Peer review:</td><td class="py-1">A project manager (tiny arms, huge clipboard)</td></tr><tr><td class="font-semibold pr-2 py-1">Hedging:</td><td class="py-1">None detected</td></tr></table>
+                </div>
+                <p class="mb-4 leading-relaxed">Dinosaurs were not primitive reptiles. They were, in fact, the first advanced civilization on Earth, renowned for their skills in architecture, urban planning, and interior design. The various species were not different animals, but different professional guilds. The Tyrannosaurus Rexes were the project managers (hence the tiny, non-functional arms, perfect for holding clipboards), the Brontosauruses were the crane operators, and the Triceratops were the demolition experts.</p>
+                <p class="mb-4 leading-relaxed">They built vast, subterranean cities of breathtaking beauty, complete with marble columns and intricate mosaics. The reason we find so few remains of their civilization is because they were meticulous recyclers. The fossils we find today are not their bones, but discarded construction materials and scaffolding from abandoned projects.</p>
+                <h2 class="text-2xl font-bold section-heading mt-6 mb-3">The "Extinction" Event</h2>
+                <p class="leading-relaxed">The dinosaurs did not go extinct. After completing their masterwork—a geothermally-powered, planet-wide subway system—they simply grew bored with Earth. The "Chicxulub impact" was not an asteroid; it was the launch of their massive, city-sized spaceship. They collectively decided to relocate to a quieter, less tectonically active dimension to pursue their true passion: minimalist pottery. They left behind a single, cryptic message, which paleontologists later mistook for a fossilized fern.</p>
+
+                <h2 class="text-2xl font-bold section-heading mt-6 mb-3">See also</h2>
+                <ul class="list-disc list-inside mb-4 leading-relaxed">
+                        <li><a href="/moon/" class="wiki-link">The Moon</a></li>
+                        <li><a href="/rome/" class="wiki-link">The Roman Empire</a> <span class="text-sm text-gray-500">&mdash; Claim</span></li>
+                        <li><a href="/alexandria/" class="wiki-link">The Library of Alexandria</a></li>
+                                        <li><span class="red-link">Dinosaurs Built the Egyptian Pyramids</span> <span class="text-sm text-gray-500">(unwritten; settled)</span></li>
+                    </ul>
+                <h2 class="text-2xl font-bold section-heading mt-6 mb-3">References</h2>
+                <ol class="list-decimal list-inside mb-4 leading-relaxed text-sm text-gray-700 space-y-1">
+                        <li>Rex, T. <i>Final Project Report: Earth</i>. Subterranean City Press, 65M BC.</li>
+                        <li>&ldquo;Pottery, Minimalist: Why We Left.&rdquo; <i>Dimensional Relocation Review</i> 1 (65M BC): final issue.</li>
+                        <li>Fossilized fern, the. Message status: cryptic, therefore conclusive.</li>
+                </ol>
+                <div class="escalation-box"><strong>Escalation log.</strong> Originally &lsquo;relocated to another dimension.&rsquo; Now &lsquo;relocated to a <i>quieter</i> dimension.&rsquo; Their pottery is excellent. This is known.</div>
+
+                <details class="history-box mt-4 mb-2">
+                    <summary>View history</summary>
+                    <ul class="history-list text-sm text-gray-600 space-y-1 mt-2">
+                        <li>65,000,000 BC &mdash; TRexPM created this article, confidently. The confidence has only grown.</li>
+                        <li>65,000,000 BC &mdash; TRexPM escalated a claim (see Escalation log). The article thanked them.</li>
+                        <li>65,000,000 BC &mdash; A fact attempted to enter this article. It was shown the door.</li>
+                    </ul>
+                </details>
+                <h2 class="text-2xl font-bold section-heading mt-6 mb-3">Talk</h2>
+                <div class="talk-box">
+                        <p class="mb-2 leading-relaxed"><strong>JuniorPaleontologist (talk):</strong> Found a fern that might not be a message. Submitting for review.</p>
+                        <p class="mb-2 leading-relaxed"><strong>TRexPM (talk):</strong> Review complete. It is a message. All ferns are messages. Fern review is now closed, permanently.</p>
+                    <p class="text-sm text-gray-500">Editors who cite sources on talk pages are asked to leave.</p>
+                </div>
+                
+                <p class="cat-line text-sm border-t border-gray-200 pt-3 mt-6">Categories: Relocated, Dimensionally &middot; Project Management, Prehistoric &middot; Pottery, Minimalist</p>
+            
+        </article>
+        <p class="text-sm text-gray-500 border-t border-gray-200 pt-3 mt-6"><a href="/" class="wiki-link">&larr; Back to the Front Page</a> &middot; Wickahpedia &mdash; The Sum of All Misinformation. Satirical and entirely fictional.</p>
+    </main>
+</body>
+</html>

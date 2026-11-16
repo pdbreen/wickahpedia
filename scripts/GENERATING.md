@@ -5,6 +5,14 @@ article is a `<section class="page-content" data-article="true">` inside
 `<main>`. There is no build step — editing `index.html` and pushing to the
 `main` branch publishes via GitHub Pages (wickahpedia.com).
 
+Each article ALSO has a static, crawlable mirror page at `/<slug>/`,
+generated from its section by `scripts/build_article_pages.py`, plus
+`sitemap.xml` and `robots.txt` at the root. The mirrors exist so search
+engines can index articles individually; the SPA remains the site readers
+use. Every run must regenerate the mirrors and the sitemap (step 8) so new
+articles get pages. Never hand-edit a generated mirror page — fix the
+section in `index.html` and re-run the script.
+
 ## The Confidence Standard (house style — mandatory since 2026-10-20)
 
 Wickahpedia's satire is that **confidence matters more than fact**. Every
@@ -276,11 +284,21 @@ article, new or old, must follow these rules:
    in one bullet; Most Certain = true top 3 by Certainty; In the News =
    four fresh items, one referencing the new article) are all present.
 
-8. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
+8. **Regenerate the static article pages and sitemap.** From the repo root,
+   run `python3 scripts/build_article_pages.py`. It rebuilds every
+   article's mirror page at `/<slug>/` from the sections in `index.html`
+   and rewrites `sitemap.xml` (homepage + all articles). The script is
+   idempotent and stdlib-only; it exits non-zero if any article is
+   missing a title or opening paragraph. Verify the new slug appears in
+   `sitemap.xml` and the new page exists at `<slug>/index.html`, with no
+   warnings except the known `no data-added` note for pre-Oct-20
+   articles.
+
+9. **Publish**: `git add -A && git commit -m "New article: <Title>" && git push`.
    Then report the new article's title and the fact that it's live at
    wickahpedia.com in the run's final message.
 
-9. **Email announcements — DISABLED.** Patrick revoked these on Oct 24, 2026:
+10. **Email announcements — DISABLED.** Patrick revoked these on Oct 24, 2026:
    do NOT send any emails after publishing. (Previously this step emailed
    the new article to pdbreen@gmail.com, jimforbush67@gmail.com,
    fupoon55@gmail.com, and mwick@wickone.com with a Mark aside; that
