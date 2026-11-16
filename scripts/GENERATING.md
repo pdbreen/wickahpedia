@@ -7,7 +7,10 @@ article is a `<section class="page-content" data-article="true">` inside
 
 Each article ALSO has a static, crawlable mirror page at `/<slug>/`,
 generated from its section by `scripts/build_article_pages.py`, plus
-`sitemap.xml` and `robots.txt` at the root. The mirrors exist so search
+`sitemap.xml` and `robots.txt` at the root. Favicon files (`favicon.ico`,
+`favicon-32x32.png`, `favicon-16x16.png`, `apple-touch-icon.png`) live at
+the root, derived from `images/logo.jpg`; the `<head>` of `index.html` and
+the mirror template link them. The mirrors exist so search
 engines can index articles individually; the SPA remains the site readers
 use. Every run must regenerate the mirrors and the sitemap (step 8) so new
 articles get pages. Never hand-edit a generated mirror page — fix the
